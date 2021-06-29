@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GuardApp.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,5 +18,18 @@ namespace GuardApp
             InitializeComponent();
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            Context ctx = new Context();
+            //GuardProgram sag = new GuardProgram();
+
+            //Personal per1 = new Personal();
+
+            //Rank ggs = new Rank();
+            //ggs.Name = "astegmen";
+
+            //per1.Rank = ggs;
+            //per1.n
+        }
     }
 }
