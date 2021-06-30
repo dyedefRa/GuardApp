@@ -53,6 +53,7 @@ namespace GuardApp
             this.btnPersonal.TabIndex = 1;
             this.btnPersonal.Text = "Personel Ekle";
             this.btnPersonal.UseVisualStyleBackColor = true;
+            this.btnPersonal.Click += new System.EventHandler(this.btnPersonal_Click);
             // 
             // btnGuard
             // 

@@ -31,5 +31,12 @@ namespace GuardApp
             //per1.Rank = ggs;
             //per1.n
         }
+
+        private void btnPersonal_Click(object sender, EventArgs e)
+        {
+            var formPersonal = new PersonalForm();
+            formPersonal.Show();
+          
+        }
     }
 }
