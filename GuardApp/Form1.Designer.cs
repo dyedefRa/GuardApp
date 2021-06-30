@@ -86,12 +86,14 @@ namespace GuardApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(659, 330);
             this.Controls.Add(this.btnLastGuard);
             this.Controls.Add(this.btnMonthly);
             this.Controls.Add(this.btnGuard);
             this.Controls.Add(this.btnPersonal);
             this.Controls.Add(this.btnRank);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FormMain";
             this.Text = "[NTP] Nöbet Takip Programı";
             this.Load += new System.EventHandler(this.Form1_Load);
