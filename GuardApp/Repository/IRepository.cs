@@ -10,11 +10,11 @@ namespace GuardApp.Repository
     {
 
         List<T> List();
-        int Save();
-        int Insert(T entity);
-        int Update(T entity);
-        int Delete(T entity);
-        int Delete(int Id);
+        bool Save();
+        bool Insert(T entity);
+        bool Update(T entity);
+        bool Delete(T entity);
+        bool Delete(int Id);
         T GetById(int Id);
     }
 }

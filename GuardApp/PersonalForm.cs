@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GuardApp.Repository;
 
 namespace GuardApp
 {
@@ -20,12 +21,41 @@ namespace GuardApp
             InitializeComponent();
         }
 
-        Context cn = new Context ();
-      
+        Repository<Personal> personalRepository = new Repository<Personal>();
+        Repository<Rank> rankRepository = new Repository<Rank>();
+
 
         private void btnCreatePersonal_Click(object sender, EventArgs e)
         {
 
+            if (CreatedValid())
+            {
+                string personalName = txtName.Text;
+                string personalTerm = txtTerm.Text;
+                Rank personalRank = (Rank)comboBox1.SelectedItem;
+                Personal personal = new Personal()
+                {
+                    Name = personalName,
+                    Term = personalTerm,
+                    Rank = personalRank
+                };
+                //SingletonDb.Context.Personals.Add
+                if (personalRepository.Insert(personal))
+                {
+                    ClearAll();
+                    UpdateGrid();
+                    MessageBox.Show("Personel başarıyla eklendi");
+                }
+                else
+                {
+                    MessageBox.Show("Sistemde bir hata oluştu.Açılan pencereden yardım alın.");
+                    btnHelp_Click(this,EventArgs.Empty);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Lütfen personel bilgilerini eksiksiz doldurun.");
+            }
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -35,57 +65,39 @@ namespace GuardApp
 
         private void PersonalForm_Load(object sender, EventArgs e)
         {
-            //var ss = cn.Personals.ToList();
-            //var hg=cn.Ranks.ToList();
-            //ViewModals viewModals = new ViewModals();
-            //dataGridView1.DataSource = viewModals.ConvertPersonalModel(cn.Personals.ToList());
-         
-
-            dataGridView1.DataSource = cn.Personals.ToList();
-            dataGridView1.Columns["Id"].Visible = false;
-            dataGridView1.Columns["RankId"].Visible = false;
-        
-            //dataGridView1.AutoGenerateColumns = false;
-            //dataGridView1.Columns[0].HeaderText = "Id";
-            //dataGridView1.Columns[1].HeaderText = "Rütbe";
-            //dataGridView1.Columns[2].HeaderText = "Ad / Soyad";
-            //dataGridView1.Columns[3].HeaderText = "Dönemi";
-            //dataGridView1.Columns[4].HeaderText = "Aktif Mi?";
-            //dataGridView1.Columns[0].Visible = false;
-            //dataGridView1.DataSource = cn.Personals.ToList();
-
-            // foreach (var item in collection)
-            // {
-
-            // }
-            //ArrayList
-
-
-
-
-            ////dataGridView1.Columns[""]
-            ///UpdateGrid
-            //UpdateGrid();
+            UpdateGrid();
+            FillComboBox();
         }
 
         public void UpdateGrid()
         {
-            //dataGridView1.ColumnCount = 4;
-            //dataGridView1.Columns[0].Name = "Rütbe";
-            //dataGridView1.Columns[1].Name = "Ad / Soyad";
-            //dataGridView1.Columns[2].Name = "Dönemi";
-            //dataGridView1.Columns[3].Name = "Aktif Mi?";
+            dataGridView1.DataSource = personalRepository.List();
+            dataGridView1.Columns["Id"].Visible = false;
+            dataGridView1.Columns["RankId"].Visible = false;
+            dataGridView1.Columns[5].DisplayIndex = 1;
+        }
 
-            //ArrayList row = new ArrayList();
-            //foreach (var per in cn.Personals.ToList())
-            //{
-            //    row.Add(per.Rank);
-            //    row.Add(per.Name);
-            //    row.Add(per.Term);
-            //    row.Add(per.IsActive);
-            //    dataGridView1.Rows.Add(row.ToArray());             
-            //}
-            dataGridView1.DataSource = cn.Personals.ToList();
+        public void FillComboBox()
+        {
+            comboBox1.DataSource = rankRepository.List();
+            comboBox1.ValueMember = "Id";
+            comboBox1.DisplayMember = "Name";
+        }
+
+        public bool CreatedValid()
+        {
+            return !(string.IsNullOrEmpty(txtName.Text) || string.IsNullOrEmpty(txtTerm.Text) || comboBox1.SelectedItem == null);
+        }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Test");
+        }
+        private void ClearAll()
+        {
+            txtName.Text = string.Empty;
+            txtTerm.Text = string.Empty;
+            comboBox1.SelectedIndex = 0;
         }
     }
 }

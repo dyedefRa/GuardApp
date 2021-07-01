@@ -11,7 +11,6 @@ namespace GuardApp.Model
     public class Rank
     {
         public int Id { get; set; }
-        [DisplayName("Rütbesi")]
         public string Name { get; set; }
 
         public override string ToString()

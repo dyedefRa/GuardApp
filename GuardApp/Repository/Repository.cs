@@ -18,13 +18,13 @@ namespace GuardApp.Repository
         {
             _objectSet = _context.Set<T>();
         }
-        public int Delete(T entity)
+        public bool Delete(T entity)
         {
             _objectSet.Remove(entity);
             return Save();
         }
 
-        public int Delete(int Id)
+        public bool Delete(int Id)
         {
             return Delete(GetById(Id));
         }
@@ -34,7 +34,7 @@ namespace GuardApp.Repository
             return _objectSet.Find(Id);
         }
 
-        public int Insert(T entity)
+        public bool Insert(T entity)
         {
             _objectSet.Add(entity);
             return Save();
@@ -45,12 +45,12 @@ namespace GuardApp.Repository
             return _objectSet.ToList();
         }
 
-        public int Save()
+        public bool Save()
         {
-            return _context.SaveChanges();
+            return _context.SaveChanges()>0;
         }
 
-        public int Update(T entity)
+        public bool Update(T entity)
         {
             _objectSet.AddOrUpdate(entity);
             return Save();

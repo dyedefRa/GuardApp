@@ -33,14 +33,15 @@ namespace GuardApp
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCreatePersonal = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtTerm = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
             this.btnBack = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnHelp = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -49,22 +50,23 @@ namespace GuardApp
             // 
             this.panel1.Controls.Add(this.btnCreatePersonal);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.txtTerm);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.comboBox1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Location = new System.Drawing.Point(22, 372);
+            this.panel1.Controls.Add(this.txtName);
+            this.panel1.Location = new System.Drawing.Point(894, 66);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(913, 138);
+            this.panel1.Size = new System.Drawing.Size(355, 267);
             this.panel1.TabIndex = 1;
             // 
             // btnCreatePersonal
             // 
-            this.btnCreatePersonal.Location = new System.Drawing.Point(317, 97);
+            this.btnCreatePersonal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnCreatePersonal.Location = new System.Drawing.Point(33, 188);
             this.btnCreatePersonal.Name = "btnCreatePersonal";
-            this.btnCreatePersonal.Size = new System.Drawing.Size(337, 30);
+            this.btnCreatePersonal.Size = new System.Drawing.Size(303, 43);
             this.btnCreatePersonal.TabIndex = 4;
             this.btnCreatePersonal.Text = "Ekle";
             this.btnCreatePersonal.UseVisualStyleBackColor = true;
@@ -73,64 +75,64 @@ namespace GuardApp
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(620, 50);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(27, 140);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(64, 19);
+            this.label4.Size = new System.Drawing.Size(72, 21);
             this.label4.TabIndex = 6;
             this.label4.Text = "Dönemi :";
             // 
-            // textBox2
+            // txtTerm
             // 
-            this.textBox2.Location = new System.Drawing.Point(704, 48);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(177, 23);
-            this.textBox2.TabIndex = 3;
+            this.txtTerm.Location = new System.Drawing.Point(155, 138);
+            this.txtTerm.Name = "txtTerm";
+            this.txtTerm.Size = new System.Drawing.Size(182, 23);
+            this.txtTerm.TabIndex = 3;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(310, 52);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(27, 98);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(83, 19);
+            this.label3.Size = new System.Drawing.Size(93, 21);
             this.label3.TabIndex = 4;
             this.label3.Text = "Ad / Soyad :";
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(129, 53);
+            this.comboBox1.Location = new System.Drawing.Point(155, 56);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(128, 23);
+            this.comboBox1.Size = new System.Drawing.Size(181, 23);
             this.comboBox1.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.Location = new System.Drawing.Point(27, 54);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 19);
+            this.label2.Size = new System.Drawing.Size(110, 21);
             this.label2.TabIndex = 2;
             this.label2.Text = "Rütbe Seçiniz :";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(402, 9);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(92, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(149, 21);
+            this.label1.Size = new System.Drawing.Size(171, 25);
             this.label1.TabIndex = 1;
             this.label1.Text = "Yeni Personel Ekle";
             // 
-            // textBox1
+            // txtName
             // 
-            this.textBox1.Location = new System.Drawing.Point(415, 50);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(177, 23);
-            this.textBox1.TabIndex = 2;
+            this.txtName.Location = new System.Drawing.Point(155, 96);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(181, 23);
+            this.txtName.TabIndex = 2;
             // 
             // btnBack
             // 
@@ -158,15 +160,27 @@ namespace GuardApp
             this.dataGridView1.Location = new System.Drawing.Point(39, 66);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(879, 228);
+            this.dataGridView1.Size = new System.Drawing.Size(804, 267);
             this.dataGridView1.TabIndex = 3;
+            // 
+            // btnHelp
+            // 
+            this.btnHelp.Cursor = System.Windows.Forms.Cursors.Help;
+            this.btnHelp.Location = new System.Drawing.Point(1155, 12);
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Size = new System.Drawing.Size(123, 30);
+            this.btnHelp.TabIndex = 4;
+            this.btnHelp.Text = "Yardım";
+            this.btnHelp.UseVisualStyleBackColor = true;
+            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
             // PersonalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1120, 896);
+            this.ClientSize = new System.Drawing.Size(1290, 394);
+            this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.panel1);
@@ -182,16 +196,17 @@ namespace GuardApp
 
         #endregion
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtTerm;
    
         private System.Windows.Forms.Button btnCreatePersonal;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnHelp;
     }
 }

@@ -9,6 +9,6 @@ namespace GuardApp.Helper
 {
    public static class SingletonDb
     {
-     
+        public static Context Context = new Context();
     }
 }
