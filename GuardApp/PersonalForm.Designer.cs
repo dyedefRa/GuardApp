@@ -28,8 +28,8 @@ namespace GuardApp
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
-        {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+        {         
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();         
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCreatePersonal = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -42,6 +42,7 @@ namespace GuardApp
             this.btnBack = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnHelp = new System.Windows.Forms.Button();
+            this.btnCreateRank = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -158,21 +159,35 @@ namespace GuardApp
             this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(39, 66);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 25;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(804, 267);
             this.dataGridView1.TabIndex = 3;
             // 
             // btnHelp
             // 
+            this.btnHelp.BackColor = System.Drawing.Color.LightBlue;
             this.btnHelp.Cursor = System.Windows.Forms.Cursors.Help;
             this.btnHelp.Location = new System.Drawing.Point(1155, 12);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(123, 30);
             this.btnHelp.TabIndex = 4;
             this.btnHelp.Text = "Yardım";
-            this.btnHelp.UseVisualStyleBackColor = true;
             this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
+            // 
+            // btnCreateRank
+            // 
+            this.btnCreateRank.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.btnCreateRank.Location = new System.Drawing.Point(965, 14);
+            this.btnCreateRank.Name = "btnCreateRank";
+            this.btnCreateRank.Size = new System.Drawing.Size(136, 28);
+            this.btnCreateRank.TabIndex = 5;
+            this.btnCreateRank.Text = "Yeni Rütbe Ekle";
+            this.btnCreateRank.UseVisualStyleBackColor = true;
+            this.btnCreateRank.Click += new System.EventHandler(this.btnCreateRank_Click);
             // 
             // PersonalForm
             // 
@@ -180,6 +195,7 @@ namespace GuardApp
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1290, 394);
+            this.Controls.Add(this.btnCreateRank);
             this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnBack);
@@ -208,5 +224,6 @@ namespace GuardApp
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnHelp;
+        private System.Windows.Forms.Button btnCreateRank;
     }
 }

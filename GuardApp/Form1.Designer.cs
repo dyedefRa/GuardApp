@@ -44,6 +44,7 @@ namespace GuardApp
             this.btnRank.TabIndex = 0;
             this.btnRank.Text = "Rütbe Ekle";
             this.btnRank.UseVisualStyleBackColor = true;
+            this.btnRank.Click += new System.EventHandler(this.btnRank_Click);
             // 
             // btnPersonal
             // 
@@ -63,6 +64,7 @@ namespace GuardApp
             this.btnGuard.TabIndex = 2;
             this.btnGuard.Text = "Nöbet Ekle";
             this.btnGuard.UseVisualStyleBackColor = true;
+            this.btnGuard.Click += new System.EventHandler(this.btnGuard_Click);
             // 
             // btnMonthly
             // 
@@ -72,10 +74,11 @@ namespace GuardApp
             this.btnMonthly.TabIndex = 3;
             this.btnMonthly.Text = "Aylık Nöbet Oluştur";
             this.btnMonthly.UseVisualStyleBackColor = true;
+            this.btnMonthly.Click += new System.EventHandler(this.btnMonthly_Click);
             // 
             // btnLastGuard
             // 
-            this.btnLastGuard.Location = new System.Drawing.Point(63, 201);
+            this.btnLastGuard.Location = new System.Drawing.Point(63, 222);
             this.btnLastGuard.Name = "btnLastGuard";
             this.btnLastGuard.Size = new System.Drawing.Size(531, 30);
             this.btnLastGuard.TabIndex = 4;

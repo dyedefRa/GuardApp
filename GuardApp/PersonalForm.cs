@@ -49,7 +49,7 @@ namespace GuardApp
                 else
                 {
                     MessageBox.Show("Sistemde bir hata oluştu.Açılan pencereden yardım alın.");
-                    btnHelp_Click(this,EventArgs.Empty);
+                    btnHelp_Click(this, EventArgs.Empty);
                 }
             }
             else
@@ -67,6 +67,8 @@ namespace GuardApp
         {
             UpdateGrid();
             FillComboBox();
+            this.BackColor = Color.FromArgb(237, 247, 210);
+            //btnCreatePersonal.BackColor = Color.FromArgb(2, 117, 216);
         }
 
         public void UpdateGrid()
@@ -75,6 +77,8 @@ namespace GuardApp
             dataGridView1.Columns["Id"].Visible = false;
             dataGridView1.Columns["RankId"].Visible = false;
             dataGridView1.Columns[5].DisplayIndex = 1;
+            //dataGridView1.SelectionMode=SelectionMode.row
+          
         }
 
         public void FillComboBox()
@@ -89,15 +93,41 @@ namespace GuardApp
             return !(string.IsNullOrEmpty(txtName.Text) || string.IsNullOrEmpty(txtTerm.Text) || comboBox1.SelectedItem == null);
         }
 
-        private void btnHelp_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Test");
-        }
         private void ClearAll()
         {
             txtName.Text = string.Empty;
             txtTerm.Text = string.Empty;
             comboBox1.SelectedIndex = 0;
+        }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            string message = "Aradığınız rütbeyi bulamadıysanız 'Yes'e basınız."
+                 + Environment.NewLine
+                 + "Eklemekten sorun yaşıyorsanız 'No' ya basınız."
+                 + Environment.NewLine
+                 + "İptal etmek için 'Cancel' a basınız.";
+            DialogResult result = MessageBox.Show(message, "Yardım", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+            if (result == DialogResult.Yes)
+            {
+                MessageBox.Show("Rütbe ekleme sayfasına yönlendiriliyorsunuz");
+                btnCreateRank_Click(this, EventArgs.Empty);
+            }
+            else if (result == DialogResult.No)
+            {
+
+            }
+            else
+            {
+               
+            }
+        }
+
+        private void btnCreateRank_Click(object sender, EventArgs e)
+        {
+            RankForm rankForm = new RankForm();
+            rankForm.Show();
+            this.Hide();
         }
     }
 }
