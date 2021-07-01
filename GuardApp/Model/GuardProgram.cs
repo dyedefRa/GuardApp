@@ -9,8 +9,10 @@ namespace GuardApp.Model
     public class GuardProgram
     {
         public int Id { get; set; }
-        public Guard Guard { get; set; }
-        public Personal Personal { get; set; }
+        public int GuardId { get; set; }
+        public virtual Guard Guard { get; set; }
+        public int PersonalId { get; set; }
+        public virtual Personal Personal { get; set; }
         public DateTime Date { get; set; }
     }
 }
