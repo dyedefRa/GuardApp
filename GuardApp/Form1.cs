@@ -21,15 +21,7 @@ namespace GuardApp
         private void Form1_Load(object sender, EventArgs e)
         {
             Context ctx = new Context();
-            //GuardProgram sag = new GuardProgram();
-
-            //Personal per1 = new Personal();
-
-            //Rank ggs = new Rank();
-            //ggs.Name = "astegmen";
-
-            //per1.Rank = ggs;
-            //per1.n
+      
         }
 
         private void btnPersonal_Click(object sender, EventArgs e)
