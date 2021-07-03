@@ -64,7 +64,7 @@ namespace GuardApp
             this.panelContainer.Controls.Add(this.panel4);
             this.panelContainer.Location = new System.Drawing.Point(12, 12);
             this.panelContainer.Name = "panelContainer";
-            this.panelContainer.Size = new System.Drawing.Size(1138, 834);
+            this.panelContainer.Size = new System.Drawing.Size(1138, 867);
             this.panelContainer.TabIndex = 1;
             // 
             // flDays
@@ -73,7 +73,7 @@ namespace GuardApp
             this.flDays.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flDays.Location = new System.Drawing.Point(0, 123);
             this.flDays.Name = "flDays";
-            this.flDays.Size = new System.Drawing.Size(1138, 711);
+            this.flDays.Size = new System.Drawing.Size(1138, 744);
             this.flDays.TabIndex = 5;
             // 
             // flowLayoutPanel1
@@ -162,7 +162,6 @@ namespace GuardApp
             this.label2.TabIndex = 1;
             this.label2.Text = "Pazar";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label5
             // 
@@ -270,7 +269,7 @@ namespace GuardApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1159, 865);
+            this.ClientSize = new System.Drawing.Size(1159, 891);
             this.Controls.Add(this.panelContainer);
             this.Name = "GuardProgress";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
