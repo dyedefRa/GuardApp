@@ -45,8 +45,8 @@ namespace GuardApp
 
         private void btnMonthly_Click(object sender, EventArgs e)
         {
-            GuardProgramForm guardProgramForm = new GuardProgramForm();
-            guardProgramForm.Show();
+            GuardProgress guardProgress = new GuardProgress();
+            guardProgress.Show();
         }
     }
 }

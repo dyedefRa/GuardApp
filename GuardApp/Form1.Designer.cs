@@ -98,6 +98,7 @@ namespace GuardApp
             this.Controls.Add(this.btnRank);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FormMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "[NTP] Nöbet Takip Programı";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
