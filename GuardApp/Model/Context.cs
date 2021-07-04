@@ -24,9 +24,10 @@ namespace GuardApp.Model
         }
 
         public DbSet<Guard> Guard { get; set; }
-        public DbSet<GuardProgram> GuardPrograms { get; set; }
-        public DbSet<Personal> Personals { get; set; }
-        public DbSet<Rank> Ranks { get; set; }
+        public DbSet<GuardProgram> GuardProgram { get; set; }
+        public DbSet<Personal> Personal { get; set; }
+        public DbSet<Rank> Rank { get; set; }
+        public DbSet<GuardPersonal> GuardPersonal { get; set; }
     }
 
 

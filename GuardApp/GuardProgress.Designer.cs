@@ -44,6 +44,8 @@ namespace GuardApp
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.lnkToday = new System.Windows.Forms.LinkLabel();
+            this.label11 = new System.Windows.Forms.Label();
             this.lblMonthAndYear = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnNextMonth = new System.Windows.Forms.Button();
@@ -210,6 +212,8 @@ namespace GuardApp
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.lnkToday);
+            this.panel4.Controls.Add(this.label11);
             this.panel4.Controls.Add(this.lblMonthAndYear);
             this.panel4.Controls.Add(this.panel2);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
@@ -218,11 +222,33 @@ namespace GuardApp
             this.panel4.Size = new System.Drawing.Size(1138, 82);
             this.panel4.TabIndex = 3;
             // 
+            // lnkToday
+            // 
+            this.lnkToday.AutoSize = true;
+            this.lnkToday.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lnkToday.Location = new System.Drawing.Point(521, 27);
+            this.lnkToday.Name = "lnkToday";
+            this.lnkToday.Size = new System.Drawing.Size(97, 25);
+            this.lnkToday.TabIndex = 5;
+            this.lnkToday.TabStop = true;
+            this.lnkToday.Text = "linkLabel1";
+            this.lnkToday.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkToday_LinkClicked);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label11.Location = new System.Drawing.Point(433, 27);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(82, 25);
+            this.label11.TabIndex = 3;
+            this.label11.Text = "Bugün :";
+            // 
             // lblMonthAndYear
             // 
             this.lblMonthAndYear.AutoSize = true;
             this.lblMonthAndYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblMonthAndYear.Location = new System.Drawing.Point(27, 25);
+            this.lblMonthAndYear.Location = new System.Drawing.Point(23, 15);
             this.lblMonthAndYear.Name = "lblMonthAndYear";
             this.lblMonthAndYear.Size = new System.Drawing.Size(276, 42);
             this.lblMonthAndYear.TabIndex = 1;
@@ -240,21 +266,25 @@ namespace GuardApp
             // 
             // btnNextMonth
             // 
+            this.btnNextMonth.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnNextMonth.Location = new System.Drawing.Point(125, 27);
             this.btnNextMonth.Name = "btnNextMonth";
             this.btnNextMonth.Size = new System.Drawing.Size(75, 30);
             this.btnNextMonth.TabIndex = 1;
             this.btnNextMonth.Text = ">";
             this.btnNextMonth.UseVisualStyleBackColor = true;
+            this.btnNextMonth.Click += new System.EventHandler(this.btnNextMonth_Click);
             // 
             // btnPrevMonth
             // 
+            this.btnPrevMonth.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnPrevMonth.Location = new System.Drawing.Point(28, 27);
             this.btnPrevMonth.Name = "btnPrevMonth";
             this.btnPrevMonth.Size = new System.Drawing.Size(75, 30);
             this.btnPrevMonth.TabIndex = 0;
             this.btnPrevMonth.Text = "<";
             this.btnPrevMonth.UseVisualStyleBackColor = true;
+            this.btnPrevMonth.Click += new System.EventHandler(this.btnPrevMonth_Click);
             // 
             // label9
             // 
@@ -309,5 +339,7 @@ namespace GuardApp
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.LinkLabel lnkToday;
     }
 }
