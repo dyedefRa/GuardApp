@@ -14,6 +14,6 @@ namespace GuardApp.Model
         [DisplayName("Nöbet Adı")]
         public string Name { get; set; }
         [DisplayName("Aktif mi?")]
-        public bool IsActive { get; set; }
+        public bool IsActive { get; set; } = true;
     }
 }

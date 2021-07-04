@@ -29,7 +29,7 @@ namespace GuardApp
         /// </summary>
         private void InitializeComponent()
         {         
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();         
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCreatePersonal = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -39,10 +39,10 @@ namespace GuardApp
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
-            this.btnBack = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnHelp = new System.Windows.Forms.Button();
             this.btnCreateRank = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -135,16 +135,6 @@ namespace GuardApp
             this.txtName.Size = new System.Drawing.Size(181, 23);
             this.txtName.TabIndex = 2;
             // 
-            // btnBack
-            // 
-            this.btnBack.Location = new System.Drawing.Point(22, 13);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(123, 30);
-            this.btnBack.TabIndex = 2;
-            this.btnBack.Text = "Geriye Dön";
-            this.btnBack.UseVisualStyleBackColor = true;
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
-            // 
             // dataGridView1
             // 
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -176,6 +166,7 @@ namespace GuardApp
             this.btnHelp.Size = new System.Drawing.Size(123, 30);
             this.btnHelp.TabIndex = 4;
             this.btnHelp.Text = "Yardım";
+            this.btnHelp.UseVisualStyleBackColor = false;
             this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
             // btnCreateRank
@@ -189,18 +180,32 @@ namespace GuardApp
             this.btnCreateRank.UseVisualStyleBackColor = true;
             this.btnCreateRank.Click += new System.EventHandler(this.btnCreateRank_Click);
             // 
+            // btnBack
+            // 
+            this.btnBack.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.btnBack.Location = new System.Drawing.Point(39, 14);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(136, 28);
+            this.btnBack.TabIndex = 6;
+            this.btnBack.Text = "Geriye Git";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // PersonalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1290, 394);
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnCreateRank);
             this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.panel1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "PersonalForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Personel Sayfası";
             this.Load += new System.EventHandler(this.PersonalForm_Load);
             this.panel1.ResumeLayout(false);
@@ -221,9 +226,10 @@ namespace GuardApp
         private System.Windows.Forms.TextBox txtTerm;
    
         private System.Windows.Forms.Button btnCreatePersonal;
-        private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnHelp;
         private System.Windows.Forms.Button btnCreateRank;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnBack;
     }
 }

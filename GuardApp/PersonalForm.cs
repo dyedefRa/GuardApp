@@ -58,10 +58,7 @@ namespace GuardApp
             }
         }
 
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-
-        }
+     
 
         private void PersonalForm_Load(object sender, EventArgs e)
         {
@@ -126,7 +123,13 @@ namespace GuardApp
         private void btnCreateRank_Click(object sender, EventArgs e)
         {
             RankForm rankForm = new RankForm();
-            rankForm.Show();
+            rankForm.Show();           
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            FormMain formMain = new FormMain();
+            formMain.Show();
             this.Hide();
         }
     }

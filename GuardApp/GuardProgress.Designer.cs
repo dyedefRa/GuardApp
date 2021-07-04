@@ -301,6 +301,8 @@ namespace GuardApp
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1159, 891);
             this.Controls.Add(this.panelContainer);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "GuardProgress";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "GuardProgress";
