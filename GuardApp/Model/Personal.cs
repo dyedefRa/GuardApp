@@ -22,5 +22,10 @@ namespace GuardApp.Model
         public int RankId { get; set; }
         [DisplayName("Rütbesi")]
         public virtual Rank Rank { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

@@ -31,9 +31,8 @@ namespace GuardApp
         {
             this.lstGuard = new System.Windows.Forms.ListBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnAddPersonalToGuard = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -52,12 +51,12 @@ namespace GuardApp
             this.lstGuard.Name = "lstGuard";
             this.lstGuard.Size = new System.Drawing.Size(211, 394);
             this.lstGuard.TabIndex = 0;
+            this.lstGuard.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lstGuard_MouseClick);
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.btnAddPersonalToGuard);
             this.panel1.Controls.Add(this.txtSearch);
-            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
@@ -70,30 +69,24 @@ namespace GuardApp
             this.panel1.Size = new System.Drawing.Size(975, 523);
             this.panel1.TabIndex = 1;
             // 
-            // button3
+            // btnAddPersonalToGuard
             // 
-            this.button3.Location = new System.Drawing.Point(772, 476);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(166, 24);
-            this.button3.TabIndex = 9;
-            this.button3.Text = "Nöbete Ekle";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnAddPersonalToGuard.Location = new System.Drawing.Point(772, 476);
+            this.btnAddPersonalToGuard.Name = "btnAddPersonalToGuard";
+            this.btnAddPersonalToGuard.Size = new System.Drawing.Size(166, 24);
+            this.btnAddPersonalToGuard.TabIndex = 9;
+            this.btnAddPersonalToGuard.Text = "Nöbete Ekle";
+            this.btnAddPersonalToGuard.UseVisualStyleBackColor = true;
+            this.btnAddPersonalToGuard.Click += new System.EventHandler(this.btnAddPersonalToGuard_Click);
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(757, 37);
+            this.txtSearch.Location = new System.Drawing.Point(808, 37);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(126, 23);
+            this.txtSearch.PlaceholderText = "Aramak için harf giriniz...";
+            this.txtSearch.Size = new System.Drawing.Size(146, 23);
             this.txtSearch.TabIndex = 8;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(889, 37);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(49, 23);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Ara";
-            this.button2.UseVisualStyleBackColor = true;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // label3
             // 
@@ -194,5 +187,7 @@ namespace GuardApp
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.ListView lvGuard;
+        private System.Windows.Forms.Button btnAddPersonal;
+        private System.Windows.Forms.Button btnAddPersonalToGuard;
     }
 }

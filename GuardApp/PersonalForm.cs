@@ -1,16 +1,8 @@
-﻿using GuardApp.Helper;
-using GuardApp.Model;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using GuardApp.Model;
 using GuardApp.Repository;
+using System;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace GuardApp
 {
@@ -24,10 +16,8 @@ namespace GuardApp
         Repository<Personal> personalRepository = new Repository<Personal>();
         Repository<Rank> rankRepository = new Repository<Rank>();
 
-
         private void btnCreatePersonal_Click(object sender, EventArgs e)
         {
-
             if (CreatedValid())
             {
                 string personalName = txtName.Text;
@@ -39,7 +29,6 @@ namespace GuardApp
                     Term = personalTerm,
                     Rank = personalRank
                 };
-                //SingletonDb.Context.Personals.Add
                 if (personalRepository.Insert(personal))
                 {
                     ClearAll();
@@ -57,15 +46,12 @@ namespace GuardApp
                 MessageBox.Show("Lütfen personel bilgilerini eksiksiz doldurun.");
             }
         }
-
-     
-
+   
         private void PersonalForm_Load(object sender, EventArgs e)
         {
             UpdateGrid();
             FillComboBox();
             this.BackColor = Color.FromArgb(237, 247, 210);
-            //btnCreatePersonal.BackColor = Color.FromArgb(2, 117, 216);
         }
 
         public void UpdateGrid()
@@ -73,9 +59,7 @@ namespace GuardApp
             dataGridView1.DataSource = personalRepository.List();
             dataGridView1.Columns["Id"].Visible = false;
             dataGridView1.Columns["RankId"].Visible = false;
-            dataGridView1.Columns[5].DisplayIndex = 1;
-            //dataGridView1.SelectionMode=SelectionMode.row
-          
+            dataGridView1.Columns[5].DisplayIndex = 1;          
         }
 
         public void FillComboBox()
@@ -112,7 +96,7 @@ namespace GuardApp
             }
             else if (result == DialogResult.No)
             {
-
+                //BURA
             }
             else
             {
