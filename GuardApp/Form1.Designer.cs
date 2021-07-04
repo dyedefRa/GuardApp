@@ -94,6 +94,7 @@ namespace GuardApp
             this.btnGuardPersonal.TabIndex = 5;
             this.btnGuardPersonal.Text = "Nöbet Personel Eşleştir";
             this.btnGuardPersonal.UseVisualStyleBackColor = true;
+            this.btnGuardPersonal.Click += new System.EventHandler(this.btnGuardPersonal_Click);
             // 
             // FormMain
             // 

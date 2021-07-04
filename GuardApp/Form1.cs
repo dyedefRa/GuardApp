@@ -51,5 +51,12 @@ namespace GuardApp
             GuardProgress guardProgress = new GuardProgress();
             guardProgress.Show();
         }
+
+        private void btnGuardPersonal_Click(object sender, EventArgs e)
+        {
+            GuardPersonalForm guardPersonalForm = new GuardPersonalForm();
+            guardPersonalForm.Show();
+            this.Hide();
+        }
     }
 }
