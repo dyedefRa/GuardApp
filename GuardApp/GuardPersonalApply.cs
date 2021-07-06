@@ -16,5 +16,13 @@ namespace GuardApp
         {
             InitializeComponent();
         }
+
+        private void btnApply_Click(object sender, EventArgs e)
+        {
+
+
+
+
+        }
     }
 }

@@ -61,6 +61,7 @@ namespace GuardApp
             this.btnApply.TabIndex = 2;
             this.btnApply.Text = "Kişiyi Tarihe Ata";
             this.btnApply.UseVisualStyleBackColor = true;
+            this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
             // GuardPersonalApply
             // 
