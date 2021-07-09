@@ -23,6 +23,7 @@ namespace GuardApp
         Repository<Personal> personalRepository = new Repository<Personal>();
         Repository<Guard> guardRepository = new Repository<Guard>();
 
+        List<Personal> personOnTheGuard = new List<Personal>();
         private void GuardPersonalForm_Load(object sender, EventArgs e)
         {
             FillGuardListBox();
@@ -82,6 +83,7 @@ namespace GuardApp
         {
             var relatedPersonal = (Personal)lstAllPersonal.SelectedItem;
             //HATA
+
             lstAllPersonal.Items.Remove(relatedPersonal);
             lstGuardPersonal.Items.Add(relatedPersonal);
         }
