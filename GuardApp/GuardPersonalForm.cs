@@ -18,16 +18,20 @@ namespace GuardApp
         {
             InitializeComponent();
         }
-
+        // liste olayını degıstır.
         Repository<GuardPersonal> guardPersonalRepository = new Repository<GuardPersonal>();
         Repository<Personal> personalRepository = new Repository<Personal>();
         Repository<Guard> guardRepository = new Repository<Guard>();
 
-        List<Personal> personOnTheGuard = new List<Personal>();
+        List<Personal> personOnTheGuard;
+        List<Personal> allPersonalExceptRelatedGroup;
+
         private void GuardPersonalForm_Load(object sender, EventArgs e)
         {
+            Apply();
             FillGuardListBox();
             FillAllPersonalListBox();
+            FillRelatedPersonalListBox();
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -46,14 +50,25 @@ namespace GuardApp
 
         private void FillRelatedPersonalListBox()
         {
-
+            lstGuardPersonal.DataSource = null;
+            if (personOnTheGuard!=null)
+            {
+                lstGuardPersonal.DataSource = personOnTheGuard.ToList();
+                lstGuardPersonal.ValueMember = "Id";
+                lstGuardPersonal.DisplayMember = "Name";
+            }
         }
 
         private void FillAllPersonalListBox()
         {
-            lstAllPersonal.DataSource = personalRepository.List();
-            lstAllPersonal.ValueMember = "Id";
-            lstAllPersonal.DisplayMember = "Name";
+            lstAllPersonal.DataSource = null;
+            if (allPersonalExceptRelatedGroup!=null)
+            {
+                lstAllPersonal.DataSource = allPersonalExceptRelatedGroup.ToList();
+                lstAllPersonal.ValueMember = "Id";
+                lstAllPersonal.DisplayMember = "Name";
+            }
+          
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -71,7 +86,7 @@ namespace GuardApp
             {
                 lstAllPersonal.DataSource = null;
                 lstAllPersonal.Items.Clear();
-                foreach (var personal in personalRepository.List())
+                foreach (var personal in allPersonalExceptRelatedGroup)
                 {
                     if (personal.Name.ToUpper().Contains(searchBox.Text.ToUpper()))
                         lstAllPersonal.Items.Add(personal);
@@ -84,19 +99,28 @@ namespace GuardApp
             var relatedPersonal = (Personal)lstAllPersonal.SelectedItem;
             //HATA
 
-            lstAllPersonal.Items.Remove(relatedPersonal);
-            lstGuardPersonal.Items.Add(relatedPersonal);
+            allPersonalExceptRelatedGroup.Remove(relatedPersonal);
+            personOnTheGuard.Add(relatedPersonal);
+            FillAllPersonalListBox();
+            FillRelatedPersonalListBox();
         }
 
         private void lstGuard_MouseClick(object sender, MouseEventArgs e)
         {
 
+            Apply();
+        }
+
+        private void Apply()
+        {
             lstGuardPersonal.DataSource = null;
             lstGuardPersonal.Items.Clear();
             var selectedGuard = (Guard)lstGuard.SelectedItem;
             var guardPersonals = guardPersonalRepository.List().Where(x => x.GuardId == selectedGuard.Id);
             var personals = personalRepository.List().Where(x => guardPersonals.Any(y => y.PersonalId == x.Id)).ToList();
-            lstGuardPersonal.DataSource = personals;
+            personOnTheGuard = personals;
+            allPersonalExceptRelatedGroup = personalRepository.List().Except(personals).ToList();
+            lstGuardPersonal.DataSource = personOnTheGuard.ToList();
             lstGuardPersonal.ValueMember = "Id";
             lstGuardPersonal.DisplayMember = "Name";
         }
