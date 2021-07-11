@@ -26,12 +26,19 @@ namespace GuardApp
         List<Personal> personOnTheGuard;
         List<Personal> allPersonalExceptRelatedGroup;
 
+        int relatedGuardId = 0;
+
         private void GuardPersonalForm_Load(object sender, EventArgs e)
         {
-            Apply();
-            FillGuardListBox();
-            FillAllPersonalListBox();
-            FillRelatedPersonalListBox();
+            //Apply();
+            //FillGuardListBox();
+            //FillAllPersonalListBox();
+            //FillRelatedPersonalListBox();
+
+            // USTTEK METHODLARI DUZENLE . SAYFA YUKLENDIGINDE OTOMATIK VAR OLAN KAYITLARI GETIR DEGISTIRILDIGINDE ISE GUNCELLE
+            var defaultChoosenGuard =(Guard) lstGuard.SelectedItem;
+            relatedGuardId = defaultChoosenGuard.Id;
+
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -50,13 +57,14 @@ namespace GuardApp
 
         private void FillRelatedPersonalListBox()
         {
-            lstGuardPersonal.DataSource = null;
-            if (personOnTheGuard!=null)
-            {
-                lstGuardPersonal.DataSource = personOnTheGuard.ToList();
-                lstGuardPersonal.ValueMember = "Id";
-                lstGuardPersonal.DisplayMember = "Name";
-            }
+            //lstGuardPersonal.DataSource = null;
+            //if (personOnTheGuard!=null)
+            //{
+            //    lstGuardPersonal.DataSource = personOnTheGuard.ToList();
+            //    lstGuardPersonal.ValueMember = "Id";
+            //    lstGuardPersonal.DisplayMember = "Name";
+            //}
+            var relatedPersonal = guardPersonalRepository.List().Where(x => x.GuardId == relatedGuardId).Select(y => y.Personal).ToList();
         }
 
         private void FillAllPersonalListBox()
