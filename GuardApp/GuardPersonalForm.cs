@@ -65,6 +65,8 @@ namespace GuardApp
             //    lstGuardPersonal.DisplayMember = "Name";
             //}
             var relatedPersonal = guardPersonalRepository.List().Where(x => x.GuardId == relatedGuardId).Select(y => y.Personal).ToList();
+
+
         }
 
         private void FillAllPersonalListBox()
