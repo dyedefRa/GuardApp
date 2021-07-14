@@ -72,9 +72,10 @@ namespace GuardApp
             // 
             // btnAddPersonalToGuard
             // 
+            this.btnAddPersonalToGuard.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnAddPersonalToGuard.Location = new System.Drawing.Point(772, 476);
             this.btnAddPersonalToGuard.Name = "btnAddPersonalToGuard";
-            this.btnAddPersonalToGuard.Size = new System.Drawing.Size(166, 24);
+            this.btnAddPersonalToGuard.Size = new System.Drawing.Size(166, 32);
             this.btnAddPersonalToGuard.TabIndex = 9;
             this.btnAddPersonalToGuard.Text = "Nöbete Ekle";
             this.btnAddPersonalToGuard.UseVisualStyleBackColor = true;
@@ -92,38 +93,39 @@ namespace GuardApp
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label3.Location = new System.Drawing.Point(780, 8);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(126, 21);
+            this.label3.Size = new System.Drawing.Size(148, 25);
             this.label3.TabIndex = 6;
             this.label3.Text = "Tüm Personeller";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.Location = new System.Drawing.Point(444, 8);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(194, 21);
+            this.label2.Size = new System.Drawing.Size(227, 25);
             this.label2.TabIndex = 5;
             this.label2.Text = "Nöbette Olan Personeller";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(55, 8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 21);
+            this.label1.Size = new System.Drawing.Size(123, 25);
             this.label1.TabIndex = 4;
             this.label1.Text = "Nöbet Listesi";
             // 
             // btnPersonalRemove
             // 
+            this.btnPersonalRemove.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnPersonalRemove.Location = new System.Drawing.Point(472, 476);
             this.btnPersonalRemove.Name = "btnPersonalRemove";
-            this.btnPersonalRemove.Size = new System.Drawing.Size(166, 24);
+            this.btnPersonalRemove.Size = new System.Drawing.Size(165, 32);
             this.btnPersonalRemove.TabIndex = 3;
             this.btnPersonalRemove.Text = "Nöbetten Çıkar";
             this.btnPersonalRemove.UseVisualStyleBackColor = true;
