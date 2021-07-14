@@ -231,7 +231,7 @@ namespace GuardApp
             this.lblSelectedGuard.AutoSize = true;
             this.lblSelectedGuard.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblSelectedGuard.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lblSelectedGuard.Location = new System.Drawing.Point(585, 15);
+            this.lblSelectedGuard.Location = new System.Drawing.Point(582, 15);
             this.lblSelectedGuard.Name = "lblSelectedGuard";
             this.lblSelectedGuard.Size = new System.Drawing.Size(20, 25);
             this.lblSelectedGuard.TabIndex = 5;
@@ -241,7 +241,7 @@ namespace GuardApp
             // 
             this.lnkToday.AutoSize = true;
             this.lnkToday.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lnkToday.Location = new System.Drawing.Point(740, 45);
+            this.lnkToday.Location = new System.Drawing.Point(519, 46);
             this.lnkToday.Name = "lnkToday";
             this.lnkToday.Size = new System.Drawing.Size(97, 25);
             this.lnkToday.TabIndex = 5;
@@ -253,7 +253,7 @@ namespace GuardApp
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(652, 45);
+            this.label11.Location = new System.Drawing.Point(431, 46);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(82, 25);
             this.label11.TabIndex = 3;
@@ -263,7 +263,7 @@ namespace GuardApp
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label12.Location = new System.Drawing.Point(434, 15);
+            this.label12.Location = new System.Drawing.Point(431, 15);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(145, 25);
             this.label12.TabIndex = 4;

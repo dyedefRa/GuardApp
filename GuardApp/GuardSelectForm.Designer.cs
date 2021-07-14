@@ -38,7 +38,7 @@ namespace GuardApp
             this.listBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 21;
-            this.listBox1.Location = new System.Drawing.Point(261, 73);
+            this.listBox1.Location = new System.Drawing.Point(350, 105);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(201, 277);
             this.listBox1.TabIndex = 0;
@@ -48,8 +48,9 @@ namespace GuardApp
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(288, 26);
+            this.label1.Location = new System.Drawing.Point(377, 58);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(144, 25);
             this.label1.TabIndex = 1;
@@ -59,7 +60,7 @@ namespace GuardApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(771, 501);
+            this.ClientSize = new System.Drawing.Size(919, 550);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listBox1);
             this.MaximizeBox = false;

@@ -84,9 +84,17 @@ namespace GuardApp
             if (GetFirstDayOfWeekOfCurrentDate() - 1 < clickedFlowLayoutNumber && clickedFlowLayoutNumber < GetFirstDayOfWeekOfCurrentDate() + GetTotalDaysOfDate())
             {       
                 int clickedDay = clickedFlowLayoutNumber - GetFirstDayOfWeekOfCurrentDate() + 1;
-                var clickedDate = new DateTime(nextDate.Year, nextDate.Month, clickedDay).ToString("dd MMMM yyyy", trCulture);
-               
-                MessageBox.Show(clickedDate);
+                var clickedDate = new DateTime(nextDate.Year, nextDate.Month, clickedDay);
+                var clickedDateString= clickedDate.ToString("dd MMMM yyyy", trCulture);
+                if (DateTime.Now> clickedDate)               
+                    MessageBox.Show("Geçmiş Tarihli Nöbetleri Değiştiremezsiniz.");               
+                else
+                {
+                    GuardPersonalAppointDayForm guardPersonalAppointDayForm = new GuardPersonalAppointDayForm(_guardId, clickedDate);
+                    guardPersonalAppointDayForm.Show();
+                    MessageBox.Show(clickedDateString);
+
+                }
                 //Buraya GuardPersonalApply formu acıp ılgılı tarıhe seçilen personeli atayacagız.
             }
             else
