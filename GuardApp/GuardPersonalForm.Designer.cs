@@ -36,7 +36,7 @@ namespace GuardApp
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnPersonalRemove = new System.Windows.Forms.Button();
             this.lstAllPersonal = new System.Windows.Forms.ListBox();
             this.lstGuardPersonal = new System.Windows.Forms.ListBox();
             this.btnBack = new System.Windows.Forms.Button();
@@ -55,12 +55,13 @@ namespace GuardApp
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.btnAddPersonalToGuard);
             this.panel1.Controls.Add(this.txtSearch);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnPersonalRemove);
             this.panel1.Controls.Add(this.lstAllPersonal);
             this.panel1.Controls.Add(this.lstGuardPersonal);
             this.panel1.Controls.Add(this.lstGuard);
@@ -118,14 +119,15 @@ namespace GuardApp
             this.label1.TabIndex = 4;
             this.label1.Text = "Nöbet Listesi";
             // 
-            // button1
+            // btnPersonalRemove
             // 
-            this.button1.Location = new System.Drawing.Point(472, 476);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(166, 24);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Nöbetten Çıkar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnPersonalRemove.Location = new System.Drawing.Point(472, 476);
+            this.btnPersonalRemove.Name = "btnPersonalRemove";
+            this.btnPersonalRemove.Size = new System.Drawing.Size(166, 24);
+            this.btnPersonalRemove.TabIndex = 3;
+            this.btnPersonalRemove.Text = "Nöbetten Çıkar";
+            this.btnPersonalRemove.UseVisualStyleBackColor = true;
+            this.btnPersonalRemove.Click += new System.EventHandler(this.btnPersonalRemove_Click);
             // 
             // lstAllPersonal
             // 
@@ -163,7 +165,10 @@ namespace GuardApp
             this.ClientSize = new System.Drawing.Size(1029, 628);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.panel1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "GuardPersonalForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GuardPersonalForm";
             this.Load += new System.EventHandler(this.GuardPersonalForm_Load);
             this.panel1.ResumeLayout(false);
@@ -189,5 +194,6 @@ namespace GuardApp
         private System.Windows.Forms.ListView lvGuard;
         private System.Windows.Forms.Button btnAddPersonal;
         private System.Windows.Forms.Button btnAddPersonalToGuard;
+        private System.Windows.Forms.Button btnPersonalRemove;
     }
 }
