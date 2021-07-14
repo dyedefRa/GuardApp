@@ -107,7 +107,8 @@ namespace GuardApp
         private void btnCreateRank_Click(object sender, EventArgs e)
         {
             RankForm rankForm = new RankForm();
-            rankForm.Show();           
+            rankForm.Show();
+            this.Hide();
         }
 
         private void btnBack_Click(object sender, EventArgs e)

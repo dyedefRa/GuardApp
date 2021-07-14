@@ -44,8 +44,10 @@ namespace GuardApp
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.lblSelectedGuard = new System.Windows.Forms.Label();
             this.lnkToday = new System.Windows.Forms.LinkLabel();
             this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.lblMonthAndYear = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnNextMonth = new System.Windows.Forms.Button();
@@ -212,8 +214,10 @@ namespace GuardApp
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.lblSelectedGuard);
             this.panel4.Controls.Add(this.lnkToday);
             this.panel4.Controls.Add(this.label11);
+            this.panel4.Controls.Add(this.label12);
             this.panel4.Controls.Add(this.lblMonthAndYear);
             this.panel4.Controls.Add(this.panel2);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
@@ -222,11 +226,22 @@ namespace GuardApp
             this.panel4.Size = new System.Drawing.Size(1138, 82);
             this.panel4.TabIndex = 3;
             // 
+            // lblSelectedGuard
+            // 
+            this.lblSelectedGuard.AutoSize = true;
+            this.lblSelectedGuard.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblSelectedGuard.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.lblSelectedGuard.Location = new System.Drawing.Point(585, 15);
+            this.lblSelectedGuard.Name = "lblSelectedGuard";
+            this.lblSelectedGuard.Size = new System.Drawing.Size(20, 25);
+            this.lblSelectedGuard.TabIndex = 5;
+            this.lblSelectedGuard.Text = "-";
+            // 
             // lnkToday
             // 
             this.lnkToday.AutoSize = true;
             this.lnkToday.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lnkToday.Location = new System.Drawing.Point(521, 27);
+            this.lnkToday.Location = new System.Drawing.Point(740, 45);
             this.lnkToday.Name = "lnkToday";
             this.lnkToday.Size = new System.Drawing.Size(97, 25);
             this.lnkToday.TabIndex = 5;
@@ -238,11 +253,21 @@ namespace GuardApp
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(433, 27);
+            this.label11.Location = new System.Drawing.Point(652, 45);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(82, 25);
             this.label11.TabIndex = 3;
             this.label11.Text = "Bugün :";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label12.Location = new System.Drawing.Point(434, 15);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(145, 25);
+            this.label12.TabIndex = 4;
+            this.label12.Text = "Seçilen Nöbet :";
             // 
             // lblMonthAndYear
             // 
@@ -267,7 +292,7 @@ namespace GuardApp
             // btnNextMonth
             // 
             this.btnNextMonth.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnNextMonth.Location = new System.Drawing.Point(125, 27);
+            this.btnNextMonth.Location = new System.Drawing.Point(128, 30);
             this.btnNextMonth.Name = "btnNextMonth";
             this.btnNextMonth.Size = new System.Drawing.Size(75, 30);
             this.btnNextMonth.TabIndex = 1;
@@ -278,7 +303,7 @@ namespace GuardApp
             // btnPrevMonth
             // 
             this.btnPrevMonth.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnPrevMonth.Location = new System.Drawing.Point(28, 27);
+            this.btnPrevMonth.Location = new System.Drawing.Point(25, 30);
             this.btnPrevMonth.Name = "btnPrevMonth";
             this.btnPrevMonth.Size = new System.Drawing.Size(75, 30);
             this.btnPrevMonth.TabIndex = 0;
@@ -343,5 +368,9 @@ namespace GuardApp
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.LinkLabel lnkToday;
+        private System.Windows.Forms.Label lblSelectedGuard;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lbl;
+        private System.Windows.Forms.Label lblSelec;
     }
 }

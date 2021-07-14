@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GuardApp.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,15 +9,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GuardApp.Repository;
 
 namespace GuardApp
 {
     public partial class GuardProgress : Form
     {
-        public GuardProgress()
+        public GuardProgress(int guardId)
         {
             InitializeComponent();
+            _guardId = guardId;
         }
+        Repository<Guard> guardRepository = new Repository<Guard>();
+
+        private int _guardId;
+
         private List<FlowLayoutPanel> flowLayoutPanels = new List<FlowLayoutPanel>();
         private CultureInfo trCulture = new CultureInfo("tr-TR");
         //Program açıldığında bir sonraki ay default olarak gelsin.
@@ -25,6 +32,7 @@ namespace GuardApp
         private void GuardProgress_Load(object sender, EventArgs e)
         {
             lnkToday.Text = DateTime.Today.ToString("dd/MMMM/yyyy", trCulture);
+            lblSelectedGuard.Text = guardRepository.GetById(_guardId).Name;
             GenerateDayPanel(42);
             DisplayCurrentDate();
         }
