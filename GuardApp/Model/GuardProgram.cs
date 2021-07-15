@@ -10,7 +10,7 @@ namespace GuardApp.Model
     {
         public int Id { get; set; }
         public int GuardPersonalId { get; set; }
-        public GuardPersonal GuardPersonal { get; set; }
+        public virtual GuardPersonal GuardPersonal { get; set; }
         public DateTime Date { get; set; }
     }
 }

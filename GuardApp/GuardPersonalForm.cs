@@ -73,7 +73,6 @@ namespace GuardApp
 
         private void FillRelatedPersonalListBox()
         {
-
             var relatedPersonalId = guardPersonalRepository.List().Where(x => x.GuardId == relatedGuardId).ToList().Select(x => x.PersonalId).ToList();
 
              relatedPersonals = personalRepository.List().Where(x => relatedPersonalId.Contains(x.Id)).ToList();
