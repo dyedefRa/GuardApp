@@ -370,7 +370,5 @@ namespace GuardApp
         private System.Windows.Forms.LinkLabel lnkToday;
         private System.Windows.Forms.Label lblSelectedGuard;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label lbl;
-        private System.Windows.Forms.Label lblSelec;
     }
 }

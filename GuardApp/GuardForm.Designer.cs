@@ -153,7 +153,6 @@ namespace GuardApp
         private System.Windows.Forms.Button btnCreateGuard;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtRankName;
         private System.Windows.Forms.TextBox txtGuardName;
         private System.Windows.Forms.Button btnBack;
     }

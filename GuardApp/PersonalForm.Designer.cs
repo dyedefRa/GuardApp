@@ -229,7 +229,6 @@ namespace GuardApp
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnHelp;
         private System.Windows.Forms.Button btnCreateRank;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnBack;
     }
 }

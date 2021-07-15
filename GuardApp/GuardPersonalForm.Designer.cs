@@ -184,17 +184,12 @@ namespace GuardApp
         private System.Windows.Forms.ListBox lstGuard;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ListBox lstAllPersonal;
         private System.Windows.Forms.ListBox lstGuardPersonal;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnBack;
-        private System.Windows.Forms.ListView lvGuard;
-        private System.Windows.Forms.Button btnAddPersonal;
         private System.Windows.Forms.Button btnAddPersonalToGuard;
         private System.Windows.Forms.Button btnPersonalRemove;
     }
