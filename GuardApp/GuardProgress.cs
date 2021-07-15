@@ -20,7 +20,9 @@ namespace GuardApp
         {
             InitializeComponent();
             _guardId = guardId;
+            this.FormClosing += GuardProgress_FormClosing;
         }
+
         Repository<Guard> guardRepository = new Repository<Guard>();
         Repository<GuardPersonal> guardPersonalRepository = new Repository<GuardPersonal>();
         Repository<GuardProgram> guardProgramRepository = new Repository<GuardProgram>();
@@ -167,6 +169,20 @@ namespace GuardApp
         {
             DateTime totalDaysOfDate = new DateTime(nextDate.Year, nextDate.Month, 1);
             return totalDaysOfDate.AddMonths(1).AddDays(-1).Day;
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            GuardSelectForm guardSelectForm = new GuardSelectForm();
+            guardSelectForm.Show();
+            this.Hide();
+        }
+
+        private void GuardProgress_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            FormMain formMain = new FormMain();
+            formMain.Show();
+            this.Hide();
         }
     }
 }

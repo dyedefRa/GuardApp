@@ -39,12 +39,12 @@ namespace GuardApp
 
             var relatedPersonalId = guardPersonalRepository.List().Where(x => x.GuardId == _guardId).Select(x => x.PersonalId).ToList();
             var personalList = personalRepository.List().Where(x => relatedPersonalId.Contains(x.Id)).ToList();
-         
+
             lstPersonal.DataSource = null;
             lstPersonal.Items.Clear();
             if (personalList != null)
-            {                
-                lstPersonal.DataSource = personalList.Where(x => x.Id != beforeProgramPersonal.GuardPersonal.PersonalId).ToList();
+            {
+                lstPersonal.DataSource = beforeProgramPersonal == null ? personalList : personalList.Where(x => x.Id != beforeProgramPersonal.GuardPersonal.PersonalId).ToList();
                 lstPersonal.ValueMember = "Id";
                 lstPersonal.DisplayMember = "Name";
             }
@@ -52,10 +52,16 @@ namespace GuardApp
 
         private void lstPersonal_DoubleClick(object sender, EventArgs e)
         {
-
+            ApplyAppoint();
         }
 
         private void btnAppoint_Click(object sender, EventArgs e)
+        {
+            ApplyAppoint();
+
+        }
+
+        private void ApplyAppoint()
         {
             if (beforeProgramPersonal != null)
             {
@@ -81,6 +87,11 @@ namespace GuardApp
 
         }
 
-
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            GuardProgress guardProgress = new GuardProgress(_guardId);
+            guardProgress.Show();
+            this.Hide();
+        }
     }
 }

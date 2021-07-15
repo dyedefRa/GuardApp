@@ -47,5 +47,12 @@ namespace GuardApp
             guardProgress.Show();
             this.Hide();
         }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            FormMain formMain = new FormMain();
+            formMain.Show();
+            this.Hide();
+        }
     }
 }

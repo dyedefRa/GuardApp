@@ -53,6 +53,7 @@ namespace GuardApp
             this.btnNextMonth = new System.Windows.Forms.Button();
             this.btnPrevMonth = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
+            this.btnBack = new System.Windows.Forms.Button();
             this.panelContainer.SuspendLayout();
             this.flDays.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -66,7 +67,7 @@ namespace GuardApp
             this.panelContainer.Controls.Add(this.flDays);
             this.panelContainer.Controls.Add(this.panel3);
             this.panelContainer.Controls.Add(this.panel4);
-            this.panelContainer.Location = new System.Drawing.Point(12, 12);
+            this.panelContainer.Location = new System.Drawing.Point(12, 40);
             this.panelContainer.Name = "panelContainer";
             this.panelContainer.Size = new System.Drawing.Size(1138, 867);
             this.panelContainer.TabIndex = 1;
@@ -75,9 +76,9 @@ namespace GuardApp
             // 
             this.flDays.Controls.Add(this.flowLayoutPanel1);
             this.flDays.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flDays.Location = new System.Drawing.Point(0, 123);
+            this.flDays.Location = new System.Drawing.Point(0, 116);
             this.flDays.Name = "flDays";
-            this.flDays.Size = new System.Drawing.Size(1138, 744);
+            this.flDays.Size = new System.Drawing.Size(1138, 751);
             this.flDays.TabIndex = 5;
             // 
             // flowLayoutPanel1
@@ -120,7 +121,7 @@ namespace GuardApp
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 82);
+            this.panel3.Location = new System.Drawing.Point(0, 75);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1138, 41);
             this.panel3.TabIndex = 4;
@@ -223,7 +224,7 @@ namespace GuardApp
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1138, 82);
+            this.panel4.Size = new System.Drawing.Size(1138, 75);
             this.panel4.TabIndex = 3;
             // 
             // lblSelectedGuard
@@ -231,7 +232,7 @@ namespace GuardApp
             this.lblSelectedGuard.AutoSize = true;
             this.lblSelectedGuard.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblSelectedGuard.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lblSelectedGuard.Location = new System.Drawing.Point(582, 15);
+            this.lblSelectedGuard.Location = new System.Drawing.Point(585, 3);
             this.lblSelectedGuard.Name = "lblSelectedGuard";
             this.lblSelectedGuard.Size = new System.Drawing.Size(20, 25);
             this.lblSelectedGuard.TabIndex = 5;
@@ -241,7 +242,7 @@ namespace GuardApp
             // 
             this.lnkToday.AutoSize = true;
             this.lnkToday.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lnkToday.Location = new System.Drawing.Point(519, 46);
+            this.lnkToday.Location = new System.Drawing.Point(522, 34);
             this.lnkToday.Name = "lnkToday";
             this.lnkToday.Size = new System.Drawing.Size(97, 25);
             this.lnkToday.TabIndex = 5;
@@ -253,7 +254,7 @@ namespace GuardApp
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(431, 46);
+            this.label11.Location = new System.Drawing.Point(434, 34);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(82, 25);
             this.label11.TabIndex = 3;
@@ -263,7 +264,7 @@ namespace GuardApp
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label12.Location = new System.Drawing.Point(431, 15);
+            this.label12.Location = new System.Drawing.Point(434, 3);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(145, 25);
             this.label12.TabIndex = 4;
@@ -273,7 +274,7 @@ namespace GuardApp
             // 
             this.lblMonthAndYear.AutoSize = true;
             this.lblMonthAndYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblMonthAndYear.Location = new System.Drawing.Point(23, 15);
+            this.lblMonthAndYear.Location = new System.Drawing.Point(26, 3);
             this.lblMonthAndYear.Name = "lblMonthAndYear";
             this.lblMonthAndYear.Size = new System.Drawing.Size(276, 42);
             this.lblMonthAndYear.TabIndex = 1;
@@ -286,13 +287,13 @@ namespace GuardApp
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel2.Location = new System.Drawing.Point(912, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(226, 82);
+            this.panel2.Size = new System.Drawing.Size(226, 75);
             this.panel2.TabIndex = 0;
             // 
             // btnNextMonth
             // 
             this.btnNextMonth.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnNextMonth.Location = new System.Drawing.Point(128, 30);
+            this.btnNextMonth.Location = new System.Drawing.Point(127, 15);
             this.btnNextMonth.Name = "btnNextMonth";
             this.btnNextMonth.Size = new System.Drawing.Size(75, 30);
             this.btnNextMonth.TabIndex = 1;
@@ -303,7 +304,7 @@ namespace GuardApp
             // btnPrevMonth
             // 
             this.btnPrevMonth.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnPrevMonth.Location = new System.Drawing.Point(25, 30);
+            this.btnPrevMonth.Location = new System.Drawing.Point(24, 15);
             this.btnPrevMonth.Name = "btnPrevMonth";
             this.btnPrevMonth.Size = new System.Drawing.Size(75, 30);
             this.btnPrevMonth.TabIndex = 0;
@@ -320,16 +321,28 @@ namespace GuardApp
             this.label9.TabIndex = 1;
             this.label9.Text = "label9";
             // 
+            // btnBack
+            // 
+            this.btnBack.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.btnBack.Location = new System.Drawing.Point(12, 6);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(126, 28);
+            this.btnBack.TabIndex = 10;
+            this.btnBack.Text = "Geriye Git";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // GuardProgress
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1159, 891);
+            this.ClientSize = new System.Drawing.Size(1156, 904);
             this.Controls.Add(this.panelContainer);
+            this.Controls.Add(this.btnBack);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "GuardProgress";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GuardProgress";
             this.Load += new System.EventHandler(this.GuardProgress_Load);
             this.panelContainer.ResumeLayout(false);
@@ -370,5 +383,6 @@ namespace GuardApp
         private System.Windows.Forms.LinkLabel lnkToday;
         private System.Windows.Forms.Label lblSelectedGuard;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button btnBack;
     }
 }
