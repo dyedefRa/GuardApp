@@ -50,7 +50,7 @@ namespace GuardApp
             }
         }
 
-        private void lstPersonal_DoubleClick(object sender, EventArgs e)
+        private void lstPersonal_Click(object sender, EventArgs e)
         {
             ApplyAppoint();
         }
@@ -93,5 +93,7 @@ namespace GuardApp
             guardProgress.Show();
             this.Hide();
         }
+
+     
     }
 }

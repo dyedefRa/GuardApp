@@ -1,4 +1,5 @@
 ﻿using GuardApp.Model;
+using GuardApp.Model.HelperModel;
 using GuardApp.Repository;
 using System;
 using System.Collections.Generic;
@@ -22,18 +23,73 @@ namespace GuardApp
         }
 
         Repository<Guard> guardRepository = new Repository<Guard>();
+        Repository<GuardProgram> guardProgramRepository = new Repository<GuardProgram>();
 
         private void GuardSelectForm_Load(object sender, EventArgs e)
         {
-            listBox1.DataSource = null;
-            listBox1.Items.Clear();
+            //listBox1.DataSource = null;
+            //listBox1.Items.Clear();
+            //if (guardRepository != null)
+            //{
+            //    listBox1.DataSource = guardRepository.List();
+            //    listBox1.ValueMember = "Id";
+            //    listBox1.DisplayMember = "Name";
+            //}
+            int totalDayOnNextMonth = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month + 1);
+
             if (guardRepository != null)
             {
-                listBox1.DataSource = guardRepository.List();
-                listBox1.ValueMember = "Id";
-                listBox1.DisplayMember = "Name";
+                var newModel = guardRepository.List().Select(x =>
+                {
+                    return new GuardSelectionHelperModel()
+                    {
+                        GuardId = x.Id,
+                        Name = x.Name,
+                        IsFullSelectedGuardForNextMonth = guardProgramRepository.List().Where(y => y.GuardPersonal.GuardId == x.Id && y.Date.Month == DateTime.Now.Month + 1 && y.Date.Year == DateTime.Now.Year).ToList().Count == totalDayOnNextMonth ? true : false
+                    };
+                }).ToList();
+
+                dataGridModel.DataSource = newModel;
+                dataGridModel.Columns["GuardId"].Visible = false;
             }
         }
+
+
+        //private void GuardSelectForm_Load(object sender, EventArgs e)
+        //{
+        //    //listBox1.DataSource = null;
+        //    //listBox1.Items.Clear();
+        //    //if (guardRepository != null)
+        //    //{
+        //    //    listBox1.DataSource = guardRepository.List();
+        //    //    listBox1.ValueMember = "Id";
+        //    //    listBox1.DisplayMember = "Name";
+        //    //}
+        //    int totalDayOnNextMonth = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month + 1);
+
+        //    dataGridView1.DataSource = null;
+
+        //    if (guardRepository != null)
+        //    {
+
+
+
+
+        //        var newModel = guardRepository.List().Select(x =>
+        //        {
+        //            return new GuardSelectionHelperModel()
+        //            {
+        //                GuardId = x.Id,
+        //                Name = x.Name,
+        //                IsFullSelectedGuardForNextMonth = guardProgramRepository.List().Where(y => y.GuardPersonal.GuardId == x.Id && y.Date.Month == DateTime.Now.Month + 1 && y.Date.Year == DateTime.Now.Year).ToList().Count == totalDayOnNextMonth ? true : false
+
+        //            };
+        //        }).ToList();
+
+        //        dataGridView1.DataSource = newModel;
+
+        //    }
+        //}
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -53,6 +109,18 @@ namespace GuardApp
             FormMain formMain = new FormMain();
             formMain.Show();
             this.Hide();
+        }
+
+        private void dataGridModel_Click(object sender, EventArgs e)
+        {
+            if (dataGridModel.CurrentCell != null)
+            {
+                int rowIndex = dataGridModel.CurrentCell.RowIndex;
+                int selectedGuardId = Convert.ToInt32(dataGridModel.Rows[rowIndex].Cells["GuardId"].Value);
+                GuardProgress guardProgress = new GuardProgress(selectedGuardId);
+                guardProgress.Show();
+                this.Hide();
+            }
         }
     }
 }

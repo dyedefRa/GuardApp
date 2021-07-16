@@ -40,19 +40,20 @@ namespace GuardApp
             // 
             // lstPersonal
             // 
+            this.lstPersonal.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lstPersonal.FormattingEnabled = true;
-            this.lstPersonal.ItemHeight = 15;
+            this.lstPersonal.ItemHeight = 25;
             this.lstPersonal.Location = new System.Drawing.Point(65, 110);
             this.lstPersonal.Name = "lstPersonal";
-            this.lstPersonal.Size = new System.Drawing.Size(362, 334);
+            this.lstPersonal.Size = new System.Drawing.Size(430, 329);
             this.lstPersonal.TabIndex = 0;
-            this.lstPersonal.DoubleClick += new System.EventHandler(this.lstPersonal_DoubleClick);
+            this.lstPersonal.Click += new System.EventHandler(this.lstPersonal_Click);
             // 
             // lblGuard
             // 
             this.lblGuard.AutoSize = true;
             this.lblGuard.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblGuard.Location = new System.Drawing.Point(261, 38);
+            this.lblGuard.Location = new System.Drawing.Point(297, 38);
             this.lblGuard.Name = "lblGuard";
             this.lblGuard.Size = new System.Drawing.Size(57, 21);
             this.lblGuard.TabIndex = 1;
@@ -62,7 +63,7 @@ namespace GuardApp
             // 
             this.lblDate.AutoSize = true;
             this.lblDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblDate.Location = new System.Drawing.Point(261, 69);
+            this.lblDate.Location = new System.Drawing.Point(297, 69);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(57, 21);
             this.lblDate.TabIndex = 2;
@@ -72,7 +73,7 @@ namespace GuardApp
             // 
             this.btnAppoint.BackColor = System.Drawing.Color.LightSkyBlue;
             this.btnAppoint.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAppoint.Location = new System.Drawing.Point(160, 464);
+            this.btnAppoint.Location = new System.Drawing.Point(185, 471);
             this.btnAppoint.Name = "btnAppoint";
             this.btnAppoint.Size = new System.Drawing.Size(189, 37);
             this.btnAppoint.TabIndex = 3;
@@ -84,7 +85,7 @@ namespace GuardApp
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(160, 38);
+            this.label1.Location = new System.Drawing.Point(196, 38);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 17);
             this.label1.TabIndex = 4;
@@ -94,7 +95,7 @@ namespace GuardApp
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(192, 72);
+            this.label2.Location = new System.Drawing.Point(228, 72);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 17);
             this.label2.TabIndex = 5;
@@ -116,7 +117,7 @@ namespace GuardApp
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(516, 542);
+            this.ClientSize = new System.Drawing.Size(578, 586);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
