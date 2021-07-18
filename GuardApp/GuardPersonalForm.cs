@@ -25,36 +25,14 @@ namespace GuardApp
         Repository<Personal> personalRepository = new Repository<Personal>();
         Repository<Guard> guardRepository = new Repository<Guard>();
 
-
-
         int relatedGuardId = 0;
         List<Personal> relatedPersonals = new List<Personal>();
         List<Personal> otherPersonals = new List<Personal>();
         private void GuardPersonalForm_Load(object sender, EventArgs e)
         {
-            //Apply();
             FillGuardListBox();
-
-            //FillRelatedPersonalListBox();
-
-
             FillPersonalListBoxes();
-            // USTTEK METHODLARI DUZENLE . SAYFA YUKLENDIGINDE OTOMATIK VAR OLAN KAYITLARI GETIR DEGISTIRILDIGINDE ISE GUNCELLE
-            //var defaultChoosenGuard =(Guard) lstGuard.SelectedItem;
-            //relatedGuardId = defaultChoosenGuard.Id;
-
-            ////if (lstGuard.Items.Count > 0)
-            ////{
-            ////    var ss = lstGuard.Items[0];
-
-            //// var gasa=   lstGuard.SelectedItem;
-            ////    lstGuard.Select();
-            ////    lstGuard.Select();
-            ////}
-            //FillRelatedPersonalListBox();
-
-            //FillAllPersonalListBox();
-
+            // USTTEK METHODLARI DUZENLE . SAYFA YUKLENDIGINDE OTOMATIK VAR OLAN KAYITLARI GETIR DEGISTIRILDIGINDE ISE GUNCELLE         
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -88,11 +66,7 @@ namespace GuardApp
 
         private void FillAllPersonalListBox()
         {
-            //var relatedPersonalId = guardPersonalRepository.List().Where(x => x.GuardId == relatedGuardId).ToList().Select(x => x.PersonalId).ToList();
-
-            //var otherPersonals = personalRepository.List().Where(x => !relatedPersonalId.Contains(x.Id)).ToList();
             otherPersonals = personalRepository.List().Except(relatedPersonals).ToList();
-
             lstAllPersonal.DataSource = null;
             if (otherPersonals != null)
             {
@@ -100,12 +74,6 @@ namespace GuardApp
                 lstAllPersonal.ValueMember = "Id";
                 lstAllPersonal.DisplayMember = "Name";
             }
-
-        }
-
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
@@ -125,19 +93,33 @@ namespace GuardApp
                 }
             }
         }
-
+        //Tüm personellerden seçilen personeli , Nöbete ata buton
         private void btnAddPersonalToGuard_Click(object sender, EventArgs e)
         {
             var relatedPersonal = (Personal)lstAllPersonal.SelectedItem;
             guardPersonalRepository.Insert(new GuardPersonal() { GuardId = relatedGuardId, PersonalId = relatedPersonal.Id });
             FillPersonalListBoxes();
         }
-
+        //Tüm personellerden seçilen personeli , Nöbete ata çift tıklandığında
+        private void lstAllPersonal_DoubleClick(object sender, EventArgs e)
+        {
+            var relatedPersonal = (Personal)lstAllPersonal.SelectedItem;
+            guardPersonalRepository.Insert(new GuardPersonal() { GuardId = relatedGuardId, PersonalId = relatedPersonal.Id });
+            FillPersonalListBoxes();
+        }
+        //Nöbetteki personeli , Nöbetten çıkar buton
         private void btnPersonalRemove_Click(object sender, EventArgs e)
         {
             var relatedPersonal = (Personal)lstGuardPersonal.SelectedItem;
             var relatedPersonalGuard = guardPersonalRepository.List().FirstOrDefault(x => x.GuardId == relatedGuardId && x.PersonalId == relatedPersonal.Id);
-
+            guardPersonalRepository.Delete(relatedPersonalGuard);
+            FillPersonalListBoxes();
+        }
+        //Nöbetteki personeli , Nöbetten çıkar  doubleclick
+        private void lstGuardPersonal_DoubleClick(object sender, EventArgs e)
+        {
+            var relatedPersonal = (Personal)lstGuardPersonal.SelectedItem;
+            var relatedPersonalGuard = guardPersonalRepository.List().FirstOrDefault(x => x.GuardId == relatedGuardId && x.PersonalId == relatedPersonal.Id);
             guardPersonalRepository.Delete(relatedPersonalGuard);
             FillPersonalListBoxes();
         }
@@ -149,23 +131,10 @@ namespace GuardApp
 
         private void FillPersonalListBoxes()
         {
-
             var selectedGuard = (Guard)lstGuard.SelectedItem;
             relatedGuardId = selectedGuard.Id;
             FillRelatedPersonalListBox();
             FillAllPersonalListBox();
-            //lstGuardPersonal.DataSource = null;
-            //lstGuardPersonal.Items.Clear();
-            //var selectedGuard = (Guard)lstGuard.SelectedItem;
-            //var guardPersonals = guardPersonalRepository.List().Where(x => x.GuardId == selectedGuard.Id);
-            //var personals = personalRepository.List().Where(x => guardPersonals.Any(y => y.PersonalId == x.Id)).ToList();
-            //personOnTheGuard = personals;
-            //allPersonalExceptRelatedGroup = personalRepository.List().Except(personals).ToList();
-            //lstGuardPersonal.DataSource = personOnTheGuard.ToList();
-            //lstGuardPersonal.ValueMember = "Id";
-            //lstGuardPersonal.DisplayMember = "Name";
-        }
-
-      
+        }   
     }
 }

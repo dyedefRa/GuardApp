@@ -40,7 +40,7 @@ namespace GuardApp
                     dataGridView1.Rows[dataGridViewSelectedRow].Selected = true;
 
                     menuStrip.Items.Add("Güncelle").Name = "Guncelle";
-                    menuStrip.Items.Add("PasifAktif").Name = "Pasif/Aktif Yap";
+                    menuStrip.Items.Add("Pasif/Aktif Yap").Name = "Pasif/Aktif Yap";
                     menuStrip.Items.Add("Vazgeç").Name = "Vazgec";
                 }
                 menuStrip.Show(dataGridView1, new Point(e.X, e.Y));

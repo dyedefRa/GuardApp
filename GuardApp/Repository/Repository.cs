@@ -11,7 +11,7 @@ namespace GuardApp.Repository
 {
     public class Repository<T> : IRepository<T> where T : class
     {
-        private DbSet<T> _objectSet;
+        protected DbSet<T> _objectSet;
         private readonly Context _context = new Context();
 
         public Repository()
@@ -52,7 +52,10 @@ namespace GuardApp.Repository
 
         public bool Update(T entity)
         {
-            _objectSet.AddOrUpdate(entity);
+            _objectSet.Attach(entity);
+            var entry = _context.Entry(entity);
+            entry.State = EntityState.Modified;
+            //_objectSet.AddOrUpdate(entity);
             return Save();
         }
     }

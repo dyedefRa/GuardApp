@@ -29,29 +29,36 @@ namespace GuardApp
                 radioButtonPassive.Checked = true;
         }
 
-        private void GuardUpdateForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            GuardForm guardForm = new GuardForm();
-            guardForm.Show();
-        }
-
         private void btnUpdateGuard_Click(object sender, EventArgs e)
         {
             if (CreatedValid())
             {
                 selectedGuard.Name = txtGuardName.Text;
                 selectedGuard.IsActive = radioButtonActive.Checked;
-                guardRepository.Update(selectedGuard);
-                MessageBox.Show("Nöbet Güncellendi");
-                GuardForm guardForm = new GuardForm();
-                guardForm.Show();
-                this.Hide();
+                if (guardRepository.Update(selectedGuard))
+                {
+                    MessageBox.Show("Nöbet Güncellendi");
+                    GuardForm guardForm = new GuardForm();
+                    guardForm.Show();
+                    this.Hide();
+                }
+                else
+                    MessageBox.Show("Sistemde hata oluştu.");
             }
+            else
+                MessageBox.Show("Lütfen nöbet bilgilerini eksiksiz doldurun.");
         }
 
+        private void GuardUpdateForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            GuardForm guardForm = new GuardForm();
+            guardForm.Show();
+        }
+    
         public bool CreatedValid()
         {
             return !(string.IsNullOrEmpty(txtGuardName.Text));
         }
+       
     }
 }

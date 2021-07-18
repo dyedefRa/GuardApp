@@ -38,7 +38,7 @@ namespace GuardApp
                     dataGridView1.Rows[dataGridViewSelectedRow].Selected = true;
 
                     menuStrip.Items.Add("Güncelle").Name = "Guncelle";
-                    menuStrip.Items.Add("PasifAktif").Name = "Pasif/Aktif Yap";
+                    menuStrip.Items.Add("Pasif/Aktif Yap").Name = "Pasif/Aktif Yap";
                     menuStrip.Items.Add("Vazgeç").Name = "Vazgec";
                 }
                 menuStrip.Show(dataGridView1, new Point(e.X, e.Y));
@@ -56,8 +56,8 @@ namespace GuardApp
                     break;
                 case "Guncelle":
                     {
-                        GuardUpdateForm guardUpdateForm = new GuardUpdateForm(selectedPersonalId);
-                        guardUpdateForm.Show();
+                        PersonalUpdateForm personalUpdateForm = new PersonalUpdateForm(selectedPersonalId);
+                        personalUpdateForm.Show();
                         this.Hide();
                     }
                     break;

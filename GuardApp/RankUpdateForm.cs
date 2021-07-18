@@ -36,12 +36,19 @@ namespace GuardApp
             if (CreatedValid())
             {
                 selectedRank.Name = txtRankName.Text;
-                rankRepository.Update(selectedRank);
-                MessageBox.Show("Rütbe Güncellendi");
-                RankForm rankForm = new RankForm();
-                rankForm.Show();
-                this.Hide();
+                if (rankRepository.Update(selectedRank))
+                {
+                    MessageBox.Show("Rütbe Güncellendi");
+                    RankForm rankForm = new RankForm();
+                    rankForm.Show();
+                    this.Hide();
+                }
+                else
+                    MessageBox.Show("Sistemde hata oluştu.");
+
             }
+            else
+                MessageBox.Show("Lütfen rütbe bilgilerini eksiksiz doldurun.");
         }
         public bool CreatedValid()
         {

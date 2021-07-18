@@ -141,6 +141,7 @@ namespace GuardApp
             this.lstAllPersonal.Name = "lstAllPersonal";
             this.lstAllPersonal.Size = new System.Drawing.Size(211, 378);
             this.lstAllPersonal.TabIndex = 2;
+            this.lstAllPersonal.DoubleClick += new System.EventHandler(this.lstAllPersonal_DoubleClick);
             // 
             // lstGuardPersonal
             // 
@@ -151,6 +152,7 @@ namespace GuardApp
             this.lstGuardPersonal.Name = "lstGuardPersonal";
             this.lstGuardPersonal.Size = new System.Drawing.Size(211, 378);
             this.lstGuardPersonal.TabIndex = 1;
+            this.lstGuardPersonal.DoubleClick += new System.EventHandler(this.lstGuardPersonal_DoubleClick);
             // 
             // btnBack
             // 

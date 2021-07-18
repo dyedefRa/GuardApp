@@ -4,3 +4,8 @@ ama kendi listesinde hepsi gozuksun.
 Tr bayrak bazı yerlere koy bazılarından kaldır.
 
 ++Form isimleri değiş
+
+
+
+Nöbet personel seç sayfasında AMM nöbetinde ki kullanıcı nobetten cıkarılmıyor cunku  Atanmış Nöbeti var.
+Nöbet personel seç sayfasında aktif olan per. vs gelmeli
