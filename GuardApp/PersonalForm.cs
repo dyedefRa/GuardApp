@@ -16,6 +16,61 @@ namespace GuardApp
 
         Repository<Personal> personalRepository = new Repository<Personal>();
         Repository<Rank> rankRepository = new Repository<Rank>();
+        int dataGridViewSelectedRow = 0;
+
+        private void PersonalForm_Load(object sender, EventArgs e)
+        {
+            this.BackColor = Color.FromArgb(237, 247, 210);
+            UpdateGrid();
+            FillComboBox();
+            dataGridView1.MouseClick += DataGridView1_MouseClick;
+        }
+
+        private void DataGridView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                ContextMenuStrip menuStrip = new ContextMenuStrip();
+                dataGridViewSelectedRow = dataGridView1.HitTest(e.X, e.Y).RowIndex;
+
+                if (dataGridViewSelectedRow >= 0)
+                {
+                    dataGridView1.Rows[dataGridViewSelectedRow].Selected = true;
+
+                    menuStrip.Items.Add("Güncelle").Name = "Guncelle";
+                    menuStrip.Items.Add("PasifAktif").Name = "Pasif/Aktif Yap";
+                    menuStrip.Items.Add("Vazgeç").Name = "Vazgec";
+                }
+                menuStrip.Show(dataGridView1, new Point(e.X, e.Y));
+                menuStrip.ItemClicked += MenuStrip_ItemClicked;
+            }
+        }
+
+        private void MenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            var selectedPersonalId = Convert.ToInt32(dataGridView1.Rows[dataGridViewSelectedRow].Cells["Id"].Value);
+
+            switch (e.ClickedItem.Name.ToString())
+            {
+                case "Vazgec":
+                    break;
+                case "Guncelle":
+                    {
+                        GuardUpdateForm guardUpdateForm = new GuardUpdateForm(selectedPersonalId);
+                        guardUpdateForm.Show();
+                        this.Hide();
+                    }
+                    break;
+                case "Pasif/Aktif Yap":
+                    {
+                        var personal = personalRepository.GetById(selectedPersonalId);
+                        personal.IsActive = !personal.IsActive;
+                        personalRepository.Update(personal);
+                        this.Refresh();
+                        break;
+                    }
+            }
+        }
 
         private void btnCreatePersonal_Click(object sender, EventArgs e)
         {
@@ -43,13 +98,6 @@ namespace GuardApp
                 MessageBox.Show("Lütfen personel bilgilerini eksiksiz doldurun.");
         }
    
-        private void PersonalForm_Load(object sender, EventArgs e)
-        {
-            UpdateGrid();
-            FillComboBox();
-            this.BackColor = Color.FromArgb(237, 247, 210);
-        }
-
         public void UpdateGrid()
         {
             dataGridView1.DataSource = personalRepository.List().OrderByDescending(x=>x.Id).ToList();
@@ -81,7 +129,7 @@ namespace GuardApp
         {
             string message = "Aradığınız rütbeyi bulamadıysanız 'Yes'e basınız."
                  + Environment.NewLine
-                 + "Eklemekten sorun yaşıyorsanız 'No' ya basınız."
+                 + "Sayfa hakkında bilgi almak için 'No'ya basınız."
                  + Environment.NewLine
                  + "İptal etmek için 'Cancel' a basınız.";
             DialogResult result = MessageBox.Show(message, "Yardım", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
@@ -92,7 +140,9 @@ namespace GuardApp
             }
             else if (result == DialogResult.No)
             {
-                //BURA
+                MessageBox.Show("Personel listesi alanındaki personelleri güncellemek/silmek için farenin sağ tuşunu kullanınız."
+                + Environment.NewLine
+                + "Bir personeli silmek o personeli Pasif yapar.Pasif olan personeller sadece bu  sayfada , liste alanında gösterilir.Pasif olan Personeli sistem içerisinde kullanamazsınız.Sistem içerisinde kullanmak için Personeli aktif yapınız. ");
             }
             else
             {

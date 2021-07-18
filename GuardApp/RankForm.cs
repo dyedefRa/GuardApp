@@ -107,5 +107,10 @@ namespace GuardApp
             formMain.Show();
             this.Hide();
         }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Nöbet listesi alanındaki nöbetleri güncellemek için farenin sağ tuşunu kullanınız.");
+        }
     }
 }
