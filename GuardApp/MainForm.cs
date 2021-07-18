@@ -16,6 +16,8 @@ namespace GuardApp
         public FormMain()
         {
             InitializeComponent();
+            this.BackgroundImage = Properties.Resources.tr;
+            BackgroundImageLayout = ImageLayout.Stretch;
         }
 
         private void Form1_Load(object sender, EventArgs e)

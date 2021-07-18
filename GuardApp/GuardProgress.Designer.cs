@@ -343,7 +343,7 @@ namespace GuardApp
             this.MinimizeBox = false;
             this.Name = "GuardProgress";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "GuardProgress";
+            this.Text = "Takvim";
             this.Load += new System.EventHandler(this.GuardProgress_Load);
             this.panelContainer.ResumeLayout(false);
             this.flDays.ResumeLayout(false);

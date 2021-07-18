@@ -171,7 +171,7 @@ namespace GuardApp
             this.MinimizeBox = false;
             this.Name = "GuardPersonalForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "GuardPersonalForm";
+            this.Text = "Nöbetlere Personel Seç";
             this.Load += new System.EventHandler(this.GuardPersonalForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

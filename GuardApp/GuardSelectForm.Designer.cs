@@ -93,7 +93,7 @@ namespace GuardApp
             this.MinimizeBox = false;
             this.Name = "GuardSelectForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "GuardSelectForm";
+            this.Text = "Nöbet Seç";
             this.Load += new System.EventHandler(this.GuardSelectForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridModel)).EndInit();
             this.ResumeLayout(false);

@@ -91,18 +91,18 @@ namespace GuardApp
         //    }
         //}
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        //private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        //{
 
-        }
+        //}
 
-        private void listBox1_DoubleClick(object sender, EventArgs e)
-        {
-            Guard selectedGuard = (Guard)listBox1.SelectedItem;
-            GuardProgress guardProgress = new GuardProgress(selectedGuard.Id);
-            guardProgress.Show();
-            this.Hide();
-        }
+        //private void listBox1_DoubleClick(object sender, EventArgs e)
+        //{
+        //    Guard selectedGuard = (Guard)listBox1.SelectedItem;
+        //    GuardProgress guardProgress = new GuardProgress(selectedGuard.Id);
+        //    guardProgress.Show();
+        //    this.Hide();
+        //}
 
         private void btnBack_Click(object sender, EventArgs e)
         {

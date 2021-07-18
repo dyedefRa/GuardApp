@@ -47,7 +47,7 @@ namespace GuardApp
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txtRankName);
-            this.panel1.Location = new System.Drawing.Point(650, 63);
+            this.panel1.Location = new System.Drawing.Point(655, 29);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(355, 198);
             this.panel1.TabIndex = 2;
@@ -135,7 +135,7 @@ namespace GuardApp
             this.MinimizeBox = false;
             this.Name = "RankForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "RankForm";
+            this.Text = "Rütbe Sayfası";
             this.Load += new System.EventHandler(this.RankForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

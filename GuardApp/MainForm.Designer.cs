@@ -33,13 +33,12 @@ namespace GuardApp
             this.btnPersonal = new System.Windows.Forms.Button();
             this.btnGuard = new System.Windows.Forms.Button();
             this.btnMonthly = new System.Windows.Forms.Button();
-            this.btnLastGuard = new System.Windows.Forms.Button();
             this.btnGuardPersonal = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnRank
             // 
-            this.btnRank.Location = new System.Drawing.Point(252, 137);
+            this.btnRank.Location = new System.Drawing.Point(410, 233);
             this.btnRank.Name = "btnRank";
             this.btnRank.Size = new System.Drawing.Size(145, 42);
             this.btnRank.TabIndex = 0;
@@ -49,7 +48,7 @@ namespace GuardApp
             // 
             // btnPersonal
             // 
-            this.btnPersonal.Location = new System.Drawing.Point(63, 137);
+            this.btnPersonal.Location = new System.Drawing.Point(221, 233);
             this.btnPersonal.Name = "btnPersonal";
             this.btnPersonal.Size = new System.Drawing.Size(145, 42);
             this.btnPersonal.TabIndex = 1;
@@ -59,7 +58,7 @@ namespace GuardApp
             // 
             // btnGuard
             // 
-            this.btnGuard.Location = new System.Drawing.Point(449, 137);
+            this.btnGuard.Location = new System.Drawing.Point(607, 233);
             this.btnGuard.Name = "btnGuard";
             this.btnGuard.Size = new System.Drawing.Size(145, 42);
             this.btnGuard.TabIndex = 2;
@@ -69,7 +68,7 @@ namespace GuardApp
             // 
             // btnMonthly
             // 
-            this.btnMonthly.Location = new System.Drawing.Point(63, 50);
+            this.btnMonthly.Location = new System.Drawing.Point(221, 146);
             this.btnMonthly.Name = "btnMonthly";
             this.btnMonthly.Size = new System.Drawing.Size(531, 42);
             this.btnMonthly.TabIndex = 3;
@@ -77,20 +76,11 @@ namespace GuardApp
             this.btnMonthly.UseVisualStyleBackColor = true;
             this.btnMonthly.Click += new System.EventHandler(this.btnMonthly_Click);
             // 
-            // btnLastGuard
-            // 
-            this.btnLastGuard.Location = new System.Drawing.Point(63, 252);
-            this.btnLastGuard.Name = "btnLastGuard";
-            this.btnLastGuard.Size = new System.Drawing.Size(531, 30);
-            this.btnLastGuard.TabIndex = 4;
-            this.btnLastGuard.Text = "Geçmiş Nöbetleri Gör";
-            this.btnLastGuard.UseVisualStyleBackColor = true;
-            // 
             // btnGuardPersonal
             // 
-            this.btnGuardPersonal.Location = new System.Drawing.Point(63, 200);
+            this.btnGuardPersonal.Location = new System.Drawing.Point(221, 317);
             this.btnGuardPersonal.Name = "btnGuardPersonal";
-            this.btnGuardPersonal.Size = new System.Drawing.Size(531, 30);
+            this.btnGuardPersonal.Size = new System.Drawing.Size(531, 42);
             this.btnGuardPersonal.TabIndex = 5;
             this.btnGuardPersonal.Text = "Nöbet Personel Eşleştir";
             this.btnGuardPersonal.UseVisualStyleBackColor = true;
@@ -101,9 +91,8 @@ namespace GuardApp
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(659, 330);
+            this.ClientSize = new System.Drawing.Size(942, 495);
             this.Controls.Add(this.btnGuardPersonal);
-            this.Controls.Add(this.btnLastGuard);
             this.Controls.Add(this.btnMonthly);
             this.Controls.Add(this.btnGuard);
             this.Controls.Add(this.btnPersonal);
@@ -125,7 +114,6 @@ namespace GuardApp
         private System.Windows.Forms.Button btnPersonal;
         private System.Windows.Forms.Button btnGuard;
         private System.Windows.Forms.Button btnMonthly;
-        private System.Windows.Forms.Button btnLastGuard;
         private System.Windows.Forms.Button btnGuardPersonal;
     }
 }
