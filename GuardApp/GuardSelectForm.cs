@@ -24,85 +24,31 @@ namespace GuardApp
 
         Repository<Guard> guardRepository = new Repository<Guard>();
         Repository<GuardProgram> guardProgramRepository = new Repository<GuardProgram>();
+        List<bool> guardCompleteList = new List<bool>();
 
         private void GuardSelectForm_Load(object sender, EventArgs e)
         {
-            //listBox1.DataSource = null;
-            //listBox1.Items.Clear();
-            //if (guardRepository != null)
-            //{
-            //    listBox1.DataSource = guardRepository.List();
-            //    listBox1.ValueMember = "Id";
-            //    listBox1.DisplayMember = "Name";
-            //}
             int totalDayOnNextMonth = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month + 1);
 
             if (guardRepository != null)
             {
                 var newModel = guardRepository.List().Select(x =>
                 {
+                    bool isCompleteGuard = guardProgramRepository.List().Where(y => y.GuardPersonal.GuardId == x.Id && y.Date.Month == DateTime.Now.Month + 1 && y.Date.Year == DateTime.Now.Year).ToList().Count == totalDayOnNextMonth ? true : false;
+                    guardCompleteList.Add(isCompleteGuard);
                     return new GuardSelectionHelperModel()
                     {
                         GuardId = x.Id,
                         Name = x.Name,
-                        IsFullSelectedGuardForNextMonth = guardProgramRepository.List().Where(y => y.GuardPersonal.GuardId == x.Id && y.Date.Month == DateTime.Now.Month + 1 && y.Date.Year == DateTime.Now.Year).ToList().Count == totalDayOnNextMonth ? true : false
+                        IsFullSelectedGuardForNextMonth = isCompleteGuard
                     };
+
                 }).ToList();
 
                 dataGridModel.DataSource = newModel;
                 dataGridModel.Columns["GuardId"].Visible = false;
             }
         }
-
-
-        //private void GuardSelectForm_Load(object sender, EventArgs e)
-        //{
-        //    //listBox1.DataSource = null;
-        //    //listBox1.Items.Clear();
-        //    //if (guardRepository != null)
-        //    //{
-        //    //    listBox1.DataSource = guardRepository.List();
-        //    //    listBox1.ValueMember = "Id";
-        //    //    listBox1.DisplayMember = "Name";
-        //    //}
-        //    int totalDayOnNextMonth = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month + 1);
-
-        //    dataGridView1.DataSource = null;
-
-        //    if (guardRepository != null)
-        //    {
-
-
-
-
-        //        var newModel = guardRepository.List().Select(x =>
-        //        {
-        //            return new GuardSelectionHelperModel()
-        //            {
-        //                GuardId = x.Id,
-        //                Name = x.Name,
-        //                IsFullSelectedGuardForNextMonth = guardProgramRepository.List().Where(y => y.GuardPersonal.GuardId == x.Id && y.Date.Month == DateTime.Now.Month + 1 && y.Date.Year == DateTime.Now.Year).ToList().Count == totalDayOnNextMonth ? true : false
-
-        //            };
-        //        }).ToList();
-
-        //        dataGridView1.DataSource = newModel;
-
-        //    }
-        //}
-
-        //private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-
-        //}
-
-        //private void listBox1_DoubleClick(object sender, EventArgs e)
-        //{
-        //    Guard selectedGuard = (Guard)listBox1.SelectedItem;
-        //    GuardProgress guardProgress = new GuardProgress(selectedGuard.Id);
-        //    guardProgress.Show();
-        //    this.Hide();
-        //}
 
         private void btnBack_Click(object sender, EventArgs e)
         {
@@ -120,6 +66,17 @@ namespace GuardApp
                 GuardProgress guardProgress = new GuardProgress(selectedGuardId);
                 guardProgress.Show();
                 this.Hide();
+            }
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+
+            if (guardCompleteList.Any(x=>x==false))           
+                MessageBox.Show("Tamamlanmamış Nöbetler Bulunmaktadır.Lütfen Tüm Nöbetleri Doldurun...");
+            else
+            {
+                MessageBox.Show("Yazdırılıyor.");
             }
         }
     }

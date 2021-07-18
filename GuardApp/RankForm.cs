@@ -42,6 +42,7 @@ namespace GuardApp
                 {
                     ClearAll();
                     UpdateGrid();
+                    MessageBox.Show("Rütbe Eklendi");
                 }
                 else
                 {
@@ -56,7 +57,7 @@ namespace GuardApp
        
         public void UpdateGrid()
         {
-            dataGridView1.DataSource = rankRepository.List();
+            dataGridView1.DataSource = rankRepository.List().OrderByDescending(x=>x.Id).ToList();
             dataGridView1.Columns["Id"].Visible = false;         
         }
 

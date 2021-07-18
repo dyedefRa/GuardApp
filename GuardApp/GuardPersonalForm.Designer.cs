@@ -45,11 +45,12 @@ namespace GuardApp
             // 
             // lstGuard
             // 
+            this.lstGuard.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lstGuard.FormattingEnabled = true;
-            this.lstGuard.ItemHeight = 15;
+            this.lstGuard.ItemHeight = 17;
             this.lstGuard.Location = new System.Drawing.Point(26, 66);
             this.lstGuard.Name = "lstGuard";
-            this.lstGuard.Size = new System.Drawing.Size(211, 394);
+            this.lstGuard.Size = new System.Drawing.Size(211, 378);
             this.lstGuard.TabIndex = 0;
             this.lstGuard.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lstGuard_MouseClick);
             // 
@@ -72,7 +73,7 @@ namespace GuardApp
             // 
             // btnAddPersonalToGuard
             // 
-            this.btnAddPersonalToGuard.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnAddPersonalToGuard.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnAddPersonalToGuard.Location = new System.Drawing.Point(772, 476);
             this.btnAddPersonalToGuard.Name = "btnAddPersonalToGuard";
             this.btnAddPersonalToGuard.Size = new System.Drawing.Size(166, 32);
@@ -122,7 +123,7 @@ namespace GuardApp
             // 
             // btnPersonalRemove
             // 
-            this.btnPersonalRemove.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnPersonalRemove.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnPersonalRemove.Location = new System.Drawing.Point(472, 476);
             this.btnPersonalRemove.Name = "btnPersonalRemove";
             this.btnPersonalRemove.Size = new System.Drawing.Size(165, 32);
@@ -133,25 +134,28 @@ namespace GuardApp
             // 
             // lstAllPersonal
             // 
+            this.lstAllPersonal.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lstAllPersonal.FormattingEnabled = true;
-            this.lstAllPersonal.ItemHeight = 15;
+            this.lstAllPersonal.ItemHeight = 17;
             this.lstAllPersonal.Location = new System.Drawing.Point(743, 66);
             this.lstAllPersonal.Name = "lstAllPersonal";
-            this.lstAllPersonal.Size = new System.Drawing.Size(211, 394);
+            this.lstAllPersonal.Size = new System.Drawing.Size(211, 378);
             this.lstAllPersonal.TabIndex = 2;
             // 
             // lstGuardPersonal
             // 
+            this.lstGuardPersonal.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lstGuardPersonal.FormattingEnabled = true;
-            this.lstGuardPersonal.ItemHeight = 15;
+            this.lstGuardPersonal.ItemHeight = 17;
             this.lstGuardPersonal.Location = new System.Drawing.Point(444, 66);
             this.lstGuardPersonal.Name = "lstGuardPersonal";
-            this.lstGuardPersonal.Size = new System.Drawing.Size(211, 394);
+            this.lstGuardPersonal.Size = new System.Drawing.Size(211, 378);
             this.lstGuardPersonal.TabIndex = 1;
             // 
             // btnBack
             // 
             this.btnBack.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.btnBack.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnBack.Location = new System.Drawing.Point(23, 21);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(136, 28);

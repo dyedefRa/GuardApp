@@ -42,6 +42,7 @@ namespace GuardApp
                 {
                     ClearAll();
                     UpdateGrid();
+                    MessageBox.Show("Yeni Nöbet Eklendi.");
                 }
                 else
                 {
@@ -56,7 +57,7 @@ namespace GuardApp
 
         public void UpdateGrid()
         {
-            dataGridView1.DataSource = guardRepository.List();
+            dataGridView1.DataSource = guardRepository.List().Where(x=>x.IsActive==true).OrderByDescending(x=>x.Id).ToList();
             dataGridView1.Columns["Id"].Visible = false;
         }
 

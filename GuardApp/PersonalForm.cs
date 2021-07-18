@@ -2,6 +2,7 @@
 using GuardApp.Repository;
 using System;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace GuardApp
@@ -56,7 +57,7 @@ namespace GuardApp
 
         public void UpdateGrid()
         {
-            dataGridView1.DataSource = personalRepository.List();
+            dataGridView1.DataSource = personalRepository.List().Where(x=>x.IsActive==true).OrderByDescending(x=>x.Id).ToList();
             dataGridView1.Columns["Id"].Visible = false;
             dataGridView1.Columns["RankId"].Visible = false;
             dataGridView1.Columns[5].DisplayIndex = 1;          
