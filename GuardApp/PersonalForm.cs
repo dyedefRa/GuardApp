@@ -21,14 +21,11 @@ namespace GuardApp
         {
             if (CreatedValid())
             {
-                string personalName = txtName.Text;
-                string personalTerm = txtTerm.Text;
-                Rank personalRank = (Rank)comboBox1.SelectedItem;
                 Personal personal = new Personal()
                 {
-                    Name = personalName,
-                    Term = personalTerm,
-                    Rank = personalRank
+                    Name = txtName.Text,
+                    Term = txtTerm.Text,
+                    Rank = (Rank)comboBox1.SelectedItem
                 };
                 if (personalRepository.Insert(personal))
                 {
@@ -43,9 +40,7 @@ namespace GuardApp
                 }
             }
             else
-            {
                 MessageBox.Show("Lütfen personel bilgilerini eksiksiz doldurun.");
-            }
         }
    
         private void PersonalForm_Load(object sender, EventArgs e)
@@ -57,7 +52,7 @@ namespace GuardApp
 
         public void UpdateGrid()
         {
-            dataGridView1.DataSource = personalRepository.List().Where(x=>x.IsActive==true).OrderByDescending(x=>x.Id).ToList();
+            dataGridView1.DataSource = personalRepository.List().OrderByDescending(x=>x.Id).ToList();
             dataGridView1.Columns["Id"].Visible = false;
             dataGridView1.Columns["RankId"].Visible = false;
             dataGridView1.Columns[5].DisplayIndex = 1;          
