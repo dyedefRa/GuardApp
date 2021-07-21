@@ -51,9 +51,9 @@ namespace GuardApp
 
         private void FillRelatedPersonalListBox()
         {
-            var relatedPersonalId = guardPersonalRepository.List().Where(x => x.GuardId == relatedGuardId).ToList().Select(x => x.PersonalId).ToList();
+            var relatedPersonalId = guardPersonalRepository.List().Where(x => x.GuardId == relatedGuardId&&x.Personal.IsActive==true).ToList().Select(x => x.PersonalId).ToList();
 
-             relatedPersonals = personalRepository.List().Where(x => relatedPersonalId.Contains(x.Id)).ToList();
+             relatedPersonals = personalRepository.List().Where(x => relatedPersonalId.Contains(x.Id)&&x.IsActive==true).ToList();
 
             lstGuardPersonal.DataSource = null;
             if (relatedPersonals != null)
@@ -66,7 +66,7 @@ namespace GuardApp
 
         private void FillAllPersonalListBox()
         {
-            otherPersonals = personalRepository.List().Except(relatedPersonals).ToList();
+            otherPersonals = personalRepository.List().Where(x=>x.IsActive==true).Except(relatedPersonals).ToList();
             lstAllPersonal.DataSource = null;
             if (otherPersonals != null)
             {

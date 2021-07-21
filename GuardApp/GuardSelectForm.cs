@@ -32,7 +32,7 @@ namespace GuardApp
 
             if (guardRepository != null)
             {
-                var newModel = guardRepository.List().Select(x =>
+                var newModel = guardRepository.List().Where(x=>x.IsActive==true).Select(x =>
                 {
                     bool isCompleteGuard = guardProgramRepository.List().Where(y => y.GuardPersonal.GuardId == x.Id && y.Date.Month == DateTime.Now.Month + 1 && y.Date.Year == DateTime.Now.Year).ToList().Count == totalDayOnNextMonth ? true : false;
                     guardCompleteList.Add(isCompleteGuard);

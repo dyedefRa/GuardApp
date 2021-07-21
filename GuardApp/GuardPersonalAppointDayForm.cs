@@ -94,6 +94,11 @@ namespace GuardApp
             this.Hide();
         }
 
-     
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            GuardPersonalForm guardPersonalForm = new GuardPersonalForm();
+            guardPersonalForm.Show();
+            this.Hide();
+        }
     }
 }
