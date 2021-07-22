@@ -16,6 +16,6 @@ namespace GuardApp.Model
         public override string ToString()
         {
             return Name;
-        }
-    }
+        }       
+   }
 }

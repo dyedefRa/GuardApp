@@ -15,5 +15,7 @@ namespace GuardApp.Model
         public string Name { get; set; }
         [DisplayName("Aktif mi?")]
         public bool IsActive { get; set; } = true;
+        public int Number { get; set; }
+
     }
 }
