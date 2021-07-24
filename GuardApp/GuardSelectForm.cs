@@ -1,4 +1,5 @@
-﻿using GuardApp.Model;
+﻿using GuardApp.Helper;
+using GuardApp.Model;
 using GuardApp.Model.HelperModel;
 using GuardApp.Repository;
 using System;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +23,9 @@ namespace GuardApp
             this.BackgroundImage = Properties.Resources.tr;
             BackgroundImageLayout = ImageLayout.Stretch;
         }
+
+        //Burayı sil 
+        Repository<Personal> personalRepository = new Repository<Personal>();
 
         Repository<Guard> guardRepository = new Repository<Guard>();
         Repository<GuardProgram> guardProgramRepository = new Repository<GuardProgram>();
@@ -78,6 +83,13 @@ namespace GuardApp
             {
                 MessageBox.Show("Yazdırılıyor.");
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ReportHelper reportHelper = new ReportHelper();
+
+            File.WriteAllBytes("D:/hello.pdf", reportHelper.PrepareReport(personalRepository.List()));
         }
     }
 }
