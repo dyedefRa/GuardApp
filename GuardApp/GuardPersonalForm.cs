@@ -132,7 +132,8 @@ namespace GuardApp
         private void FillPersonalListBoxes()
         {
             var selectedGuard = (Guard)lstGuard.SelectedItem;
-            relatedGuardId = selectedGuard.Id;
+            if (selectedGuard!=null)            
+                relatedGuardId = selectedGuard.Id;           
             FillRelatedPersonalListBox();
             FillAllPersonalListBox();
         }   

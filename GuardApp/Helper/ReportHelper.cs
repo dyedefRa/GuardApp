@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GuardApp.Helper;
 
 
 namespace GuardApp.Helper
@@ -39,100 +40,84 @@ namespace GuardApp.Helper
             pdfTable.WidthPercentage = 100;
             pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
             fontStyle = FontFactory.GetFont("Tahoma", 8f, 1);
-            PdfWriter.GetInstance(document, memoryStream);
+            PdfWriter  pdfWriter = PdfWriter.GetInstance(document, memoryStream);           
+            //pdfWriter.SetLanguage("tr-TR");
 
             document.Open();
             pdfTable.SetWidths(new float[] { 20f, 150f, 100f });
             #endregion
 
             this.ReportHeader();
-            this.ReportBody();
-            pdfTable.HeaderRows = 2;
             document.Add(pdfTable);
+
+            this.ReportBody(DateTime.Now); // BURASI
+            pdfTable.HeaderRows = 2;
+            //document.AddLanguage("tr-TR");
             document.Close();
             return memoryStream.ToArray();
         }
 
         private void ReportHeader()
         {
-            fontStyle = FontFactory.GetFont("Tahoma", 8f,1);
-            pdfCell = new PdfPCell(new Phrase("HİZMETE ÖZEL", fontStyle));
-            pdfCell.Colspan = totalColumn;
-            pdfCell.HorizontalAlignment = Element.ALIGN_CENTER;
-            pdfCell.Border = 0;
-            pdfCell.BackgroundColor = BaseColor.WHITE;
-            pdfCell.ExtraParagraphSpace = 0;
-            pdfTable.AddCell(pdfCell);
-            pdfTable.CompleteRow();
-
-
-            fontStyle = FontFactory.GetFont("Tahoma", 15f, 1);
-            pdfCell = new PdfPCell(new Phrase("KARA KUVVETLERİ KOMUTANLIĞI", fontStyle));
-            pdfCell.Colspan = totalColumn;
-            pdfCell.HorizontalAlignment = Element.ALIGN_CENTER;
-            pdfCell.Border = 0;
-            pdfCell.BackgroundColor = BaseColor.WHITE;
-            pdfCell.ExtraParagraphSpace = 0;
-            pdfTable.AddCell(pdfCell);
-            pdfTable.CompleteRow();
+            AddRowLineForReportHeader("HİZMETE ÖZEL", 7f);
+            AddRowLineForReportHeader("T.C.", 8f);
+            AddRowLineForReportHeader("KARA KUVVETLERİ KOMUTANLIĞI", 10f);
+            AddRowLineForReportHeader("Kıbrıs Türk Barış Kuvvetleri Komutanlığı", 8f);
+            AddRowLineForReportHeader("Topçu Alay Komutanlığı", 8f);
+            AddRowLineForReportHeader("\n", 8f);
 
         }
 
-        private void ReportBody()
+        private void AddRowLineForReportHeader(string text, float size)
+        {
+            fontStyle = FontFactory.GetFont("Tahoma", size, 1);
+            pdfCell = new PdfPCell(new Phrase(text, fontStyle));
+            pdfCell.Colspan = totalColumn;
+            pdfCell.HorizontalAlignment = Element.ALIGN_CENTER;
+            pdfCell.Border = 0;
+            pdfCell.BackgroundColor = BaseColor.WHITE;
+            pdfCell.ExtraParagraphSpace = 0;
+            pdfTable.AddCell(pdfCell);
+            pdfTable.CompleteRow();
+        }
+
+        private void ReportBody(DateTime dateTime)
         {
             #region Table Header
 
             fontStyle = FontFactory.GetFont("Tahoma", 8f, 1);
-            pdfCell = new PdfPCell(new Phrase("Serial Number", fontStyle));
+            pdfCell = new PdfPCell(new Phrase("KTBK EŞREF BİTLİS KIŞLASI "+ dateTime.TurkishDateTimeShortToString()+ " AYI NÖBET ÇİZELGESİ", fontStyle));
+            pdfCell.Colspan = 1;
             pdfCell.HorizontalAlignment = Element.ALIGN_CENTER;
             pdfCell.VerticalAlignment = Element.ALIGN_MIDDLE;
-            pdfCell.BackgroundColor = BaseColor.LIGHT_GRAY;
-            pdfTable.AddCell(pdfCell);
+            pdfCell.BackgroundColor = BaseColor.WHITE;
+            iTextSharp.text.pdf.PdfPTable pdfTable2 = new PdfPTable(1);
 
-            fontStyle = FontFactory.GetFont("Tahoma", 8f, 1);
-            pdfCell = new PdfPCell(new Phrase("Name", fontStyle));
-            pdfCell.HorizontalAlignment = Element.ALIGN_CENTER;
-            pdfCell.VerticalAlignment = Element.ALIGN_MIDDLE;
-            pdfCell.BackgroundColor = BaseColor.LIGHT_GRAY;
-            pdfTable.AddCell(pdfCell);
+            pdfTable2.AddCell(pdfCell);
+            pdfTable2.CompleteRow();
+            document.Add(pdfTable2);
 
-            fontStyle = FontFactory.GetFont("Tahoma", 8f, 1);
-            pdfCell = new PdfPCell(new Phrase("Roll", fontStyle));
-            pdfCell.HorizontalAlignment = Element.ALIGN_CENTER;
-            pdfCell.VerticalAlignment = Element.ALIGN_MIDDLE;
-            pdfCell.BackgroundColor = BaseColor.LIGHT_GRAY;
-            pdfTable.AddCell(pdfCell);
-            pdfTable.CompleteRow();
             #endregion
 
             #region Table Body
 
             fontStyle = FontFactory.GetFont("Tahoma", 8f, 0);
-            int serialNumber = 1;
 
             foreach (var personal in _personals)
             {
-                pdfCell = new PdfPCell(new Phrase(serialNumber++.ToString(), fontStyle));
-                pdfCell.HorizontalAlignment = Element.ALIGN_CENTER;
-                pdfCell.VerticalAlignment = Element.ALIGN_MIDDLE;
-                pdfCell.BackgroundColor = BaseColor.WHITE;
-                pdfTable.AddCell(pdfCell);
 
-                pdfCell = new PdfPCell(new Phrase(personal.Name, fontStyle));
-                pdfCell.HorizontalAlignment = Element.ALIGN_CENTER;
-                pdfCell.VerticalAlignment = Element.ALIGN_MIDDLE;
-                pdfCell.BackgroundColor = BaseColor.WHITE;
-                pdfTable.AddCell(pdfCell);
 
-                pdfCell = new PdfPCell(new Phrase(personal.Term, fontStyle));
-                pdfCell.HorizontalAlignment = Element.ALIGN_CENTER;
-                pdfCell.VerticalAlignment = Element.ALIGN_MIDDLE;
-                pdfCell.BackgroundColor = BaseColor.WHITE;
-                pdfTable.AddCell(pdfCell);
-                pdfTable.CompleteRow();
+                //pdfCell = new PdfPCell(new Phrase(personal.Term, fontStyle));
+                //pdfCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                //pdfCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                //pdfCell.BackgroundColor = BaseColor.WHITE;
+                //pdfTable.AddCell(pdfCell);
+                //pdfTable.CompleteRow();
             }
 
             #endregion
         }
+
+  
     }
 }
