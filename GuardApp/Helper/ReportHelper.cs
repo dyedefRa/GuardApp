@@ -36,11 +36,11 @@ namespace GuardApp.Helper
 
             document = new iTextSharp.text.Document(PageSize.A4, 0f, 0f, 0f, 0f);
             document.SetPageSize(PageSize.A4);
-            document.SetMargins(20f, 20f, 20f, 20f);
+            document.SetMargins(10f, 10f, 15f, 15f);
             pdfTable.WidthPercentage = 100;
             pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
             fontStyle = FontFactory.GetFont("Tahoma", 8f, 1);
-            PdfWriter  pdfWriter = PdfWriter.GetInstance(document, memoryStream);           
+            PdfWriter pdfWriter = PdfWriter.GetInstance(document, memoryStream);
             //pdfWriter.SetLanguage("tr-TR");
 
             document.Open();
@@ -86,38 +86,76 @@ namespace GuardApp.Helper
             #region Table Header
 
             fontStyle = FontFactory.GetFont("Tahoma", 8f, 1);
-            pdfCell = new PdfPCell(new Phrase("KTBK EŞREF BİTLİS KIŞLASI "+ dateTime.TurkishDateTimeShortToString()+ " AYI NÖBET ÇİZELGESİ", fontStyle));
-            pdfCell.Colspan = 1;
+            pdfCell = new PdfPCell(new Phrase("KTBK EŞREF BİTLİS KIŞLASI " + dateTime.TurkishDateTimeShortToString() + " AYI NÖBET ÇİZELGESİ", fontStyle));
             pdfCell.HorizontalAlignment = Element.ALIGN_CENTER;
             pdfCell.VerticalAlignment = Element.ALIGN_MIDDLE;
             pdfCell.BackgroundColor = BaseColor.WHITE;
-            iTextSharp.text.pdf.PdfPTable pdfTable2 = new PdfPTable(1);
-
-            pdfTable2.AddCell(pdfCell);
-            pdfTable2.CompleteRow();
-            document.Add(pdfTable2);
+            iTextSharp.text.pdf.PdfPTable pdfTableOneColoumn = new PdfPTable(1);
+            pdfTableOneColoumn.AddCell(pdfCell);
+            pdfTableOneColoumn.CompleteRow();
+            document.Add(pdfTableOneColoumn);
 
             #endregion
 
             #region Table Body
 
-            fontStyle = FontFactory.GetFont("Tahoma", 8f, 0);
-
-            foreach (var personal in _personals)
-            {
 
 
-                //pdfCell = new PdfPCell(new Phrase(personal.Term, fontStyle));
-                //pdfCell.HorizontalAlignment = Element.ALIGN_CENTER;
-                //pdfCell.VerticalAlignment = Element.ALIGN_MIDDLE;
-                //pdfCell.BackgroundColor = BaseColor.WHITE;
-                //pdfTable.AddCell(pdfCell);
-                //pdfTable.CompleteRow();
-            }
+
+            fontStyle = FontFactory.GetFont("Tahoma", 8f, 1);
+            pdfCell = new PdfPCell(new Phrase("NOBET ADI", fontStyle));
+            pdfCell.HorizontalAlignment = Element.ALIGN_CENTER;
+            pdfCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+            pdfCell.BackgroundColor = BaseColor.WHITE;
+            iTextSharp.text.pdf.PdfPTable pTGuardNameColoumn = new PdfPTable(1);
+            pTGuardNameColoumn.AddCell(pdfCell);
+            pTGuardNameColoumn.CompleteRow();
+            document.Add(pTGuardNameColoumn);
+
+
+
+            //10 COL TABLE
+            iTextSharp.text.pdf.PdfPTable pdfTable10Coloumn = new PdfPTable(10);
+            pdfTable10Coloumn.SetWidths(new float[] { 20f, 100f, 20f, 20f, 20f, 20f, 20f, 20f, 20f, 30f });
+
+            pdfCell = new PdfPCell(new Phrase("S.No", fontStyle));
+            pdfTable10Coloumn.AddCell(pdfCell);
+
+            pdfCell = new PdfPCell(new Phrase("Kimlik", fontStyle));
+            pdfTable10Coloumn.AddCell(pdfCell);
+
+            pdfCell = new PdfPCell(new Phrase("P.tesi", fontStyle));
+            pdfTable10Coloumn.AddCell(pdfCell);
+
+            pdfCell = new PdfPCell(new Phrase("Salı", fontStyle));
+            pdfTable10Coloumn.AddCell(pdfCell);
+
+            pdfCell = new PdfPCell(new Phrase("Çarş.", fontStyle));
+            pdfTable10Coloumn.AddCell(pdfCell);
+
+            pdfCell = new PdfPCell(new Phrase("Perş.", fontStyle));
+            pdfTable10Coloumn.AddCell(pdfCell);
+
+            pdfCell = new PdfPCell(new Phrase("Cuma", fontStyle));
+            pdfTable10Coloumn.AddCell(pdfCell);
+
+            pdfCell = new PdfPCell(new Phrase("C.tesi", fontStyle));
+            pdfTable10Coloumn.AddCell(pdfCell);
+
+            pdfCell = new PdfPCell(new Phrase("Pazar", fontStyle));
+            pdfTable10Coloumn.AddCell(pdfCell);
+
+            pdfTable10Coloumn.CompleteRow();
+            document.Add(pdfTable10Coloumn);
+
+
+
+
+
 
             #endregion
         }
 
-  
+
     }
 }
