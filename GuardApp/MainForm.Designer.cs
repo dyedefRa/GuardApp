@@ -34,13 +34,14 @@ namespace GuardApp
             this.btnGuard = new System.Windows.Forms.Button();
             this.btnMonthly = new System.Windows.Forms.Button();
             this.btnGuardPersonal = new System.Windows.Forms.Button();
+            this.btnUnity = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnRank
             // 
-            this.btnRank.Location = new System.Drawing.Point(410, 233);
+            this.btnRank.Location = new System.Drawing.Point(356, 233);
             this.btnRank.Name = "btnRank";
-            this.btnRank.Size = new System.Drawing.Size(145, 42);
+            this.btnRank.Size = new System.Drawing.Size(119, 42);
             this.btnRank.TabIndex = 0;
             this.btnRank.Text = "Rütbe Ekle";
             this.btnRank.UseVisualStyleBackColor = true;
@@ -50,7 +51,7 @@ namespace GuardApp
             // 
             this.btnPersonal.Location = new System.Drawing.Point(221, 233);
             this.btnPersonal.Name = "btnPersonal";
-            this.btnPersonal.Size = new System.Drawing.Size(145, 42);
+            this.btnPersonal.Size = new System.Drawing.Size(119, 42);
             this.btnPersonal.TabIndex = 1;
             this.btnPersonal.Text = "Personel Ekle";
             this.btnPersonal.UseVisualStyleBackColor = true;
@@ -58,9 +59,9 @@ namespace GuardApp
             // 
             // btnGuard
             // 
-            this.btnGuard.Location = new System.Drawing.Point(607, 233);
+            this.btnGuard.Location = new System.Drawing.Point(633, 233);
             this.btnGuard.Name = "btnGuard";
-            this.btnGuard.Size = new System.Drawing.Size(145, 42);
+            this.btnGuard.Size = new System.Drawing.Size(119, 42);
             this.btnGuard.TabIndex = 2;
             this.btnGuard.Text = "Nöbet Ekle";
             this.btnGuard.UseVisualStyleBackColor = true;
@@ -86,12 +87,23 @@ namespace GuardApp
             this.btnGuardPersonal.UseVisualStyleBackColor = true;
             this.btnGuardPersonal.Click += new System.EventHandler(this.btnGuardPersonal_Click);
             // 
+            // btnUnity
+            // 
+            this.btnUnity.Location = new System.Drawing.Point(496, 233);
+            this.btnUnity.Name = "btnUnity";
+            this.btnUnity.Size = new System.Drawing.Size(119, 42);
+            this.btnUnity.TabIndex = 6;
+            this.btnUnity.Text = "Birlik Ekle";
+            this.btnUnity.UseVisualStyleBackColor = true;
+            this.btnUnity.Click += new System.EventHandler(this.btnUnity_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(942, 495);
+            this.Controls.Add(this.btnUnity);
             this.Controls.Add(this.btnGuardPersonal);
             this.Controls.Add(this.btnMonthly);
             this.Controls.Add(this.btnGuard);
@@ -103,7 +115,6 @@ namespace GuardApp
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "[NTP] Nöbet Takip Programı";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
         }
@@ -115,6 +126,7 @@ namespace GuardApp
         private System.Windows.Forms.Button btnGuard;
         private System.Windows.Forms.Button btnMonthly;
         private System.Windows.Forms.Button btnGuardPersonal;
+        private System.Windows.Forms.Button btnUnity;
     }
 }
 

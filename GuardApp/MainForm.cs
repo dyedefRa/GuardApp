@@ -20,18 +20,11 @@ namespace GuardApp
             BackgroundImageLayout = ImageLayout.Stretch;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            Context ctx = new Context();
-      
-        }
-
         private void btnPersonal_Click(object sender, EventArgs e)
         {
             var formPersonal = new PersonalForm();
             formPersonal.Show();
             this.Hide();
-
         }
 
         private void btnRank_Click(object sender, EventArgs e)
@@ -59,6 +52,13 @@ namespace GuardApp
         {
             GuardPersonalForm guardPersonalForm = new GuardPersonalForm();
             guardPersonalForm.Show();
+            this.Hide();
+        }
+
+        private void btnUnity_Click(object sender, EventArgs e)
+        {
+            PersonalUnityForm personalUnityForm = new PersonalUnityForm();
+            personalUnityForm.Show();
             this.Hide();
         }
     }

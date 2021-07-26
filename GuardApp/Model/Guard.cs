@@ -13,9 +13,9 @@ namespace GuardApp.Model
         public int Id { get; set; }
         [DisplayName("Nöbet Adı")]
         public string Name { get; set; }
+        [DisplayName("Nöbetin Sırası")]
+        public int Number { get; set; }
         [DisplayName("Aktif mi?")]
         public bool IsActive { get; set; } = true;
-        public int Number { get; set; }
-
     }
 }

@@ -40,6 +40,8 @@ namespace GuardApp
             this.lstAllPersonal = new System.Windows.Forms.ListBox();
             this.lstGuardPersonal = new System.Windows.Forms.ListBox();
             this.btnBack = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblDisplayGuard = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,7 +52,7 @@ namespace GuardApp
             this.lstGuard.ItemHeight = 17;
             this.lstGuard.Location = new System.Drawing.Point(26, 66);
             this.lstGuard.Name = "lstGuard";
-            this.lstGuard.Size = new System.Drawing.Size(211, 378);
+            this.lstGuard.Size = new System.Drawing.Size(236, 378);
             this.lstGuard.TabIndex = 0;
             this.lstGuard.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lstGuard_MouseClick);
             // 
@@ -74,11 +76,11 @@ namespace GuardApp
             // btnAddPersonalToGuard
             // 
             this.btnAddPersonalToGuard.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAddPersonalToGuard.Location = new System.Drawing.Point(772, 476);
+            this.btnAddPersonalToGuard.Location = new System.Drawing.Point(743, 458);
             this.btnAddPersonalToGuard.Name = "btnAddPersonalToGuard";
             this.btnAddPersonalToGuard.Size = new System.Drawing.Size(166, 32);
             this.btnAddPersonalToGuard.TabIndex = 9;
-            this.btnAddPersonalToGuard.Text = "Nöbete Ekle";
+            this.btnAddPersonalToGuard.Text = "< Nöbete Ekle";
             this.btnAddPersonalToGuard.UseVisualStyleBackColor = true;
             this.btnAddPersonalToGuard.Click += new System.EventHandler(this.btnAddPersonalToGuard_Click);
             // 
@@ -94,8 +96,9 @@ namespace GuardApp
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.SystemColors.Control;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(780, 8);
+            this.label3.Location = new System.Drawing.Point(752, 8);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(148, 25);
             this.label3.TabIndex = 6;
@@ -104,8 +107,9 @@ namespace GuardApp
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.SystemColors.Control;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(444, 8);
+            this.label2.Location = new System.Drawing.Point(413, 8);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(227, 25);
             this.label2.TabIndex = 5;
@@ -114,6 +118,7 @@ namespace GuardApp
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.Control;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(55, 8);
             this.label1.Name = "label1";
@@ -124,11 +129,11 @@ namespace GuardApp
             // btnPersonalRemove
             // 
             this.btnPersonalRemove.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnPersonalRemove.Location = new System.Drawing.Point(472, 476);
+            this.btnPersonalRemove.Location = new System.Drawing.Point(443, 458);
             this.btnPersonalRemove.Name = "btnPersonalRemove";
             this.btnPersonalRemove.Size = new System.Drawing.Size(165, 32);
             this.btnPersonalRemove.TabIndex = 3;
-            this.btnPersonalRemove.Text = "Nöbetten Çıkar";
+            this.btnPersonalRemove.Text = "Nöbetten Çıkar >";
             this.btnPersonalRemove.UseVisualStyleBackColor = true;
             this.btnPersonalRemove.Click += new System.EventHandler(this.btnPersonalRemove_Click);
             // 
@@ -137,9 +142,9 @@ namespace GuardApp
             this.lstAllPersonal.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lstAllPersonal.FormattingEnabled = true;
             this.lstAllPersonal.ItemHeight = 17;
-            this.lstAllPersonal.Location = new System.Drawing.Point(743, 66);
+            this.lstAllPersonal.Location = new System.Drawing.Point(691, 66);
             this.lstAllPersonal.Name = "lstAllPersonal";
-            this.lstAllPersonal.Size = new System.Drawing.Size(211, 378);
+            this.lstAllPersonal.Size = new System.Drawing.Size(268, 378);
             this.lstAllPersonal.TabIndex = 2;
             this.lstAllPersonal.DoubleClick += new System.EventHandler(this.lstAllPersonal_DoubleClick);
             // 
@@ -148,9 +153,9 @@ namespace GuardApp
             this.lstGuardPersonal.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lstGuardPersonal.FormattingEnabled = true;
             this.lstGuardPersonal.ItemHeight = 17;
-            this.lstGuardPersonal.Location = new System.Drawing.Point(444, 66);
+            this.lstGuardPersonal.Location = new System.Drawing.Point(392, 66);
             this.lstGuardPersonal.Name = "lstGuardPersonal";
-            this.lstGuardPersonal.Size = new System.Drawing.Size(211, 378);
+            this.lstGuardPersonal.Size = new System.Drawing.Size(268, 378);
             this.lstGuardPersonal.TabIndex = 1;
             this.lstGuardPersonal.DoubleClick += new System.EventHandler(this.lstGuardPersonal_DoubleClick);
             // 
@@ -166,11 +171,33 @@ namespace GuardApp
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(332, 20);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(141, 25);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Seçilen Nöbet :";
+            // 
+            // lblDisplayGuard
+            // 
+            this.lblDisplayGuard.AutoSize = true;
+            this.lblDisplayGuard.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblDisplayGuard.Location = new System.Drawing.Point(479, 20);
+            this.lblDisplayGuard.Name = "lblDisplayGuard";
+            this.lblDisplayGuard.Size = new System.Drawing.Size(20, 25);
+            this.lblDisplayGuard.TabIndex = 11;
+            this.lblDisplayGuard.Text = "-";
+            // 
             // GuardPersonalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1029, 628);
+            this.Controls.Add(this.lblDisplayGuard);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.panel1);
             this.MaximizeBox = false;
@@ -182,6 +209,7 @@ namespace GuardApp
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -198,5 +226,7 @@ namespace GuardApp
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button btnAddPersonalToGuard;
         private System.Windows.Forms.Button btnPersonalRemove;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblDisplayGuard;
     }
 }

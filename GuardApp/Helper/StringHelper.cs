@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GuardApp.Model;
+using GuardApp.Model.HelperModel;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -19,6 +21,16 @@ namespace GuardApp.Helper
         public static string TurkishDateTimeLongToString(this DateTime dateTime)
         {
             return dateTime.ToString("dd MMMM, yyyy", trCulture);
+        }
+
+        public static List<PersonalViewModal> PersonalDisplayerFormatList(this List<Personal> personals)
+        {
+            return personals.Select(x => new PersonalViewModal()
+            {
+                PersonalId = x.Id,
+                Name = x.Rank.Name + " " + x.Name + " " + "( " + x.PersonalUnity.Name + " )"
+            }).ToList();
+
         }
     }
 }

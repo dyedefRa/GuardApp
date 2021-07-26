@@ -22,6 +22,7 @@ namespace GuardApp.Model
         public int RankId { get; set; }
         [DisplayName("Rütbesi")]
         public virtual Rank Rank { get; set; }
+        public int PersonalUnityId { get; set; }
         [DisplayName("Birliği")]
         public virtual PersonalUnity PersonalUnity { get; set; }
 

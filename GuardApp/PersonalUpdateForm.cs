@@ -16,6 +16,7 @@ namespace GuardApp
     {
         Repository<Personal> personalRepository = new Repository<Personal>();
         Repository<Rank> rankRepository = new Repository<Rank>();
+        Repository<PersonalUnity> personalUnityRepository = new Repository<PersonalUnity>();
         Personal selectedPersonal;
 
         public PersonalUpdateForm(int personalId)
@@ -25,6 +26,7 @@ namespace GuardApp
             this.FormClosing += PersonalUpdateForm_FormClosing;
             selectedPersonal = personalRepository.GetById(personalId);
             FillComboBox();
+            FillComboBoxUnity();
             txtName.Text = selectedPersonal.Name;
             txtTerm.Text = selectedPersonal.Term;
             if (selectedPersonal.IsActive)
@@ -32,6 +34,8 @@ namespace GuardApp
             else
                 radioButtonPassive.Checked = true;
             comboBox1.SelectedValue = selectedPersonal.RankId;
+            comboBox2.SelectedValue = selectedPersonal.PersonalUnityId;
+
         }
 
         private void PersonalUpdateForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -47,16 +51,18 @@ namespace GuardApp
                 selectedPersonal.Name = txtName.Text;
                 selectedPersonal.Term = txtTerm.Text;
                 selectedPersonal.IsActive = radioButtonActive.Checked;
-                selectedPersonal.Rank =(Rank) comboBox1.SelectedItem;
+                selectedPersonal.Rank = (Rank)comboBox1.SelectedItem;
+                selectedPersonal.PersonalUnity = (PersonalUnity)comboBox2.SelectedItem;
+
                 if (personalRepository.Update(selectedPersonal))
-                {                    
+                {
                     MessageBox.Show("Personel Güncellendi");
                     PersonalForm personalForm = new PersonalForm();
                     personalForm.Show();
                     this.Hide();
                 }
-                else                
-                    MessageBox.Show("Sistemde hata oluştu.");               
+                else
+                    MessageBox.Show("Sistemde hata oluştu.");
             }
             else
                 MessageBox.Show("Lütfen personel bilgilerini eksiksiz doldurun.");
@@ -64,7 +70,7 @@ namespace GuardApp
 
         public bool CreatedValid()
         {
-            return !(string.IsNullOrEmpty(txtName.Text) || string.IsNullOrEmpty(txtTerm.Text) || comboBox1.SelectedItem == null);
+            return !(string.IsNullOrEmpty(txtName.Text) || string.IsNullOrEmpty(txtTerm.Text) || comboBox1.SelectedItem == null || comboBox2.SelectedItem == null);
         }
 
         public void FillComboBox()
@@ -73,6 +79,13 @@ namespace GuardApp
             comboBox1.ValueMember = "Id";
             comboBox1.DisplayMember = "Name";
         }
-      
+
+        public void FillComboBoxUnity()
+        {
+            comboBox2.DataSource = personalUnityRepository.List();
+            comboBox2.ValueMember = "Id";
+            comboBox2.DisplayMember = "Name";
+        }
+
     }
 }

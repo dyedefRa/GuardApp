@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using GuardApp.Helper;
+using GuardApp.Model.HelperModel;
 
 namespace GuardApp
 {
@@ -35,18 +36,27 @@ namespace GuardApp
 
         private void GuardPersonalAppointDayForm_Load(object sender, EventArgs e)
         {
-            beforeProgramPersonal = guardProgramRepository.List().FirstOrDefault(x => x.Date == _clickedDate && x.GuardPersonal.GuardId == _guardId);
-
-            var relatedPersonalId = guardPersonalRepository.List().Where(x => x.GuardId == _guardId).Select(x => x.PersonalId).ToList();
-            var personalList = personalRepository.List().Where(x => relatedPersonalId.Contains(x.Id)).ToList();
-
-            lstPersonal.DataSource = null;
-            lstPersonal.Items.Clear();
-            if (personalList != null)
+            try
             {
-                lstPersonal.DataSource = beforeProgramPersonal == null ? personalList : personalList.Where(x => x.Id != beforeProgramPersonal.GuardPersonal.PersonalId).ToList();
-                lstPersonal.ValueMember = "Id";
-                lstPersonal.DisplayMember = "Name";
+                beforeProgramPersonal = guardProgramRepository.List().FirstOrDefault(x => x.Date == _clickedDate && x.GuardPersonal.GuardId == _guardId);
+
+                var relatedPersonalId = guardPersonalRepository.List().Where(x => x.GuardId == _guardId).Select(x => x.PersonalId).ToList();
+                var personalList = personalRepository.List().Where(x => relatedPersonalId.Contains(x.Id)).ToList();
+              
+                List<PersonalViewModal> personalViewModals = personalList.PersonalDisplayerFormatList();
+                lstPersonal.DataSource = null;
+                lstPersonal.Items.Clear();
+                if (personalViewModals != null)
+                {
+                    lstPersonal.DataSource = beforeProgramPersonal == null ? personalViewModals : personalViewModals.Where(x => x.PersonalId != beforeProgramPersonal.GuardPersonal.PersonalId).ToList();
+                    lstPersonal.ValueMember = "PersonalId";
+                    lstPersonal.DisplayMember = "Name";
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
 
@@ -67,24 +77,27 @@ namespace GuardApp
             {
                 guardProgramRepository.Delete(beforeProgramPersonal);
             }
-            var selectedPersonal = (Personal)lstPersonal.SelectedItem;
+            var selectedPersonalViewModal = (PersonalViewModal)lstPersonal.SelectedItem;
+            if (selectedPersonalViewModal!=null)
+            {
 
-            GuardProgram guardProgram = new GuardProgram()
-            {
-                GuardPersonal = new GuardPersonal() { GuardId = _guardId, PersonalId = selectedPersonal.Id },
-                Date = _clickedDate
-            };
-            if (guardProgramRepository.Insert(guardProgram))
-            {
-                GuardProgress guardProgress = new GuardProgress(_guardId);
-                guardProgress.Show();
-                this.Hide();
-            }
-            else
-            {
-                MessageBox.Show("Sistemde sorun oluştu.");
-            }
 
+                GuardProgram guardProgram = new GuardProgram()
+                {
+                    GuardPersonal = new GuardPersonal() { GuardId = _guardId, PersonalId = selectedPersonalViewModal.PersonalId },
+                    Date = _clickedDate
+                };
+                if (guardProgramRepository.Insert(guardProgram))
+                {
+                    GuardProgress guardProgress = new GuardProgress(_guardId);
+                    guardProgress.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Sistemde sorun oluştu.");
+                }
+            }
         }
 
         private void btnBack_Click(object sender, EventArgs e)

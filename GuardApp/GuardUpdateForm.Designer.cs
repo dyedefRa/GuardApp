@@ -36,11 +36,16 @@ namespace GuardApp
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtGuardName = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.numericUpDown1);
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.radioButtonPassive);
             this.panel1.Controls.Add(this.radioButtonActive);
             this.panel1.Controls.Add(this.btnUpdateGuard);
@@ -49,14 +54,14 @@ namespace GuardApp
             this.panel1.Controls.Add(this.txtGuardName);
             this.panel1.Location = new System.Drawing.Point(47, 27);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(355, 238);
+            this.panel1.Size = new System.Drawing.Size(355, 269);
             this.panel1.TabIndex = 8;
             // 
             // radioButtonPassive
             // 
             this.radioButtonPassive.AutoSize = true;
             this.radioButtonPassive.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.radioButtonPassive.Location = new System.Drawing.Point(206, 133);
+            this.radioButtonPassive.Location = new System.Drawing.Point(206, 167);
             this.radioButtonPassive.Name = "radioButtonPassive";
             this.radioButtonPassive.Size = new System.Drawing.Size(62, 25);
             this.radioButtonPassive.TabIndex = 6;
@@ -68,7 +73,7 @@ namespace GuardApp
             // 
             this.radioButtonActive.AutoSize = true;
             this.radioButtonActive.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.radioButtonActive.Location = new System.Drawing.Point(62, 134);
+            this.radioButtonActive.Location = new System.Drawing.Point(62, 168);
             this.radioButtonActive.Name = "radioButtonActive";
             this.radioButtonActive.Size = new System.Drawing.Size(63, 25);
             this.radioButtonActive.TabIndex = 5;
@@ -79,7 +84,7 @@ namespace GuardApp
             // btnUpdateGuard
             // 
             this.btnUpdateGuard.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnUpdateGuard.Location = new System.Drawing.Point(23, 178);
+            this.btnUpdateGuard.Location = new System.Drawing.Point(23, 207);
             this.btnUpdateGuard.Name = "btnUpdateGuard";
             this.btnUpdateGuard.Size = new System.Drawing.Size(309, 43);
             this.btnUpdateGuard.TabIndex = 4;
@@ -116,11 +121,34 @@ namespace GuardApp
             this.txtGuardName.Size = new System.Drawing.Size(181, 39);
             this.txtGuardName.TabIndex = 2;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(36, 130);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(154, 21);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Nöbetin Sıralaması :";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.numericUpDown1.Location = new System.Drawing.Point(241, 130);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(91, 23);
+            this.numericUpDown1.TabIndex = 9;
+            // 
             // GuardUpdateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(442, 283);
+            this.ClientSize = new System.Drawing.Size(442, 317);
             this.Controls.Add(this.panel1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -129,20 +157,20 @@ namespace GuardApp
             this.Text = "Nöbet Güncelle";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Button btnCreatePersonal;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnUpdateGuard;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtRankName;
         private System.Windows.Forms.TextBox txtGuardName;
-        private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButtonActive;
         private System.Windows.Forms.RadioButton radioButtonPassive;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
     }
 }

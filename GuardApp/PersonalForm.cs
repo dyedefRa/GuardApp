@@ -16,6 +16,7 @@ namespace GuardApp
 
         Repository<Personal> personalRepository = new Repository<Personal>();
         Repository<Rank> rankRepository = new Repository<Rank>();
+        Repository<PersonalUnity> personalUnityRepository = new Repository<PersonalUnity>();
         int dataGridViewSelectedRow = 0;
 
         private void PersonalForm_Load(object sender, EventArgs e)
@@ -23,6 +24,7 @@ namespace GuardApp
             this.BackColor = Color.FromArgb(237, 247, 210);
             UpdateGrid();
             FillComboBox();
+            FillComboBoxUnity();
             dataGridView1.MouseClick += DataGridView1_MouseClick;
         }
 
@@ -80,7 +82,8 @@ namespace GuardApp
                 {
                     Name = txtName.Text,
                     Term = txtTerm.Text,
-                    Rank = (Rank)comboBox1.SelectedItem
+                    Rank = (Rank)comboBox1.SelectedItem,
+                    PersonalUnity = (PersonalUnity)comboBox2.SelectedItem
                 };
                 if (personalRepository.Insert(personal))
                 {
@@ -97,13 +100,15 @@ namespace GuardApp
             else
                 MessageBox.Show("Lütfen personel bilgilerini eksiksiz doldurun.");
         }
-   
+
         public void UpdateGrid()
         {
-            dataGridView1.DataSource = personalRepository.List().OrderByDescending(x=>x.Id).ToList();
+            dataGridView1.DataSource = personalRepository.List().OrderByDescending(x => x.Id).ToList();
             dataGridView1.Columns["Id"].Visible = false;
             dataGridView1.Columns["RankId"].Visible = false;
-            dataGridView1.Columns[5].DisplayIndex = 1;          
+            dataGridView1.Columns["PersonalUnityId"].Visible = false;
+            dataGridView1.Columns["Rank"].DisplayIndex = 1;
+            dataGridView1.Columns["PersonalUnity"].DisplayIndex = 4;
         }
 
         public void FillComboBox()
@@ -113,9 +118,16 @@ namespace GuardApp
             comboBox1.DisplayMember = "Name";
         }
 
+        public void FillComboBoxUnity()
+        {
+            comboBox2.DataSource = personalUnityRepository.List();
+            comboBox2.ValueMember = "Id";
+            comboBox2.DisplayMember = "Name";
+        }
+
         public bool CreatedValid()
         {
-            return !(string.IsNullOrEmpty(txtName.Text) || string.IsNullOrEmpty(txtTerm.Text) || comboBox1.SelectedItem == null);
+            return !(string.IsNullOrEmpty(txtName.Text) || string.IsNullOrEmpty(txtTerm.Text) || comboBox1.SelectedItem == null || comboBox2.SelectedItem == null);
         }
 
         private void ClearAll()
@@ -123,6 +135,7 @@ namespace GuardApp
             txtName.Text = string.Empty;
             txtTerm.Text = string.Empty;
             comboBox1.SelectedIndex = 0;
+            comboBox2.SelectedIndex = 0;
         }
 
         private void btnHelp_Click(object sender, EventArgs e)
@@ -146,7 +159,7 @@ namespace GuardApp
             }
             else
             {
-               
+
             }
         }
 

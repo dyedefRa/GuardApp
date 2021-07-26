@@ -43,13 +43,17 @@ namespace GuardApp
             this.btnHelp = new System.Windows.Forms.Button();
             this.btnCreateRank = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.comboBox2);
             this.panel1.Controls.Add(this.btnCreatePersonal);
+            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.txtTerm);
             this.panel1.Controls.Add(this.label3);
@@ -59,13 +63,13 @@ namespace GuardApp
             this.panel1.Controls.Add(this.txtName);
             this.panel1.Location = new System.Drawing.Point(894, 66);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(355, 267);
+            this.panel1.Size = new System.Drawing.Size(355, 291);
             this.panel1.TabIndex = 1;
             // 
             // btnCreatePersonal
             // 
             this.btnCreatePersonal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnCreatePersonal.Location = new System.Drawing.Point(33, 188);
+            this.btnCreatePersonal.Location = new System.Drawing.Point(27, 228);
             this.btnCreatePersonal.Name = "btnCreatePersonal";
             this.btnCreatePersonal.Size = new System.Drawing.Size(303, 43);
             this.btnCreatePersonal.TabIndex = 4;
@@ -154,7 +158,7 @@ namespace GuardApp
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(804, 267);
+            this.dataGridView1.Size = new System.Drawing.Size(804, 291);
             this.dataGridView1.TabIndex = 3;
             // 
             // btnHelp
@@ -190,6 +194,24 @@ namespace GuardApp
             this.btnBack.Text = "Geriye Git";
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(155, 179);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(181, 23);
+            this.comboBox2.TabIndex = 7;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(27, 177);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(104, 21);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Birlik Seçiniz :";
             // 
             // PersonalForm
             // 
@@ -230,5 +252,7 @@ namespace GuardApp
         private System.Windows.Forms.Button btnHelp;
         private System.Windows.Forms.Button btnCreateRank;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label label5;
     }
 }

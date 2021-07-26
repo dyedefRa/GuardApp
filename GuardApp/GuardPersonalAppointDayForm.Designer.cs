@@ -110,7 +110,7 @@ namespace GuardApp
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(487, 17);
             this.label3.TabIndex = 10;
-            this.label3.Text = "Burada herhangi bir personal bulamadıysanız lütfen Nöbete personel ekleyiniz..";
+            this.label3.Text = "Burada herhangi bir personel bulamadıysanız lütfen Nöbete personel ekleyiniz..";
             // 
             // linkLabel1
             // 

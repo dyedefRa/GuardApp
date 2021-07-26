@@ -27,6 +27,7 @@ namespace GuardApp
                 radioButtonActive.Checked = true;
             else
                 radioButtonPassive.Checked = true;
+            numericUpDown1.Value = (decimal)selectedGuard.Number;
         }
 
         private void btnUpdateGuard_Click(object sender, EventArgs e)
@@ -35,6 +36,7 @@ namespace GuardApp
             {
                 selectedGuard.Name = txtGuardName.Text;
                 selectedGuard.IsActive = radioButtonActive.Checked;
+                selectedGuard.Number = (int)numericUpDown1.Value;
                 if (guardRepository.Update(selectedGuard))
                 {
                     MessageBox.Show("Nöbet Güncellendi");
@@ -54,11 +56,11 @@ namespace GuardApp
             GuardForm guardForm = new GuardForm();
             guardForm.Show();
         }
-    
+
         public bool CreatedValid()
         {
             return !(string.IsNullOrEmpty(txtGuardName.Text));
         }
-       
+
     }
 }

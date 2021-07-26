@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GuardApp.Model
+namespace GuardApp.Model.HelperModel
 {
-    public class PersonalUnity
+    public class PersonalViewModal
     {
-        public int Id { get; set; }
-        [DisplayName("Birlik Adı")]
+        public int PersonalId { get; set; }
         public string Name { get; set; }
-
         public override string ToString()
         {
             return Name;
