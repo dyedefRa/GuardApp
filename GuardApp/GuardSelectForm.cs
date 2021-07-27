@@ -77,8 +77,11 @@ namespace GuardApp
         private void btnExport_Click(object sender, EventArgs e)
         {
 
-            if (guardCompleteList.Any(x=>x==false))           
-                MessageBox.Show("Tamamlanmamış Nöbetler Bulunmaktadır.Lütfen Tüm Nöbetleri Doldurun...");
+            if (guardCompleteList.Any(x=>x==false))
+            {
+                string date = DateTime.Now.AddMonths(1).TurkishDateTimeShortToString();         
+                MessageBox.Show(date +" tarihi için tamamlanmamış nöbetler bulunmaktadır.Lütfen tüm nöbetleri eksiksiz doldurun...");
+            }
             else
             {
                 MessageBox.Show("Yazdırılıyor.");
