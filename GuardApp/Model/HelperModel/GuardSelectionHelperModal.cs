@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GuardApp.Model.HelperModel
 {
-   public class GuardSelectionHelperModel
+   public class GuardSelectionHelperModal
     {
         public int GuardId { get; set; }
         [DisplayName("Nöbet Adı")]

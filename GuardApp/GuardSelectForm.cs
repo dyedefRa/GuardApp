@@ -24,9 +24,7 @@ namespace GuardApp
             BackgroundImageLayout = ImageLayout.Stretch;
         }
 
-        //Burayı sil 
         Repository<Personal> personalRepository = new Repository<Personal>();
-
         Repository<Guard> guardRepository = new Repository<Guard>();
         Repository<GuardProgram> guardProgramRepository = new Repository<GuardProgram>();
         List<bool> guardCompleteList = new List<bool>();
@@ -37,18 +35,18 @@ namespace GuardApp
 
             if (guardRepository != null)
             {
-                var newModel = guardRepository.List().Where(x=>x.IsActive==true).Select(x =>
-                {
-                    bool isCompleteGuard = guardProgramRepository.List().Where(y => y.GuardPersonal.GuardId == x.Id && y.Date.Month == DateTime.Now.Month + 1 && y.Date.Year == DateTime.Now.Year).ToList().Count == totalDayOnNextMonth ? true : false;
-                    guardCompleteList.Add(isCompleteGuard);
-                    return new GuardSelectionHelperModel()
+                var newModel = guardRepository.List().Where(x => x.IsActive == true).Select(x =>
                     {
-                        GuardId = x.Id,
-                        Name = x.Name,
-                        IsFullSelectedGuardForNextMonth = isCompleteGuard
-                    };
+                        bool isCompleteGuard = guardProgramRepository.List().Where(y => y.GuardPersonal.GuardId == x.Id && y.Date.Month == DateTime.Now.Month + 1 && y.Date.Year == DateTime.Now.Year).ToList().Count == totalDayOnNextMonth ? true : false;
+                        guardCompleteList.Add(isCompleteGuard);
+                        return new GuardSelectionHelperModal()
+                        {
+                            GuardId = x.Id,
+                            Name = x.Name,
+                            IsFullSelectedGuardForNextMonth = isCompleteGuard
+                        };
 
-                }).ToList();
+                    }).ToList();
 
                 dataGridModel.DataSource = newModel;
                 dataGridModel.Columns["GuardId"].Visible = false;
@@ -76,23 +74,49 @@ namespace GuardApp
 
         private void btnExport_Click(object sender, EventArgs e)
         {
+            DateTime nextDate = DateTime.Now.AddMonths(1);
 
-            if (guardCompleteList.Any(x=>x==false))
-            {
-                string date = DateTime.Now.AddMonths(1).TurkishDateTimeShortToString();         
-                MessageBox.Show(date +" tarihi için tamamlanmamış nöbetler bulunmaktadır.Lütfen tüm nöbetleri eksiksiz doldurun...");
-            }
-            else
-            {
-                MessageBox.Show("Yazdırılıyor.");
-            }
+
+            //if (guardCompleteList.Any(x => x == false))
+            //{
+            //    MessageBox.Show(nextDate.TurkishDateTimeShortToString() + " tarihi için tamamlanmamış nöbetler bulunmaktadır.Lütfen tüm nöbetleri eksiksiz doldurun...");
+            //}
+            //else
+            //{
+
+            List<PDFHelperViewModal> pDFHelperModals;
+
+                var nextMonthGuardProgramList = guardProgramRepository.List().Where(x => x.Date.Month == nextDate.Month && x.Date.Year == nextDate.Year).ToList();
+                if (nextMonthGuardProgramList != null)
+                {
+
+                    pDFHelperModals = nextMonthGuardProgramList
+                      .GroupBy(x => new { x.GuardPersonal.Guard, x.GuardPersonal.Personal })
+                      .Select(y => new PDFHelperViewModal()
+                      {
+                          GuardName = y.Key.Guard.Name,
+                          GuardNumber = y.Key.Guard.Number,
+                          PersonalInformation = y.Key.Personal.GetIdentityForPdf(),
+                          UnityName = y.Key.Personal.PersonalUnity?.Name,
+                          GuardDayOnMonth = y.ToList().Select(x => x.Date.Day).ToList(),
+
+                      }).ToList();
+
+                    ReportHelper reportHelper = new ReportHelper();
+
+                    string documentName = nextDate.PDFDocumentFolderPathToString();
+                    File.WriteAllBytes(documentName, reportHelper.PrepareReport(pDFHelperModals));
+                }
+                else
+                {
+                    MessageBox.Show("Sistemde hata oluştu.Lütfen daha sonra tekrar deneyiniz...");
+                }
+
+            //    MessageBox.Show("Yazdırılıyor.");
+            //}
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            ReportHelper reportHelper = new ReportHelper();
 
-            File.WriteAllBytes("D:/hello.pdf", reportHelper.PrepareReport(personalRepository.List()));
-        }
     }
 }
+

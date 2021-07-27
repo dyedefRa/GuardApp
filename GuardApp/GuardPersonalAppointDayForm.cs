@@ -65,12 +65,6 @@ namespace GuardApp
             ApplyAppoint();
         }
 
-        private void btnAppoint_Click(object sender, EventArgs e)
-        {
-            ApplyAppoint();
-
-        }
-
         private void ApplyAppoint()
         {
             if (beforeProgramPersonal != null)
@@ -84,7 +78,7 @@ namespace GuardApp
 
                 GuardProgram guardProgram = new GuardProgram()
                 {
-                    GuardPersonal = new GuardPersonal() { GuardId = _guardId, PersonalId = selectedPersonalViewModal.PersonalId },
+                    GuardPersonalId = guardPersonalRepository.List().FirstOrDefault(x => x.GuardId == _guardId && x.PersonalId == selectedPersonalViewModal.PersonalId).Id,
                     Date = _clickedDate
                 };
                 if (guardProgramRepository.Insert(guardProgram))

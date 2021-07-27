@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GuardApp.Helper;
-
+using GuardApp.Model.HelperModel;
 
 namespace GuardApp.Helper
 {
@@ -24,13 +24,13 @@ namespace GuardApp.Helper
         iTextSharp.text.pdf.PdfPTable pdfTable = new PdfPTable(3);
         iTextSharp.text.pdf.PdfPCell pdfCell;
         MemoryStream memoryStream = new MemoryStream();
-        List<Personal> _personals = new List<Personal>();
+        List<PDFHelperViewModal> _pdfModalList = new List<PDFHelperViewModal>();
 
         #endregion
 
-        public byte[] PrepareReport(List<Personal> personals)
+        public byte[] PrepareReport(List<PDFHelperViewModal> pdfModalList)
         {
-            _personals = personals;
+            _pdfModalList = pdfModalList;
 
             #region
 
@@ -65,7 +65,6 @@ namespace GuardApp.Helper
             AddRowLineForReportHeader("Kıbrıs Türk Barış Kuvvetleri Komutanlığı", 8f);
             AddRowLineForReportHeader("Topçu Alay Komutanlığı", 8f);
             AddRowLineForReportHeader("\n", 8f);
-
         }
 
         private void AddRowLineForReportHeader(string text, float size)
@@ -99,9 +98,6 @@ namespace GuardApp.Helper
 
             #region Table Body
 
-
-
-
             fontStyle = FontFactory.GetFont("Tahoma", 8f, 1);
             pdfCell = new PdfPCell(new Phrase("NOBET ADI", fontStyle));
             pdfCell.HorizontalAlignment = Element.ALIGN_CENTER;
@@ -111,8 +107,6 @@ namespace GuardApp.Helper
             pTGuardNameColoumn.AddCell(pdfCell);
             pTGuardNameColoumn.CompleteRow();
             document.Add(pTGuardNameColoumn);
-
-
 
             //10 COL TABLE
             iTextSharp.text.pdf.PdfPTable pdfTable10Coloumn = new PdfPTable(10);
@@ -148,14 +142,7 @@ namespace GuardApp.Helper
             pdfTable10Coloumn.CompleteRow();
             document.Add(pdfTable10Coloumn);
 
-
-
-
-
-
             #endregion
         }
-
-
     }
 }

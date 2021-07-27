@@ -30,5 +30,11 @@ namespace GuardApp.Model
         {
             return Name;
         }
+
+        public string GetIdentityForPdf()
+        {
+            string identityInformation = Rank?.Name + " " + Name + " " + " (" + Term + ")";
+            return identityInformation;
+        }
     }
 }
