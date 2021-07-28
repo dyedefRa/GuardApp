@@ -4,8 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GuardApp.Helper
 {
@@ -35,7 +33,6 @@ namespace GuardApp.Helper
                 PersonalId = x.Id,
                 Name = x.Rank.Name + " " + x.Name + " " + "( " + x.PersonalUnity.Name + " )"
             }).ToList();
-
         }
     }
 }

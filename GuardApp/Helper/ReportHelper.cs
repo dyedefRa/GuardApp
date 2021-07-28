@@ -1,15 +1,10 @@
-﻿using GuardApp.Model;
-using iTextSharp.text;
+﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GuardApp.Helper;
-using GuardApp.Model.HelperModel;
+using static GuardApp.Helper.PDFHelper;
 
 namespace GuardApp.Helper
 {
@@ -30,8 +25,8 @@ namespace GuardApp.Helper
 
         public byte[] PrepareReport(List<PDFHelperViewModal> pdfModalList)
         {
-            _pdfModalList = pdfModalList;
-
+            //_pdfModalList = pdfModalList.OrderBy(x => x.GuardNumber&&x.)
+            _pdfModalList = pdfModalList.OrderBy(x => x.GuardNumber).ToList();
             #region
 
             document = new iTextSharp.text.Document(PageSize.A4, 0f, 0f, 0f, 0f);
@@ -50,7 +45,7 @@ namespace GuardApp.Helper
             this.ReportHeader();
             document.Add(pdfTable);
 
-            this.ReportBody(DateTime.Now); // BURASI
+            this.ReportBody(); // BURASI
             pdfTable.HeaderRows = 2;
             //document.AddLanguage("tr-TR");
             document.Close();
@@ -80,12 +75,14 @@ namespace GuardApp.Helper
             pdfTable.CompleteRow();
         }
 
-        private void ReportBody(DateTime dateTime)
+        private void ReportBody()
         {
+            string nextDateString = DateTime.Now.AddMonths(1).TurkishDateTimeShortToString();
+
             #region Table Header
 
             fontStyle = FontFactory.GetFont("Tahoma", 8f, 1);
-            pdfCell = new PdfPCell(new Phrase("KTBK EŞREF BİTLİS KIŞLASI " + dateTime.TurkishDateTimeShortToString() + " AYI NÖBET ÇİZELGESİ", fontStyle));
+            pdfCell = new PdfPCell(new Phrase("KTBK EŞREF BİTLİS KIŞLASI " + nextDateString + " AYI NÖBET ÇİZELGESİ", fontStyle));
             pdfCell.HorizontalAlignment = Element.ALIGN_CENTER;
             pdfCell.VerticalAlignment = Element.ALIGN_MIDDLE;
             pdfCell.BackgroundColor = BaseColor.WHITE;
@@ -97,50 +94,73 @@ namespace GuardApp.Helper
             #endregion
 
             #region Table Body
+             
+            foreach (var _pdfModal in _pdfModalList)
+            {
+                fontStyle = FontFactory.GetFont("Tahoma", 8f, 1);
+                pdfCell = new PdfPCell(new Phrase(_pdfModal.GuardName, fontStyle));
+                pdfCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                pdfCell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                pdfCell.BackgroundColor = BaseColor.WHITE;
+                iTextSharp.text.pdf.PdfPTable pTGuardNameColoumn = new PdfPTable(1);
+                pTGuardNameColoumn.AddCell(pdfCell);
+                pTGuardNameColoumn.CompleteRow();
+                document.Add(pTGuardNameColoumn);
 
-            fontStyle = FontFactory.GetFont("Tahoma", 8f, 1);
-            pdfCell = new PdfPCell(new Phrase("NOBET ADI", fontStyle));
-            pdfCell.HorizontalAlignment = Element.ALIGN_CENTER;
-            pdfCell.VerticalAlignment = Element.ALIGN_MIDDLE;
-            pdfCell.BackgroundColor = BaseColor.WHITE;
-            iTextSharp.text.pdf.PdfPTable pTGuardNameColoumn = new PdfPTable(1);
-            pTGuardNameColoumn.AddCell(pdfCell);
-            pTGuardNameColoumn.CompleteRow();
-            document.Add(pTGuardNameColoumn);
+                #region pdfTableInformationAndMonthName
 
-            //10 COL TABLE
-            iTextSharp.text.pdf.PdfPTable pdfTable10Coloumn = new PdfPTable(10);
-            pdfTable10Coloumn.SetWidths(new float[] { 20f, 100f, 20f, 20f, 20f, 20f, 20f, 20f, 20f, 30f });
+                iTextSharp.text.pdf.PdfPTable pdfTableInformationAndMonthName = new PdfPTable(10);
+                pdfTableInformationAndMonthName.SetWidths(new float[] { 20f, 100f, 20f, 20f, 20f, 20f, 20f, 20f, 20f, 30f });
 
-            pdfCell = new PdfPCell(new Phrase("S.No", fontStyle));
-            pdfTable10Coloumn.AddCell(pdfCell);
+                pdfCell = new PdfPCell(new Phrase("S.No", fontStyle));
+                pdfTableInformationAndMonthName.AddCell(pdfCell);
 
-            pdfCell = new PdfPCell(new Phrase("Kimlik", fontStyle));
-            pdfTable10Coloumn.AddCell(pdfCell);
+                pdfCell = new PdfPCell(new Phrase("Kimlik", fontStyle));
+                pdfTableInformationAndMonthName.AddCell(pdfCell);
 
-            pdfCell = new PdfPCell(new Phrase("P.tesi", fontStyle));
-            pdfTable10Coloumn.AddCell(pdfCell);
+                pdfCell = new PdfPCell(new Phrase("P.tesi", fontStyle));
+                pdfTableInformationAndMonthName.AddCell(pdfCell);
 
-            pdfCell = new PdfPCell(new Phrase("Salı", fontStyle));
-            pdfTable10Coloumn.AddCell(pdfCell);
+                pdfCell = new PdfPCell(new Phrase("Salı", fontStyle));
+                pdfTableInformationAndMonthName.AddCell(pdfCell);
 
-            pdfCell = new PdfPCell(new Phrase("Çarş.", fontStyle));
-            pdfTable10Coloumn.AddCell(pdfCell);
+                pdfCell = new PdfPCell(new Phrase("Çarş.", fontStyle));
+                pdfTableInformationAndMonthName.AddCell(pdfCell);
 
-            pdfCell = new PdfPCell(new Phrase("Perş.", fontStyle));
-            pdfTable10Coloumn.AddCell(pdfCell);
+                pdfCell = new PdfPCell(new Phrase("Perş.", fontStyle));
+                pdfTableInformationAndMonthName.AddCell(pdfCell);
 
-            pdfCell = new PdfPCell(new Phrase("Cuma", fontStyle));
-            pdfTable10Coloumn.AddCell(pdfCell);
+                pdfCell = new PdfPCell(new Phrase("Cuma", fontStyle));
+                pdfTableInformationAndMonthName.AddCell(pdfCell);
 
-            pdfCell = new PdfPCell(new Phrase("C.tesi", fontStyle));
-            pdfTable10Coloumn.AddCell(pdfCell);
+                pdfCell = new PdfPCell(new Phrase("C.tesi", fontStyle));
+                pdfTableInformationAndMonthName.AddCell(pdfCell);
 
-            pdfCell = new PdfPCell(new Phrase("Pazar", fontStyle));
-            pdfTable10Coloumn.AddCell(pdfCell);
+                pdfCell = new PdfPCell(new Phrase("Pazar", fontStyle));
+                pdfTableInformationAndMonthName.AddCell(pdfCell);
 
-            pdfTable10Coloumn.CompleteRow();
-            document.Add(pdfTable10Coloumn);
+                pdfTableInformationAndMonthName.CompleteRow();
+                document.Add(pdfTableInformationAndMonthName);
+
+                #endregion
+
+                #region Best Table For Month
+
+                foreach (var _pdfModalPersonal in _pdfModal.PersonalGuardList)
+                {
+                    iTextSharp.text.pdf.PdfPTable pdfTablePersonMonth = new PdfPTable(10);
+                    pdfTablePersonMonth.SetWidths(new float[] { 20f, 100f, 20f, 20f, 20f, 20f, 20f, 20f, 20f, 30f });
+
+
+                    pdfCell = new PdfPCell(new Phrase("S.No", fontStyle));
+                    pdfTablePersonMonth.AddCell(pdfCell);
+                }
+
+
+                #endregion
+
+
+            }
 
             #endregion
         }

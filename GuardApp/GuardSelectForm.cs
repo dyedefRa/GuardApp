@@ -76,46 +76,28 @@ namespace GuardApp
         {
             DateTime nextDate = DateTime.Now.AddMonths(1);
 
-
             //if (guardCompleteList.Any(x => x == false))
             //{
             //    MessageBox.Show(nextDate.TurkishDateTimeShortToString() + " tarihi için tamamlanmamış nöbetler bulunmaktadır.Lütfen tüm nöbetleri eksiksiz doldurun...");
             //}
             //else
             //{
+            var nextMonthGuardProgramList = guardProgramRepository.List().Where(x => x.Date.Month == nextDate.Month && x.Date.Year == nextDate.Year).ToList();
+            if (nextMonthGuardProgramList != null)
+            {
+                string documentName = nextDate.PDFDocumentFolderPathToString();
+                ReportHelper reportHelper = new ReportHelper();
 
-            List<PDFHelperViewModal> pDFHelperModals;
+                var pdfHelperModal = PDFHelper.GetPDFHelperModals(nextMonthGuardProgramList);
+                File.WriteAllBytes(documentName, reportHelper.PrepareReport(pdfHelperModal));
+                MessageBox.Show(documentName + " yoluna yazdırıldı.");
+            }
+            else
 
-                var nextMonthGuardProgramList = guardProgramRepository.List().Where(x => x.Date.Month == nextDate.Month && x.Date.Year == nextDate.Year).ToList();
-                if (nextMonthGuardProgramList != null)
-                {
+                MessageBox.Show("Sistemde hata oluştu.Lütfen daha sonra tekrar deneyiniz...");
 
-                    pDFHelperModals = nextMonthGuardProgramList
-                      .GroupBy(x => new { x.GuardPersonal.Guard, x.GuardPersonal.Personal })
-                      .Select(y => new PDFHelperViewModal()
-                      {
-                          GuardName = y.Key.Guard.Name,
-                          GuardNumber = y.Key.Guard.Number,
-                          PersonalInformation = y.Key.Personal.GetIdentityForPdf(),
-                          UnityName = y.Key.Personal.PersonalUnity?.Name,
-                          GuardDayOnMonth = y.ToList().Select(x => x.Date.Day).ToList(),
-
-                      }).ToList();
-
-                    ReportHelper reportHelper = new ReportHelper();
-
-                    string documentName = nextDate.PDFDocumentFolderPathToString();
-                    File.WriteAllBytes(documentName, reportHelper.PrepareReport(pDFHelperModals));
-                }
-                else
-                {
-                    MessageBox.Show("Sistemde hata oluştu.Lütfen daha sonra tekrar deneyiniz...");
-                }
-
-            //    MessageBox.Show("Yazdırılıyor.");
             //}
         }
-
 
     }
 }
