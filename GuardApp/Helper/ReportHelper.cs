@@ -25,8 +25,8 @@ namespace GuardApp.Helper
 
         public byte[] PrepareReport(List<PDFHelperViewModal> pdfModalList)
         {
-            //_pdfModalList = pdfModalList.OrderBy(x => x.GuardNumber&&x.)
             _pdfModalList = pdfModalList.OrderBy(x => x.GuardNumber).ToList();
+
             #region
 
             document = new iTextSharp.text.Document(PageSize.A4, 0f, 0f, 0f, 0f);
@@ -146,20 +146,70 @@ namespace GuardApp.Helper
 
                 #region Best Table For Month
 
-                foreach (var _pdfModalPersonal in _pdfModal.PersonalGuardList)
+                fontStyle = FontFactory.GetFont("Tahoma", 6f, 1);
+
+                int rank = 1;
+                foreach (var _pdfModalPersonal in _pdfModal.PersonalGuardList.OrderBy(x=>x.RankNumber))
                 {
                     iTextSharp.text.pdf.PdfPTable pdfTablePersonMonth = new PdfPTable(10);
                     pdfTablePersonMonth.SetWidths(new float[] { 20f, 100f, 20f, 20f, 20f, 20f, 20f, 20f, 20f, 30f });
 
 
-                    pdfCell = new PdfPCell(new Phrase("S.No", fontStyle));
+                    pdfCell = new PdfPCell(new Phrase(rank.ToString(), fontStyle));
                     pdfTablePersonMonth.AddCell(pdfCell);
+
+                    pdfCell = new PdfPCell(new Phrase(_pdfModalPersonal.PersonalInformation, fontStyle));
+                    pdfTablePersonMonth.AddCell(pdfCell);
+
+                    #region Days
+
+                    var monday = _pdfModalPersonal.DayNumbersAndGuardNumbers.FirstOrDefault(x => x.DayNumber == "1");
+                    var mondayGuards = monday != null ? monday.GuardNumbers : "";
+                    pdfCell = new PdfPCell(new Phrase(mondayGuards, fontStyle));
+                    pdfTablePersonMonth.AddCell(pdfCell);
+
+                    var tuesday = _pdfModalPersonal.DayNumbersAndGuardNumbers.FirstOrDefault(x => x.DayNumber == "2");
+                    var tuesdayGuards = tuesday != null ? tuesday.GuardNumbers : "";
+                    pdfCell = new PdfPCell(new Phrase(tuesdayGuards, fontStyle));
+                    pdfTablePersonMonth.AddCell(pdfCell);
+
+                    var wednesday = _pdfModalPersonal.DayNumbersAndGuardNumbers.FirstOrDefault(x => x.DayNumber == "3");
+                    var wednesdayGuards = wednesday != null ? wednesday.GuardNumbers : "";
+                    pdfCell = new PdfPCell(new Phrase(wednesdayGuards, fontStyle));
+                    pdfTablePersonMonth.AddCell(pdfCell);
+
+                    var thursday = _pdfModalPersonal.DayNumbersAndGuardNumbers.FirstOrDefault(x => x.DayNumber == "4");
+                    var thursdayGuards = thursday != null ? thursday.GuardNumbers : "";
+                    pdfCell = new PdfPCell(new Phrase(thursdayGuards, fontStyle));
+                    pdfTablePersonMonth.AddCell(pdfCell);
+
+                    var friday = _pdfModalPersonal.DayNumbersAndGuardNumbers.FirstOrDefault(x => x.DayNumber == "5");
+                    var fridayGuards = friday != null ? friday.GuardNumbers : "";
+                    pdfCell = new PdfPCell(new Phrase(fridayGuards, fontStyle));
+                    pdfTablePersonMonth.AddCell(pdfCell);
+
+                    var saturday = _pdfModalPersonal.DayNumbersAndGuardNumbers.FirstOrDefault(x => x.DayNumber == "6");
+                    var saturdayGuards = saturday != null ? saturday.GuardNumbers : "";
+                    pdfCell = new PdfPCell(new Phrase(saturdayGuards, fontStyle));
+                    pdfTablePersonMonth.AddCell(pdfCell);
+
+                    var sunday = _pdfModalPersonal.DayNumbersAndGuardNumbers.FirstOrDefault(x => x.DayNumber == "0");
+                    var sundayGuards = sunday != null ? sunday.GuardNumbers : "";
+                    pdfCell = new PdfPCell(new Phrase(sundayGuards, fontStyle));
+                    pdfTablePersonMonth.AddCell(pdfCell);
+
+                    #endregion
+
+                    pdfCell = new PdfPCell(new Phrase(_pdfModalPersonal.PersonalUnityName, fontStyle));
+                    pdfTablePersonMonth.AddCell(pdfCell);
+                 
+                    pdfTablePersonMonth.CompleteRow();
+                    document.Add(pdfTablePersonMonth);
+
+                    rank++;
                 }
 
-
                 #endregion
-
-
             }
 
             #endregion

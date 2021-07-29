@@ -23,7 +23,7 @@ namespace GuardApp.Helper
 
         public static string PDFDocumentFolderPathToString(this DateTime dateTime,string localStorageName="D")
         {
-            return localStorageName+":/NobetUygulamasi_" + dateTime.Month.ToString() + "_" + dateTime.Year.ToString()+".pdf";
+            return localStorageName + ":/NTP_" + dateTime.Month.ToString() + "_" + dateTime.Year.ToString() + ".pdf";         
         }
 
         public static List<PersonalViewModal> PersonalDisplayerFormatList(this List<Personal> personals)

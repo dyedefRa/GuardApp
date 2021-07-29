@@ -52,7 +52,7 @@ namespace GuardApp.Helper
                     {
                         //HAFTANIN GUNLERINE GORE GRUPLANDI VE O GUNE AIT NOBET STRING HALINE GETIRILDI
                         //HAFTANIN GUNLERI VE O GUNE AIT NOBETLER  => ptesi  için 1,8 ; salı için 2 ;çars için 3,10
-                        DayNumber = key3.DayOfWeek.ToString(),
+                        DayNumber = ((int)key3.DayOfWeek).ToString(),
                         GuardNumbers = string.Join(",", group3.Select(g => g.Day.ToString()))
                     }).ToList()
                 }).ToList()
