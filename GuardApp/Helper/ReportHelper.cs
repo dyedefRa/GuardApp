@@ -15,7 +15,7 @@ namespace GuardApp.Helper
 
         int totalColumn = 3;
         iTextSharp.text.Document document;
-        iTextSharp.text.Font fontStyle;
+        iTextSharp.text.Font fontStyle = new iTextSharp.text.Font(BaseFont.CreateFont("Helvetica", "CP1254", iTextSharp.text.pdf.BaseFont.NOT_EMBEDDED), 12, iTextSharp.text.Font.NORMAL);
         iTextSharp.text.pdf.PdfPTable pdfTable = new PdfPTable(3);
         iTextSharp.text.pdf.PdfPCell pdfCell;
         MemoryStream memoryStream = new MemoryStream();
@@ -34,20 +34,15 @@ namespace GuardApp.Helper
             document.SetMargins(10f, 10f, 15f, 15f);
             pdfTable.WidthPercentage = 100;
             pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
-            fontStyle = FontFactory.GetFont("Tahoma", 8f, 1);
             PdfWriter pdfWriter = PdfWriter.GetInstance(document, memoryStream);
-            //pdfWriter.SetLanguage("tr-TR");
-
             document.Open();
             pdfTable.SetWidths(new float[] { 20f, 150f, 100f });
             #endregion
 
             this.ReportHeader();
             document.Add(pdfTable);
-
-            this.ReportBody(); // BURASI
+            this.ReportBody();
             pdfTable.HeaderRows = 2;
-            //document.AddLanguage("tr-TR");
             document.Close();
             return memoryStream.ToArray();
         }
@@ -64,7 +59,7 @@ namespace GuardApp.Helper
 
         private void AddRowLineForReportHeader(string text, float size)
         {
-            fontStyle = FontFactory.GetFont("Tahoma", size, 1);
+            fontStyle.Size = size;
             pdfCell = new PdfPCell(new Phrase(text, fontStyle));
             pdfCell.Colspan = totalColumn;
             pdfCell.HorizontalAlignment = Element.ALIGN_CENTER;
@@ -80,8 +75,7 @@ namespace GuardApp.Helper
             string nextDateString = DateTime.Now.AddMonths(1).TurkishDateTimeShortToString();
 
             #region Table Header
-
-            fontStyle = FontFactory.GetFont("Tahoma", 8f, 1);
+            fontStyle.Size = 8f;
             pdfCell = new PdfPCell(new Phrase("KTBK EŞREF BİTLİS KIŞLASI " + nextDateString + " AYI NÖBET ÇİZELGESİ", fontStyle));
             pdfCell.HorizontalAlignment = Element.ALIGN_CENTER;
             pdfCell.VerticalAlignment = Element.ALIGN_MIDDLE;
@@ -94,10 +88,8 @@ namespace GuardApp.Helper
             #endregion
 
             #region Table Body
-             
             foreach (var _pdfModal in _pdfModalList)
             {
-                fontStyle = FontFactory.GetFont("Tahoma", 8f, 1);
                 pdfCell = new PdfPCell(new Phrase(_pdfModal.GuardName, fontStyle));
                 pdfCell.HorizontalAlignment = Element.ALIGN_CENTER;
                 pdfCell.VerticalAlignment = Element.ALIGN_MIDDLE;
@@ -146,14 +138,13 @@ namespace GuardApp.Helper
 
                 #region Best Table For Month
 
-                fontStyle = FontFactory.GetFont("Tahoma", 6f, 1);
+                fontStyle.Size = 6f;
 
                 int rank = 1;
-                foreach (var _pdfModalPersonal in _pdfModal.PersonalGuardList.OrderBy(x=>x.RankNumber))
+                foreach (var _pdfModalPersonal in _pdfModal.PersonalGuardList.OrderBy(x => x.RankNumber))
                 {
                     iTextSharp.text.pdf.PdfPTable pdfTablePersonMonth = new PdfPTable(10);
                     pdfTablePersonMonth.SetWidths(new float[] { 20f, 100f, 20f, 20f, 20f, 20f, 20f, 20f, 20f, 30f });
-
 
                     pdfCell = new PdfPCell(new Phrase(rank.ToString(), fontStyle));
                     pdfTablePersonMonth.AddCell(pdfCell);
@@ -202,7 +193,7 @@ namespace GuardApp.Helper
 
                     pdfCell = new PdfPCell(new Phrase(_pdfModalPersonal.PersonalUnityName, fontStyle));
                     pdfTablePersonMonth.AddCell(pdfCell);
-                 
+
                     pdfTablePersonMonth.CompleteRow();
                     document.Add(pdfTablePersonMonth);
 
