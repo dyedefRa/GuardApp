@@ -61,7 +61,6 @@ namespace GuardApp
                 relatedPersonals = personalRepository.List().Where(x => relatedPersonalId.Contains(x.Id) && x.IsActive == true).ToList();
 
                 List<PersonalViewModal> personalViewModals = relatedPersonals.PersonalDisplayerFormatList();
-
                 lstGuardPersonal.DataSource = null;
                 if (personalViewModals != null)
                 {
