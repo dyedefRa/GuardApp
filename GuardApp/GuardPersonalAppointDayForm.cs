@@ -32,6 +32,12 @@ namespace GuardApp
 
             lblDate.Text = _clickedDate.TurkishDateTimeLongToString();
             lblGuard.Text = guardRepository.GetById(_guardId).Name;
+            this.FormClosing += GuardPersonalAppointDayForm_FormClosing;
+        }
+
+        private void GuardPersonalAppointDayForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            btnBack_Click(btnBack, EventArgs.Empty);
         }
 
         private void GuardPersonalAppointDayForm_Load(object sender, EventArgs e)
@@ -40,9 +46,9 @@ namespace GuardApp
             {
                 beforeProgramPersonal = guardProgramRepository.List().FirstOrDefault(x => x.Date == _clickedDate && x.GuardPersonal.GuardId == _guardId);
 
-                var relatedPersonalId = guardPersonalRepository.List().Where(x => x.GuardId == _guardId).Select(x => x.PersonalId).ToList();
+                var relatedPersonalId = guardPersonalRepository.List().Where(x => x.GuardId == _guardId && x.IsActive == true).Select(x => x.PersonalId).ToList();
                 var personalList = personalRepository.List().Where(x => relatedPersonalId.Contains(x.Id)).ToList();
-              
+
                 List<PersonalViewModal> personalViewModals = personalList.PersonalDisplayerFormatList();
                 lstPersonal.DataSource = null;
                 lstPersonal.Items.Clear();
@@ -67,31 +73,29 @@ namespace GuardApp
 
         private void ApplyAppoint()
         {
-            if (beforeProgramPersonal != null)
-            {
-                guardProgramRepository.Delete(beforeProgramPersonal);
-            }
-            var selectedPersonalViewModal = (PersonalViewModal)lstPersonal.SelectedItem;
-            if (selectedPersonalViewModal!=null)
-            {
-
-
-                GuardProgram guardProgram = new GuardProgram()
+                if (beforeProgramPersonal != null)
                 {
-                    GuardPersonalId = guardPersonalRepository.List().FirstOrDefault(x => x.GuardId == _guardId && x.PersonalId == selectedPersonalViewModal.PersonalId).Id,
-                    Date = _clickedDate
-                };
-                if (guardProgramRepository.Insert(guardProgram))
-                {
-                    GuardProgress guardProgress = new GuardProgress(_guardId);
-                    guardProgress.Show();
-                    this.Hide();
+                    guardProgramRepository.Delete(beforeProgramPersonal);
                 }
-                else
+                var selectedPersonalViewModal = (PersonalViewModal)lstPersonal.SelectedItem;
+                if (selectedPersonalViewModal != null)
                 {
-                    MessageBox.Show("Sistemde sorun oluştu.");
+                    GuardProgram guardProgram = new GuardProgram()
+                    {
+                        GuardPersonalId = guardPersonalRepository.List().FirstOrDefault(x => x.GuardId == _guardId && x.PersonalId == selectedPersonalViewModal.PersonalId).Id,
+                        Date = _clickedDate
+                    };
+                    if (guardProgramRepository.Insert(guardProgram))
+                    {
+                        GuardProgress guardProgress = new GuardProgress(_guardId);
+                        guardProgress.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Sistemde sorun oluştu.");
+                    }
                 }
-            }
         }
 
         private void btnBack_Click(object sender, EventArgs e)

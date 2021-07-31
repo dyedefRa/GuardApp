@@ -138,6 +138,8 @@ namespace GuardApp
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.lblGuard);
             this.Controls.Add(this.lstPersonal);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "GuardPersonalAppointDayForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nöbet & Tarih & Kişi Eşleştirme";

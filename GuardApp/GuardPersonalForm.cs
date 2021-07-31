@@ -48,7 +48,7 @@ namespace GuardApp
 
         private void FillGuardListBox()
         {
-            lstGuard.DataSource = guardRepository.List().Where(x=>x.IsActive==true).OrderBy(x=>x.Number).ToList();
+            lstGuard.DataSource = guardRepository.List().Where(x => x.IsActive == true).OrderBy(x => x.Number).ToList();
             lstGuard.ValueMember = "Id";
             lstGuard.DisplayMember = "Name";
         }
@@ -57,10 +57,10 @@ namespace GuardApp
         {
             try
             {
-                var relatedPersonalId = guardPersonalRepository.List().Where(x => x.GuardId == relatedGuardId).Select(x => x.PersonalId).ToList();
+                var relatedPersonalId = guardPersonalRepository.List().Where(x => x.GuardId == relatedGuardId && x.IsActive == true).Select(x => x.PersonalId).ToList();
                 relatedPersonals = personalRepository.List().Where(x => relatedPersonalId.Contains(x.Id) && x.IsActive == true).ToList();
 
-                List<PersonalViewModal> personalViewModals = relatedPersonals.PersonalDisplayerFormatList();
+                List<PersonalViewModal> personalViewModals = relatedPersonals.PersonalDisplayerFormatList().OrderBy(x => x.RankNumber).ToList();
                 lstGuardPersonal.DataSource = null;
                 if (personalViewModals != null)
                 {
@@ -83,7 +83,7 @@ namespace GuardApp
             {
                 otherPersonals = personalRepository.List().Where(x => x.IsActive == true).Except(relatedPersonals).ToList();
 
-                otherChangedList = otherPersonals.PersonalDisplayerFormatList();
+                otherChangedList = otherPersonals.PersonalDisplayerFormatList().OrderBy(x => x.RankNumber).ToList();
                 lstAllPersonal.DataSource = null;
                 if (otherChangedList != null)
                 {
@@ -122,19 +122,23 @@ namespace GuardApp
             var relatedPersonalViewModal = (PersonalViewModal)lstAllPersonal.SelectedItem;
             if (relatedPersonalViewModal != null)
             {
-                guardPersonalRepository.Insert(new GuardPersonal() { GuardId = relatedGuardId, PersonalId = relatedPersonalViewModal.PersonalId });
+                //Model varsa IsActive guncelleyecek yoksa direk ekleyecek.
+                var relatedGuardPersonalModal = guardPersonalRepository.List().FirstOrDefault(x => x.GuardId == relatedGuardId && x.PersonalId == relatedPersonalViewModal.PersonalId);
+
+                if (relatedGuardPersonalModal==null)               
+                    guardPersonalRepository.Insert(new GuardPersonal() { GuardId = relatedGuardId, PersonalId = relatedPersonalViewModal.PersonalId });
+                else
+                {
+                    relatedGuardPersonalModal.IsActive = true;
+                    guardPersonalRepository.Update(relatedGuardPersonalModal);
+                }
                 FillPersonalListBoxes();
             }
         }
         //Tüm personellerden seçilen personeli , Nöbete ata çift tıklandığında
         private void lstAllPersonal_DoubleClick(object sender, EventArgs e)
         {
-            var relatedPersonalViewModal = (PersonalViewModal)lstAllPersonal.SelectedItem;
-            if (relatedPersonalViewModal != null)
-            {
-                guardPersonalRepository.Insert(new GuardPersonal() { GuardId = relatedGuardId, PersonalId = relatedPersonalViewModal.PersonalId });
-                FillPersonalListBoxes();
-            }
+            btnAddPersonalToGuard_Click(btnAddPersonalToGuard, EventArgs.Empty);
         }
         //Nöbetteki personeli , Nöbetten çıkar buton
         private void btnPersonalRemove_Click(object sender, EventArgs e)
@@ -143,7 +147,8 @@ namespace GuardApp
             if (relatedPersonalViewModal != null)
             {
                 var relatedPersonalGuard = guardPersonalRepository.List().FirstOrDefault(x => x.GuardId == relatedGuardId && x.PersonalId == relatedPersonalViewModal.PersonalId);
-                guardPersonalRepository.Delete(relatedPersonalGuard);
+                relatedPersonalGuard.IsActive = false;
+                guardPersonalRepository.Update(relatedPersonalGuard);
                 FillPersonalListBoxes();
             }
 
@@ -151,13 +156,7 @@ namespace GuardApp
         //Nöbetteki personeli , Nöbetten çıkar  doubleclick
         private void lstGuardPersonal_DoubleClick(object sender, EventArgs e)
         {
-            var relatedPersonalViewModal = (PersonalViewModal)lstGuardPersonal.SelectedItem;
-            if (relatedPersonalViewModal != null)
-            {
-                var relatedPersonalGuard = guardPersonalRepository.List().FirstOrDefault(x => x.GuardId == relatedGuardId && x.PersonalId == relatedPersonalViewModal.PersonalId);
-                guardPersonalRepository.Delete(relatedPersonalGuard);
-                FillPersonalListBoxes();
-            }
+            btnPersonalRemove_Click(btnPersonalRemove, EventArgs.Empty);
         }
 
         private void lstGuard_MouseClick(object sender, MouseEventArgs e)

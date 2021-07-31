@@ -31,7 +31,9 @@ namespace GuardApp.Helper
             return personals.Select(x => new PersonalViewModal()
             {
                 PersonalId = x.Id,
-                Name = x.Rank.Name + " " + x.Name + " " + "( " + x.PersonalUnity.Name + " )"
+                Name = x.Rank.Name + " " + x.Name + " " + "( " + x.PersonalUnity.Name + " )",
+                RankNumber=x.Rank.Number
+                
             }).ToList();
         }
     }
