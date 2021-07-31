@@ -30,6 +30,8 @@ namespace GuardApp
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.radioButtonPassive = new System.Windows.Forms.RadioButton();
             this.radioButtonActive = new System.Windows.Forms.RadioButton();
             this.btnUpdatePersonal = new System.Windows.Forms.Button();
@@ -40,8 +42,6 @@ namespace GuardApp
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,6 +63,25 @@ namespace GuardApp
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(355, 378);
             this.panel1.TabIndex = 2;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(155, 203);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(181, 29);
+            this.comboBox2.TabIndex = 9;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(27, 204);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(108, 21);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Birlik Seçiniz :";
             // 
             // radioButtonPassive
             // 
@@ -164,25 +183,6 @@ namespace GuardApp
             this.txtName.Size = new System.Drawing.Size(181, 29);
             this.txtName.TabIndex = 2;
             // 
-            // comboBox2
-            // 
-            this.comboBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(155, 203);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(181, 29);
-            this.comboBox2.TabIndex = 9;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(27, 204);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(108, 21);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Birlik Seçiniz :";
-            // 
             // PersonalUpdateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -193,7 +193,7 @@ namespace GuardApp
             this.MinimizeBox = false;
             this.Name = "PersonalUpdateForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "PersonalUpdateForm";
+            this.Text = "Personel Güncelle";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

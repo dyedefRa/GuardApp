@@ -95,7 +95,7 @@ namespace GuardApp
 
         public void UpdateGrid()
         {
-            dataGridView1.DataSource = guardRepository.List().OrderByDescending(x => x.Id).ToList();
+            dataGridView1.DataSource = guardRepository.List().OrderBy(x => x.Number).ToList();
             dataGridView1.Columns["Id"].Visible = false;
         }
 
@@ -118,9 +118,9 @@ namespace GuardApp
 
         private void btnHelp_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Nöbet listesi alanındaki nöbetleri güncellemek/silmek için farenin sağ tuşunu kullanınız."
+            MessageBox.Show("Nöbet listesi alanındaki nöbetleri güncellemek/pasif yapmak için farenin sağ tuşunu kullanınız."
                 + Environment.NewLine
-                + "Bir nöbeti silmek o nöbeti Pasif yapar.Pasif olan nöbetler sadece bu  sayfada , liste alanında gösterilir.Pasif olan Nöbetleri sistem içerisinde kullanamazsınız.Sistem içerisinde kullanmak için Nöbeti aktif yapınız. ");
+                + "Bir nöbeti pasif yapmak => Pasif olan nöbetler sadece bu  sayfada , liste alanında gösterilir.Pasif olan Nöbetleri sistem içerisinde kullanamazsınız.Sistem içerisinde kullanmak için Nöbeti aktif yapınız. ");
         }
     }
 }

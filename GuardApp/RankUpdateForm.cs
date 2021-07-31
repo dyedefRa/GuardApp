@@ -23,6 +23,7 @@ namespace GuardApp
             this.FormClosing += RankUpdateForm_FormClosing;
             selectedRank = rankRepository.GetById(rankId);
             txtRankName.Text = selectedRank.Name;
+            numericUpDown1.Value = selectedRank.Number;
         }
 
         private void RankUpdateForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -36,6 +37,7 @@ namespace GuardApp
             if (CreatedValid())
             {
                 selectedRank.Name = txtRankName.Text;
+                selectedRank.Number = (int)numericUpDown1.Value;
                 if (rankRepository.Update(selectedRank))
                 {
                     MessageBox.Show("Rütbe Güncellendi");

@@ -29,9 +29,11 @@ namespace GuardApp
         /// </summary>
         private void InitializeComponent()
         {         
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.btnCreatePersonal = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtTerm = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -43,8 +45,7 @@ namespace GuardApp
             this.btnHelp = new System.Windows.Forms.Button();
             this.btnCreateRank = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.btnCreateUnity = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -66,6 +67,14 @@ namespace GuardApp
             this.panel1.Size = new System.Drawing.Size(355, 291);
             this.panel1.TabIndex = 1;
             // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(155, 179);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(181, 23);
+            this.comboBox2.TabIndex = 7;
+            // 
             // btnCreatePersonal
             // 
             this.btnCreatePersonal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -76,6 +85,16 @@ namespace GuardApp
             this.btnCreatePersonal.Text = "Ekle";
             this.btnCreatePersonal.UseVisualStyleBackColor = true;
             this.btnCreatePersonal.Click += new System.EventHandler(this.btnCreatePersonal_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(27, 177);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(104, 21);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Birlik Seçiniz :";
             // 
             // label4
             // 
@@ -143,14 +162,14 @@ namespace GuardApp
             // 
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(39, 66);
             this.dataGridView1.MultiSelect = false;
@@ -195,23 +214,16 @@ namespace GuardApp
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
-            // comboBox2
+            // btnCreateUnity
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(155, 179);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(181, 23);
-            this.comboBox2.TabIndex = 7;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(27, 177);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(104, 21);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Birlik Seçiniz :";
+            this.btnCreateUnity.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.btnCreateUnity.Location = new System.Drawing.Point(823, 14);
+            this.btnCreateUnity.Name = "btnCreateUnity";
+            this.btnCreateUnity.Size = new System.Drawing.Size(136, 28);
+            this.btnCreateUnity.TabIndex = 7;
+            this.btnCreateUnity.Text = "Yeni Birlik Ekle";
+            this.btnCreateUnity.UseVisualStyleBackColor = true;
+            this.btnCreateUnity.Click += new System.EventHandler(this.btnCreateUnity_Click);
             // 
             // PersonalForm
             // 
@@ -219,6 +231,7 @@ namespace GuardApp
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1290, 394);
+            this.Controls.Add(this.btnCreateUnity);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnCreateRank);
             this.Controls.Add(this.btnHelp);
@@ -254,5 +267,6 @@ namespace GuardApp
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnCreateUnity;
     }
 }

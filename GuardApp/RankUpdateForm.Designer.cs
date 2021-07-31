@@ -34,24 +34,29 @@ namespace GuardApp
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtRankName = new System.Windows.Forms.TextBox();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.numericUpDown1);
             this.panel1.Controls.Add(this.btnUpdateRank);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txtRankName);
             this.panel1.Location = new System.Drawing.Point(58, 26);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(355, 222);
+            this.panel1.Size = new System.Drawing.Size(355, 261);
             this.panel1.TabIndex = 7;
             // 
             // btnUpdateRank
             // 
             this.btnUpdateRank.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnUpdateRank.Location = new System.Drawing.Point(23, 144);
+            this.btnUpdateRank.Location = new System.Drawing.Point(23, 191);
             this.btnUpdateRank.Name = "btnUpdateRank";
             this.btnUpdateRank.Size = new System.Drawing.Size(309, 43);
             this.btnUpdateRank.TabIndex = 4;
@@ -88,11 +93,34 @@ namespace GuardApp
             this.txtRankName.Size = new System.Drawing.Size(181, 38);
             this.txtRankName.TabIndex = 2;
             // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.numericUpDown1.Location = new System.Drawing.Point(192, 139);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(140, 25);
+            this.numericUpDown1.TabIndex = 5;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(36, 143);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(116, 21);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Rütbe Sıralası :";
+            // 
             // RankUpdateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(468, 283);
+            this.ClientSize = new System.Drawing.Size(468, 325);
             this.Controls.Add(this.panel1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -101,6 +129,7 @@ namespace GuardApp
             this.Text = "Rütbe Güncelle";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -112,5 +141,7 @@ namespace GuardApp
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtRankName;
         private System.Windows.Forms.Button btnUpdateRank;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
     }
 }

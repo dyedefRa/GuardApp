@@ -48,7 +48,7 @@ namespace GuardApp
 
         private void FillGuardListBox()
         {
-            lstGuard.DataSource = guardRepository.List();
+            lstGuard.DataSource = guardRepository.List().Where(x=>x.IsActive==true).OrderBy(x=>x.Number).ToList();
             lstGuard.ValueMember = "Id";
             lstGuard.DisplayMember = "Name";
         }
@@ -57,7 +57,7 @@ namespace GuardApp
         {
             try
             {
-                var relatedPersonalId = guardPersonalRepository.List().Where(x => x.GuardId == relatedGuardId && x.Personal.IsActive == true).ToList().Select(x => x.PersonalId).ToList();
+                var relatedPersonalId = guardPersonalRepository.List().Where(x => x.GuardId == relatedGuardId).Select(x => x.PersonalId).ToList();
                 relatedPersonals = personalRepository.List().Where(x => relatedPersonalId.Contains(x.Id) && x.IsActive == true).ToList();
 
                 List<PersonalViewModal> personalViewModals = relatedPersonals.PersonalDisplayerFormatList();

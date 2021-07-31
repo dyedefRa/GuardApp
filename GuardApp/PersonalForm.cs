@@ -82,8 +82,8 @@ namespace GuardApp
                 {
                     Name = txtName.Text,
                     Term = txtTerm.Text,
-                    Rank = (Rank)comboBox1.SelectedItem,
-                    PersonalUnity = (PersonalUnity)comboBox2.SelectedItem
+                    RankId = ((Rank)comboBox1.SelectedItem).Id,
+                    PersonalUnityId = ((PersonalUnity)comboBox2.SelectedItem).Id
                 };
                 if (personalRepository.Insert(personal))
                 {
@@ -153,9 +153,9 @@ namespace GuardApp
             }
             else if (result == DialogResult.No)
             {
-                MessageBox.Show("Personel listesi alanındaki personelleri güncellemek/silmek için farenin sağ tuşunu kullanınız."
+                MessageBox.Show("Personel listesi alanındaki personelleri güncellemek/pasif yapmak için farenin sağ tuşunu kullanınız."
                 + Environment.NewLine
-                + "Bir personeli silmek o personeli Pasif yapar.Pasif olan personeller sadece bu  sayfada , liste alanında gösterilir.Pasif olan Personeli sistem içerisinde kullanamazsınız.Sistem içerisinde kullanmak için Personeli aktif yapınız. ");
+                + "Bir personeli pasif yapmak => Pasif olan Personeli sistem içerisinde kullanamazsınız.Sistem içerisinde kullanmak için Personeli aktif yapınız. ");
             }
             else
             {
@@ -170,11 +170,19 @@ namespace GuardApp
             this.Hide();
         }
 
+        private void btnCreateUnity_Click(object sender, EventArgs e)
+        {
+            PersonalUnityForm personalUnityForm = new PersonalUnityForm();
+            personalUnityForm.Show();
+            this.Hide();
+        }
+
         private void btnBack_Click(object sender, EventArgs e)
         {
             FormMain formMain = new FormMain();
             formMain.Show();
             this.Hide();
         }
+     
     }
 }

@@ -13,8 +13,8 @@ namespace GuardApp.Model
         public int Id { get; set; }
         [DisplayName("Rütbe Adı")]
         public string Name { get; set; }
-        //[DisplayName("Rütbe Sırası")]
-        //public int Number { get; set; }
+        [DisplayName("Rütbe Sırası")]
+        public int Number { get; set; }
         public override string ToString()
         {
             return Name;

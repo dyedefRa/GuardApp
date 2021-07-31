@@ -43,17 +43,17 @@ namespace GuardApp
             this.btnRank.Name = "btnRank";
             this.btnRank.Size = new System.Drawing.Size(119, 42);
             this.btnRank.TabIndex = 0;
-            this.btnRank.Text = "Rütbe Ekle";
+            this.btnRank.Text = "2) Rütbe Ekle";
             this.btnRank.UseVisualStyleBackColor = true;
             this.btnRank.Click += new System.EventHandler(this.btnRank_Click);
             // 
             // btnPersonal
             // 
-            this.btnPersonal.Location = new System.Drawing.Point(221, 233);
+            this.btnPersonal.Location = new System.Drawing.Point(496, 233);
             this.btnPersonal.Name = "btnPersonal";
             this.btnPersonal.Size = new System.Drawing.Size(119, 42);
             this.btnPersonal.TabIndex = 1;
-            this.btnPersonal.Text = "Personel Ekle";
+            this.btnPersonal.Text = "3) Personel Ekle";
             this.btnPersonal.UseVisualStyleBackColor = true;
             this.btnPersonal.Click += new System.EventHandler(this.btnPersonal_Click);
             // 
@@ -63,7 +63,7 @@ namespace GuardApp
             this.btnGuard.Name = "btnGuard";
             this.btnGuard.Size = new System.Drawing.Size(119, 42);
             this.btnGuard.TabIndex = 2;
-            this.btnGuard.Text = "Nöbet Ekle";
+            this.btnGuard.Text = "4) Nöbet Ekle";
             this.btnGuard.UseVisualStyleBackColor = true;
             this.btnGuard.Click += new System.EventHandler(this.btnGuard_Click);
             // 
@@ -73,7 +73,7 @@ namespace GuardApp
             this.btnMonthly.Name = "btnMonthly";
             this.btnMonthly.Size = new System.Drawing.Size(531, 42);
             this.btnMonthly.TabIndex = 3;
-            this.btnMonthly.Text = "Aylık Nöbet Oluştur";
+            this.btnMonthly.Text = "6) Aylık Nöbet Oluştur";
             this.btnMonthly.UseVisualStyleBackColor = true;
             this.btnMonthly.Click += new System.EventHandler(this.btnMonthly_Click);
             // 
@@ -83,17 +83,17 @@ namespace GuardApp
             this.btnGuardPersonal.Name = "btnGuardPersonal";
             this.btnGuardPersonal.Size = new System.Drawing.Size(531, 42);
             this.btnGuardPersonal.TabIndex = 5;
-            this.btnGuardPersonal.Text = "Nöbet Personel Eşleştir";
+            this.btnGuardPersonal.Text = "5) Nöbet Personel Eşleştir";
             this.btnGuardPersonal.UseVisualStyleBackColor = true;
             this.btnGuardPersonal.Click += new System.EventHandler(this.btnGuardPersonal_Click);
             // 
             // btnUnity
             // 
-            this.btnUnity.Location = new System.Drawing.Point(496, 233);
+            this.btnUnity.Location = new System.Drawing.Point(221, 233);
             this.btnUnity.Name = "btnUnity";
             this.btnUnity.Size = new System.Drawing.Size(119, 42);
             this.btnUnity.TabIndex = 6;
-            this.btnUnity.Text = "Birlik Ekle";
+            this.btnUnity.Text = "1) Birlik Ekle";
             this.btnUnity.UseVisualStyleBackColor = true;
             this.btnUnity.Click += new System.EventHandler(this.btnUnity_Click);
             // 

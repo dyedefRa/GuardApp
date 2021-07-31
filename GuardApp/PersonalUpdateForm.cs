@@ -51,8 +51,8 @@ namespace GuardApp
                 selectedPersonal.Name = txtName.Text;
                 selectedPersonal.Term = txtTerm.Text;
                 selectedPersonal.IsActive = radioButtonActive.Checked;
-                selectedPersonal.Rank = (Rank)comboBox1.SelectedItem;
-                selectedPersonal.PersonalUnity = (PersonalUnity)comboBox2.SelectedItem;
+                selectedPersonal.Rank.Id = ((Rank)comboBox1.SelectedItem).Id;
+                selectedPersonal.PersonalUnity.Id = ((PersonalUnity)comboBox2.SelectedItem).Id;
 
                 if (personalRepository.Update(selectedPersonal))
                 {

@@ -13,6 +13,7 @@ namespace GuardApp.Model
         public virtual Guard Guard { get; set; }
         public int PersonalId { get; set; }
         public virtual Personal Personal { get; set; }
+        public bool IsActive { get; set; } = true;
 
 
         public string GetFullName()
