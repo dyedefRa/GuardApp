@@ -76,13 +76,13 @@ namespace GuardApp
         {
             DateTime nextDate = DateTime.Now.AddMonths(1);
 
-            //if (guardCompleteList.Any(x => x == false))
-            //{
-            //    MessageBox.Show(nextDate.TurkishDateTimeShortToString() + " tarihi için tamamlanmamış nöbetler bulunmaktadır.Lütfen tüm nöbetleri eksiksiz doldurun...");
-            //}
-            //else
-            //{
-            var nextMonthGuardProgramList = guardProgramRepository.List().Where(x => x.Date.Month == nextDate.Month && x.Date.Year == nextDate.Year).ToList();
+            if (guardCompleteList.Any(x => x == false))
+            {
+                MessageBox.Show(nextDate.TurkishDateTimeShortToString() + " tarihi için tamamlanmamış nöbetler bulunmaktadır.Lütfen tüm nöbetleri eksiksiz doldurun...");
+            }
+            else
+            {
+                var nextMonthGuardProgramList = guardProgramRepository.List().Where(x => x.Date.Month == nextDate.Month && x.Date.Year == nextDate.Year).ToList();
             if (nextMonthGuardProgramList != null)
             {
                 string documentName = nextDate.PDFDocumentFolderPathToString();
@@ -96,7 +96,7 @@ namespace GuardApp
 
                 MessageBox.Show("Sistemde hata oluştu.Lütfen daha sonra tekrar deneyiniz...");
 
-            //}
+            }
         }
 
     }
