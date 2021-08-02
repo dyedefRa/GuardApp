@@ -11,7 +11,6 @@ namespace GuardApp.Model
 {
     public class Personal
     {
-
         public int Id { get; set; }
         [DisplayName("Ad / Soyad")]
         public string Name { get; set; }
