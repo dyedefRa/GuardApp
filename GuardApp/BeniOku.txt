@@ -1,24 +1,19 @@
 ﻿
-Aktif olanlar nobet gruplarında gözuksun.
-ama kendi listesinde hepsi gozuksun.
+
+
 Tr bayrak bazı yerlere koy bazılarından kaldır.
 
 
 
 
 
-Nöbet personel seç sayfasında AMM nöbetinde ki kullanıcı nobetten cıkarılmıyor cunku  Atanmış Nöbeti var.
-Nöbet personel seç sayfasında aktif olan per. vs gelmelii
 
 
-Nöbet sıralama . Rutbe sıralaması sayfası
+
 
 
 PROJE BITTIGINDE DATAYI TEMIZLEYIP HER YERI TEKRAR DENE !:!:! (double clik  mouse click vs hepsini dene!)
 
 
-NÖBET EŞLEŞTİRDE SORUN VAR :!:
 
 
-
-RUTBE SIRASI OLACAK!
